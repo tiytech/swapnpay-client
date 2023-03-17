@@ -7,8 +7,13 @@ module.exports = {
     extend: {
       colors: {
         "primary": '#002F46',
-        "primary-light": '#00ABFF',
-      }
+        "primary-light": '#0085C6',
+      },
+      fontFamily: {
+        lato: ["Lato", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        spacegrotesk: ["Space Grotesk", "sans-serif"],
+      },
     },
   },
   plugins: [],
