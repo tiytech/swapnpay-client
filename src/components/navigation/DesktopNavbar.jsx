@@ -32,7 +32,7 @@ const DesktopNavbar = () => {
                 <Link to={'/swap'}>
                     <p className=' text-primary text-[14px]'>Swap</p>
                 </Link>
-                <Link to={'#'}>
+                <Link to={'/about'}>
                     <p className=' text-primary text-[14px]'>The Company</p>
                 </Link>
             </div>
@@ -41,26 +41,20 @@ const DesktopNavbar = () => {
                 <IconButton
                     to={'/login'}
                     title={'Login'}
-                    classes={'py-2'}
-                    width={'w-[100px] md:w-[100px]'}
                     iconType={'icon-right'}
                     fontSize={'text-[14px]'}
                     textColor={'text-white'}
-                    borderRadius={'rounded-md'}
-                    bg={'bg-primary'}
-                    border={'border border-primary'}
+                    width={'w-[100px] md:w-[100px]'}
+                    classes={'py-2 border border-primary bg-primary rounded-md'}
                 />
                 <IconButton
                     to={'/signup'}
-                    bg={'bg-white'}
                     title={'Signup'}
-                    classes={'py-2'}
                     iconType={'icon-right'}
                     fontSize={'text-[14px]'}
                     textColor={'text-primary'}
-                    borderRadius={'rounded-md'}
                     width={'w-[100px] md:w-[100px]'}
-                    border={'border border-primary'}
+                    classes={'py-2 border border-primary rounded-md bg-white'}
                 />
             </div>
 

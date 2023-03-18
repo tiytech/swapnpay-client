@@ -55,13 +55,19 @@ const MobileNavbar = () => {
                     </div>
 
                     <div className="mt-10 flex flex-col space-y-[40px] pl-8 pr-4">
-                        <Link to={'#'}>
+                        <Link to={'/'}
+                            onClick={() => updateConfig({ showMenu: false })}
+                        >
                             <p className='text-white text-[18px]'>Home</p>
                         </Link>
-                        <Link to={'#'}>
+                        <Link to={'/swap'}
+                            onClick={() => updateConfig({ showMenu: false })}
+                        >
                             <p className='text-white text-[18px]'>Swap</p>
                         </Link>
-                        <Link to={'#'}>
+                        <Link to={'/about'}
+                            onClick={() => updateConfig({ showMenu: false })}
+                        >
                             <p className='text-white text-[18px]'>The Company</p>
                         </Link>
 
@@ -70,25 +76,19 @@ const MobileNavbar = () => {
                             <IconButton
                                 to={'/login'}
                                 title={'Login'}
-                                classes={'py-4'}
                                 width={'w-[120px]'}
-                                bg={'bg-slate-100'}
                                 iconType={'icon-right'}
-                                fontSize={'text-[14px]'}
                                 textColor={'text-primary'}
-                                borderRadius={'rounded-lg'}
+                                classes={'py-4 bg-slate-100 rounded-lg text-[14px]'}
                             />
                             <IconButton
                                 to={'/signup'}
                                 title={'Signup'}
-                                classes={'py-4'}
-                                bg={'bg-primary'}
                                 width={'w-[120px]'}
                                 iconType={'icon-right'}
                                 fontSize={'text-[14px]'}
                                 textColor={'text-white'}
-                                borderRadius={'rounded-lg'}
-                                border={'border border-white'}
+                                classes={'py-4 border border-white rounded-lg bg-primary'}
                             />
                         </div>
                     </div>

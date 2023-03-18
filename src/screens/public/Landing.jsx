@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 
 import { blogItems } from '../../data'
 import { Blob1, Phone1, Phone2 } from '../../assets'
-import { BlogCard, DesktopNavbar, HeaderText, IconButton, ImageButton, LogoText, MobileNavbar } from '../../components'
+import { BlogCard, DesktopNavbar, DownloadAppSection, Footer, HeaderText, IconButton, ImageButton, LogoText, MobileNavbar } from '../../components'
 
 
 const Landing = () => {
@@ -21,7 +21,6 @@ const Landing = () => {
                 updateConfig({ showMobileNav: false })
             }
         })
-
 
         return () => {
             window.removeEventListener('resize', () => { })
@@ -41,8 +40,6 @@ const Landing = () => {
 
     return (
         <main className=''>
-            {/* {config.showMobileNav && ( */}
-            {/* )} */}
             <MobileNavbar />
             <DesktopNavbar />
 
@@ -78,43 +75,7 @@ const Landing = () => {
             </header>
 
             {/* DOWNLOAD-1 */}
-            <section className="rounded-md bg-gradient-to-br from-primary to-primary-light px-6 mx-6 py-[60px] flex flex-col md:flex md:flex-row md:justify-between md:items-center md:mx-[60px] md:px-10">
-                <div className="mx-auto flex flex-col justify-center text-center md:mx-0 md:items-start">
-                    <HeaderText
-                        color={'text-white'}
-                        text={'Download The App'}
-                        classes={'font-bold text-[20px]'}
-                    />
-                    <HeaderText
-                        color={'text-white'}
-                        text={'Download SwapnPay From your favourite app store '}
-                        classes={'text-[12px]'}
-                    />
-
-                </div>
-                <div className="flex justify-between mt-10 md:mt-0 md:space-x-5">
-                    <ImageButton
-                        to={'#'}
-                        title={'PlayStore'}
-                        width={'w-[120px]'}
-                        fontSize={'text-[14px]'}
-                        textColor={'text-white'}
-                        iconType={'icon-playstore'}
-                        borderRadius={'rounded-lg'}
-                        classes={'py-4 px-2 bg-primary'}
-                    />
-                    <ImageButton
-                        to={'#'}
-                        title={'AppStore'}
-                        width={'w-[120px]'}
-                        iconType={'icon-apple'}
-                        fontSize={'text-[14px]'}
-                        textColor={'text-white'}
-                        borderRadius={'rounded-lg'}
-                        classes={'py-4 px-2 bg-primary'}
-                    />
-                </div>
-            </section>
+            <DownloadAppSection />
 
             {/* HOW-TO-USE */}
             <section className="w-full bg-gradient-to-br from-primary to-primary-light px-4 py-[40px] my-10 flex flex-col md:flex-row md:justify-between md:mx-[60px] md:my-20 md:w-auto md:rounded-md md:px-10 md:py-[80px]">
@@ -315,88 +276,7 @@ const Landing = () => {
             </section>
 
             {/* FOOTER */}
-            <footer className='rounded-md bg-primary px-6 mx-6 mb-5 py-[20px] flex flex-col md:flex-row-reverse md:justify-between md:mx-[60px] md:my-20 md:py-20'>
-                <div className="flex justify-between md:w-1/2">
-                    <div className="flex flex-col">
-                        <HeaderText
-                            text={'Company'}
-                            classes={'text-[18px]'}
-                            color={'text-white font-bold'}
-                        />
-
-                        <div className="space-y-1">
-                            <p className='text-[14px] text-white'>About</p>
-                            <p className='text-[14px] text-white'>Privacy Policy</p>
-                            <p className='text-[14px] text-white'>Terms of Service</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col">
-                        <HeaderText
-                            text={'Support'}
-                            classes={'text-[18px]'}
-                            color={'text-white font-bold'}
-                        />
-
-                        <div className="space-y-1">
-                            <p className='text-[14px] text-white'>FAQ</p>
-                            <p className='text-[14px] text-white'>Supported Countries</p>
-                            <p className='text-[14px] text-white'>Join Our Discord</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className='flex flex-col mt-10 md:mt-0 md:items-start md:space-y-10'>
-                    <div className='flex flex-col mx-auto md:mx-0'>
-                        <LogoText
-                            size={'lg'}
-                            color={'white'}
-                        />
-                        <p className='text-[12px] text-gray-300 ml-10'>Transactions made easy...</p>
-                    </div>
-
-                    <div className="flex justify-between mt-5 md:my-5 md:space-x-5">
-                        <ImageButton
-                            to={'#'}
-                            title={'PlayStore'}
-                            width={'w-[120px]'}
-                            fontSize={'text-[14px]'}
-                            textColor={'text-white'}
-                            iconType={'icon-playstore'}
-                            borderRadius={'rounded-lg'}
-                            classes={'py-4 px-2 bg-primary-light'}
-                        />
-                        <ImageButton
-                            to={'#'}
-                            title={'AppStore'}
-                            width={'w-[120px]'}
-                            iconType={'icon-apple'}
-                            fontSize={'text-[14px]'}
-                            textColor={'text-white'}
-                            borderRadius={'rounded-lg'}
-                            classes={'py-4 px-2 bg-primary-light'}
-                        />
-                    </div>
-                    <div className="flex justify-center space-x-4 mt-5">
-                        <FaFacebookF
-                            size={25}
-                            className='text-white'
-                        />
-                        <FaInstagram
-                            size={25}
-                            className='text-white'
-                        />
-                        <FaTwitter
-                            size={25}
-                            className='text-white'
-                        />
-                        <FaWhatsapp
-                            size={25}
-                            className='text-white'
-                        />
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </main>
     )
 }
