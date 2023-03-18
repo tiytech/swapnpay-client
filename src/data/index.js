@@ -1,4 +1,4 @@
-import { Blog1, Blog2, Blog3 } from "../assets"
+import { Blog1, Blog2, Blog3, FlagNGN, FlagUSA, IconLearning } from "../assets"
 
 
 export const blogItems = [
@@ -22,6 +22,37 @@ export const blogItems = [
         'date': '12 Nov 2021',
         'title': 'Recieve crypto with ease',
         'intro': 'Easily Pay your School tuition or secure your admission abroad by making payment on our platform.',
+    },
+]
+
+
+export const appUseItems = [
+    {
+        'icon': IconLearning,
+        'title': 'Pay School Tuition',
+        'description': 'Easily Pay your School tuition or secure your admission abroad by making payment on our platform.',
+    },
+    {
+        'icon': IconLearning,
+        'title': 'Buy stuffs online',
+        'description': 'Easily buy stuffs on any online store with our virtual debit card.',
+    },
+    {
+        'icon': IconLearning,
+        'title': 'Receive international currencies',
+        'description': 'Receive pounds, euros and dollars on swapnpay.',
+    },
+]
+
+
+export const appCountries = [
+    {
+        'icon': FlagNGN,
+        'title': 'NGN',
+    },
+    {
+        'icon': FlagUSA,
+        'title': 'USA',
     },
 ]
 
