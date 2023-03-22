@@ -2,7 +2,7 @@ import React, { useReducer } from 'react'
 import { BsGrid } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
-import IconButton from '../buttons/IconButton'
+import LinkIconButton from '../buttons/LinkIconButton'
 import { IconLogo, IconLogoWhite, IconTimes } from '../../assets'
 
 
@@ -38,7 +38,7 @@ const DesktopNavbar = () => {
             </div>
 
             <div className="flex space-x-2 items-center">
-                <IconButton
+                <LinkIconButton
                     to={'/login'}
                     title={'Login'}
                     iconType={'icon-right'}
@@ -47,7 +47,7 @@ const DesktopNavbar = () => {
                     width={'w-[100px] md:w-[100px]'}
                     classes={'py-2 border border-primary bg-primary rounded-md'}
                 />
-                <IconButton
+                <LinkIconButton
                     to={'/signup'}
                     title={'Signup'}
                     iconType={'icon-right'}

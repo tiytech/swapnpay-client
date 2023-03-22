@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react'
 
 import { appCountries, appUseItems, blogItems } from '../../data'
 import { Blob1, FlagNGN, FlagUSA, Phone1, Phone2 } from '../../assets'
-import { BlogCard, DesktopNavbar, DownloadAppSection, Footer, HeaderText, IconButton, ImageButton, LogoText, MobileNavbar } from '../../components'
+import { BlogCard, DesktopNavbar, DownloadAppSection, Footer, HeaderText, LinkIconButton, ImageButton, LogoText, MobileNavbar } from '../../components'
 import { BsChevronDown } from 'react-icons/bs'
 
 
@@ -119,7 +119,7 @@ const SwapScreen = () => {
                         </div>
                     </div>
 
-                    <IconButton
+                    <LinkIconButton
                         to={'#'}
                         width={'w-full'}
                         title={'Swap now'}

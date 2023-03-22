@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import { BsArrowRight } from 'react-icons/bs'
 
 
-const IconButton = ({ to, title, textColor, classes, iconType, width }) => {
+const LinkIconButton = ({ to, title, textColor, classes, iconType, width, type }) => {
     return (
         <Link to={to}>
             <button
-                type='button'
+                type={type ? type : 'button'}
                 className={`
                     ${width}
                     ${classes}
@@ -28,4 +28,4 @@ const IconButton = ({ to, title, textColor, classes, iconType, width }) => {
     )
 }
 
-export default IconButton
+export default LinkIconButton
