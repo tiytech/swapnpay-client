@@ -13,6 +13,17 @@ const LogoText = ({ color, size }) => {
                     <p className='font-bold text-primary text-[16px]'>SwapnPay</p>
                 </Fragment>
             )}
+           
+            {color !== 'white' && size === 'lg' && (
+                <Fragment>
+                    <img
+                        src={IconLogo}
+                        alt="logo"
+                        className='w-[30px]'
+                    />
+                    <p className='font-bold text-primary text-[20px]'>SwapnPay</p>
+                </Fragment>
+            )}
 
             {color === 'white' && !size && (
                 <Fragment>

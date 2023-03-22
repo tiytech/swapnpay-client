@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 
 import { blogItems } from '../../data'
 import { Blob1, Phone1, Phone2 } from '../../assets'
-import { BlogCard, DesktopNavbar, DownloadAppSection, Footer, HeaderText, IconButton, ImageButton, LogoText, MobileNavbar } from '../../components'
+import { BlogCard, DesktopNavbar, DownloadAppSection, Footer, HeaderText, LinkIconButton, ImageButton, LogoText, MobileNavbar } from '../../components'
 
 
 const Landing = () => {
@@ -62,7 +62,7 @@ const Landing = () => {
                     <p className='text-center mt-5'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
 
                     <div className="mx-auto">
-                        <IconButton
+                        <LinkIconButton
                             to={'/signup'}
                             title={'Signup Now'}
                             iconType={'icon-right'}

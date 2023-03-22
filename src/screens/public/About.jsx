@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react'
 
 import { appUseItems, blogItems } from '../../data'
 import { Blob1, Phone1, Phone2 } from '../../assets'
-import { BlogCard, DesktopNavbar, DownloadAppSection, Footer, HeaderText, IconButton, ImageButton, LogoText, MobileNavbar } from '../../components'
+import { BlogCard, DesktopNavbar, DownloadAppSection, Footer, HeaderText, LinkIconButton, ImageButton, LogoText, MobileNavbar } from '../../components'
 
 
 const About = () => {

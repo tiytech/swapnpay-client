@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { About, Landing, SwapScreen, Login, SignupStepOne, ForgotPassword, ResetPassword, NotFound, PrivateRoute, Dashboard, } from './screens'
+import { About, Landing, SwapScreen, Login, Signup, ForgotPassword, ResetPassword, NotFound, PrivateRoute, Dashboard, } from './screens'
 
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
 
 				{/* AUTH */}
 				<Route path="/login" element={<Login />} />
-				<Route path="/signup" element={<SignupStepOne />} />
+				<Route path="/signup" element={<Signup />} />
 				<Route path="/reset-password" element={<ResetPassword />} />
 				<Route path="/forgot-password" element={<ForgotPassword />} />
 

@@ -6,6 +6,7 @@ import SwapScreen from "./public/SwapScreen"
 
 // AUTH
 import Login from "./auth/Login"
+import Signup from "./auth/Signup"
 import ResetPassword from "./auth/forgot-password/ResetPassword"
 import ForgotPassword from "./auth/forgot-password/ForgotPassword"
 import SignupStepOne from "./auth/signup/Signup.StepOne"
@@ -13,7 +14,8 @@ import SignupStepTwo from "./auth/signup/Signup.StepTwo"
 import SignupStepThree from "./auth/signup/Signup.StepThree"
 import SignupStepFour from "./auth/signup/Signup.StepFour"
 import SignupStepFive from "./auth/signup/Signup.StepFive"
-import SignupVerifyAccount from "./auth/signup/Signup.VerifyAccount"
+import SignupVerifyBVN from "./auth/signup/Signup.VerifyBVN"
+import SignupVerifyEmail from "./auth/signup/Signup.VerifyEmail"
 
 
 // DASHBOARD
@@ -35,6 +37,7 @@ export {
 
     // AUTH
     Login,
+    Signup,
     ResetPassword,
     ForgotPassword,
     SignupStepOne,
@@ -42,7 +45,8 @@ export {
     SignupStepThree,
     SignupStepFour,
     SignupStepFive,
-    SignupVerifyAccount,
+    SignupVerifyBVN,
+    SignupVerifyEmail,
 
 
     // DASHBOARD

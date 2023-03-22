@@ -28,6 +28,12 @@ import Blob1 from './images/home__blob__1.svg'
 import FlagNGN from './icons/flag__ngn.svg'
 import FlagUSA from './icons/flag__usa.svg'
 
+
+// ART
+import AuthArt1 from './images/auth__art__1.svg'
+import ModalBackground1 from './images/modal__bg__1.svg'
+
+
 export {
     // ANIMATIONS
     Animation1,
@@ -56,4 +62,8 @@ export {
     // FLAGS
     FlagNGN,
     FlagUSA,
+
+    // ART
+    AuthArt1,
+    ModalBackground1,
 }

@@ -1,14 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { FormPhoneInput, FormTextInput, HeaderText, IconButton, LogoText } from '../../../components'
+import { FormTextInput, HeaderText, IconButton, LogoText } from '../../../components'
+import { useGlobalContext } from '../../../context'
 
 
-const SignupStepThree = ({ handleChange, formData, updateConfig }) => {
+const SignupVerifyBVN = ({ handleChange, updateConfig }) => {
+    const { modals, updateModals } = useGlobalContext()
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        updateConfig({ showFormThree: false, showFormFour: true })
+        updateConfig({ showFormFive: false, showFormSix: true })
+        updateModals({ showSignupSuccessModal: !modals.showSignupSuccessModal })
     }
 
     return (
@@ -18,28 +22,22 @@ const SignupStepThree = ({ handleChange, formData, updateConfig }) => {
                 color={'black'}
             />
             <HeaderText
-                text={'Personal Data'}
+                text={'Verify BVN'}
                 classes={'text-[30px]'}
                 color={'text-black font-bold'}
             />
-            <p className=''>Select you current country of residence and country of origin</p>
+            <p className=''>Enter your BVN to verify your identity</p>
 
             <form onSubmit={handleSubmit}>
                 <FormTextInput
-                    icon={'mail'}
-                    name={'email'}
-                    placeHolder={'Email'}
+                    name={'bvn'}
                     handleChange={handleChange}
+                    placeHolder={'Enter your bvn'}
                     classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
                 />
-                <FormPhoneInput
-                    name={'phone'}
-                    classes={'mb-2 rounded-xl py-2'}
-                    formData={formData}
-                    handleChange={handleChange}
-                    updateConfig={updateConfig}
-                    placeHolder={'Phone number'}
-                />
+                <div className="flex justify-end mt-">
+                    <p className='text-[12px]'>Dial <strong className='font-bold'>*510*00#</strong> to check BVN</p>
+                </div>
 
                 <div className="mt-5">
                     <IconButton
@@ -53,16 +51,16 @@ const SignupStepThree = ({ handleChange, formData, updateConfig }) => {
                     />
                 </div>
 
-                <div className='mt-2 flex justify-center space-x-2'>
+                {/* <div className='mt-2 flex justify-center space-x-2'>
                     <p className='text-gray-500 text-[14px]'>Already have an account?</p>
 
                     <Link to={'/login'}>
                         <p className='text-[14px] font-bold'>Login</p>
                     </Link>
-                </div>
+                </div> */}
             </form>
         </div>
     )
 }
 
-export default SignupStepThree
+export default SignupVerifyBVN

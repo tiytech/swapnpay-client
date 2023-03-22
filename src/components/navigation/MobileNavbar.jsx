@@ -3,7 +3,7 @@ import { BsGrid } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
 import { IconLogo, IconLogoWhite, IconTimes } from '../../assets'
-import IconButton from '../buttons/IconButton'
+import LinkIconButton from '../buttons/LinkIconButton'
 
 
 const MobileNavbar = () => {
@@ -73,7 +73,7 @@ const MobileNavbar = () => {
 
 
                         <div className="flex justify-between items-center">
-                            <IconButton
+                            <LinkIconButton
                                 to={'/login'}
                                 title={'Login'}
                                 width={'w-[120px]'}
@@ -81,7 +81,7 @@ const MobileNavbar = () => {
                                 textColor={'text-primary'}
                                 classes={'py-4 bg-slate-100 rounded-lg text-[14px]'}
                             />
-                            <IconButton
+                            <LinkIconButton
                                 to={'/signup'}
                                 title={'Signup'}
                                 width={'w-[120px]'}
