@@ -19,7 +19,12 @@ import SignupVerifyEmail from "./auth/signup/Signup.VerifyEmail"
 
 
 // DASHBOARD
+import Swap from "./dashboard/Swap"
+import Home from "./dashboard/Home"
+import Cards from "./dashboard/Cards"
+import Settings from "./dashboard/Settings"
 import Dashboard from "./dashboard/Dashboard"
+import Payments from "./dashboard/subscreens/pay/Payments"
 
 
 // UTILS
@@ -50,6 +55,11 @@ export {
 
 
     // DASHBOARD
+    Swap,
+    Home,
+    Cards,
+    Payments,
+    Settings,
     Dashboard,
     
 

@@ -1,11 +1,13 @@
 // NAVIGATION
 import Footer from "./navigation/Footer"
+import TopBar from "./navigation/TopBar"
+import SideBar from "./navigation/SideBar"
 import MobileNavbar from "./navigation/MobileNavbar"
 import DesktopNavbar from "./navigation/DesktopNavbar"
 
 
 // BUTTONS
-import IconButton from "./buttons/LinkButton"
+import IconButton from "./buttons/IconButton"
 import ImageButton from "./buttons/ImageButon"
 import LinkIconButton from "./buttons/LinkIconButton"
 
@@ -13,10 +15,12 @@ import LinkIconButton from "./buttons/LinkIconButton"
 // TEXT
 import LogoText from "./text/LogoText"
 import HeaderText from "./text/HeaderText"
-
+import TransactionConfirmationText from "./text/TransactionConfirmationText"
 
 // CARDS
 import BlogCard from "./cards/BlogCard"
+import HomeWalletCard from "./cards/HomeWalletCard"
+import TransactionTypeCard from "./cards/TransactionTypeCard"
 import DownloadAppSection from "./sections/DownloadAppSection"
 
 
@@ -25,15 +29,20 @@ import FormTextInput from "./forms/FormTextInput"
 import FormDateInput from "./forms/FormDateInput"
 import FormPhoneInput from "./forms/FormPhoneInput"
 import FormSelectInput from "./forms/FormSelectInput"
+import FormCurrencyInput from "./forms/FormCurrencyInput"
 import FormPasswordInput from "./forms/FormPasswordInput"
+import FormBankSelectInput from "./forms/FormBankSelectInput"
 
 
 // UTILS
 import Modals from "./utils/Modals"
+import ModalPages from "./utils/ModalPages"
 
 export {
     // NAVIGATION
     Footer,
+    TopBar,
+    SideBar,
     MobileNavbar,
     DesktopNavbar,
 
@@ -47,18 +56,24 @@ export {
     // TEXT
     LogoText,
     HeaderText,
+    TransactionConfirmationText,
 
     // CARDS
     BlogCard,
+    HomeWalletCard,
     DownloadAppSection,
+    TransactionTypeCard,
 
     // INPUT
     FormTextInput,
     FormDateInput,
     FormPhoneInput,
     FormSelectInput,
+    FormCurrencyInput,
     FormPasswordInput,
+    FormBankSelectInput,
 
     // MODALS
     Modals,
+    ModalPages,
 }

@@ -64,7 +64,7 @@ const Login = () => {
 
                     <div className="mt-5 ">
                         <LinkIconButton
-                            to={'#'}
+                            to={'/dashboard'}
                             type={'submit'}
                             title={'Login'}
                             iconType={'icon-right'}
