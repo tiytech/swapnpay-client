@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import HeaderText from '../text/HeaderText'
-import IconButton from '../buttons/LinkButton'
+import IconButton from '../buttons/IconButton'
 import { ModalBackground1 } from '../../assets'
 import { useGlobalContext } from '../../context'
 

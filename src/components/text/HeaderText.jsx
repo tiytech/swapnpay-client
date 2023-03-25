@@ -1,13 +1,13 @@
 import React from 'react'
 
 
-const HeaderText = ({ text, color, classes }) => {
+const HeaderText = ({ text, family, color, classes }) => {
     return (
         <h1
             className={`
                 ${color}
                 ${classes}
-                font-spacegrotesk
+                ${family ? family : 'font-spacegrotesk'}
             `}
         >
             {text}
