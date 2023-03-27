@@ -4,6 +4,10 @@ import { IoMdAdd } from 'react-icons/io'
 import { BsArrowRight } from 'react-icons/bs'
 
 
+import { IconCamera } from '../../assets'
+import IconImage from '../images/IconImage'
+
+
 const IconButton = ({ title, textColor, classes, iconType, width, type, handleClick }) => {
     return (
         <button
@@ -32,6 +36,12 @@ const IconButton = ({ title, textColor, classes, iconType, width, type, handleCl
             {iconType === 'icon-add' && (
                 <IoMdAdd
                     size={18}
+                    className={`${textColor} cursor-pointer`}
+                />
+            )}
+            {iconType === 'icon-camera' && (
+                <IconImage
+                icon={IconCamera}
                     className={`${textColor} cursor-pointer`}
                 />
             )}

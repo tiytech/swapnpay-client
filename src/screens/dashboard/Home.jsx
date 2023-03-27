@@ -5,7 +5,6 @@ import { HeaderText, HomeWalletCard, TransactionTypeCard } from '../../component
 
 
 const Home = () => {
-
 	const [config, updateConfig] = useReducer((prev, next) => {
 		return { ...prev, ...next }
 	}, {
@@ -37,7 +36,7 @@ const Home = () => {
 						{appTransactions.map((transaction, index) => (
 							<div
 								key={index}
-								className="flex justify-between items-ceter w-full border-b py-2 cursor-pointer transition-all ease-in-out duration-500 hover:translate-x-1"
+								className="flex justify-between items-center w-full border-b py-2 cursor-pointer transition-all ease-in-out duration-500 hover:translate-x-1"
 							>
 								<div className="flex items-center space-x-4">
 									<img

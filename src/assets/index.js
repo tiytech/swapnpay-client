@@ -2,6 +2,8 @@
 import Animation1 from './animations/animation__1.json'
 
 // LOGO
+import IconCamera from './icons/icon__camera.svg'
+import IconMessage from './icons/icon__message.svg'
 import IconAccessBank from './icons/icon__access__bank.svg'
 import IconEcoBank from './icons/icon__eco__bank.svg'
 import IconFcmbBank from './icons/icon__fcmb__bank.svg'
@@ -16,10 +18,12 @@ import IconBUSD from './icons/icon__busd.svg'
 import IconBank from './icons/icon__bank.svg'
 import IconQRCode from './icons/icon__qrcode.svg'
 import IconProfile1 from './icons/icon__profile__1.svg'
+import IconProfile2 from './icons/icon__profile__2.svg'
 import IconCrypto from './icons/icon__crypto.svg'
 import IconCardBlack from './icons/icon__card__black.svg'
 import IconTV from './icons/icon__tv.svg'
-import IconPhone from './icons/icon__phone.svg'
+import IconPhone from './icons/icon__phone__1.svg'
+import IconPhone2 from './icons/icon__phone__2.svg'
 import IconHome from './icons/icon__home.svg'
 import IconDebit from './icons/icon__debit.svg'
 import IconCredit from './icons/icon__credit.svg'
@@ -75,6 +79,8 @@ export {
     Animation1,
     
     // LOGO
+    IconCamera,
+    IconMessage,
     IconAccessBank,
     IconEcoBank,
     IconFcmbBank,
@@ -90,9 +96,11 @@ export {
     IconQRCode,
     IconCrypto,
     IconProfile1,
+    IconProfile2,
     IconCardBlack,
     IconTV,
     IconPhone,
+    IconPhone2,
     IconDebit,
     IconCredit,
     IconHome,

@@ -6,7 +6,8 @@
   "scripts": {
     "tailwind": "npx tailwindcss -i ./src/index.css -o ./src/output.css --watch",
     "dev": "env-cmd -f .env.development vite & npm run tailwind",
-    "build": "env-cmd -f .env.production vite build",
+    "build": "vite build",
+    "build-2": "env-cmd -f .env.production vite build",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -27,6 +27,10 @@ import Dashboard from "./dashboard/Dashboard"
 import Payments from "./dashboard/subscreens/pay/Payments"
 
 
+// IMAGES
+import IconImage from "../components/images/IconImage"
+
+
 // UTILS
 import NotFound from "./utils/NotFound"
 import PrivateRoute from "./utils/PrivateRoute"
@@ -62,6 +66,10 @@ export {
     Settings,
     Dashboard,
     
+
+    // IMAGES
+    IconImage,
+
 
     // UTILS
     NotFound,
