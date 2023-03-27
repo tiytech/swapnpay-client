@@ -265,6 +265,52 @@ export const appBanks = [
     },
 ]
 
+export const appReferrals = [
+    {
+        'name': 'William Ibrahim',
+        'timeline': 'Joined 2 days ago',
+        'auth':'Signup complete',
+    },
+    {
+        'name': 'Joyce Danladi',
+        'timeline': 'Joined 2 days ago',
+        'auth':'Signup ongoing',
+    },
+    {
+        'name': 'Amstrong Daniel',
+        'timeline': 'Joined 2 days ago',
+        'auth':'Signup complete',
+    },
+    {
+        'name': 'Kenneth Ofudi',
+        'timeline': 'Joined 2 days ago',
+        'auth':'Signup ongoing',
+    },
+]
+
+export const appVerificationTypes = [
+    {
+        'title': 'NIN',
+        'status': 'VERIFIED'
+    },
+    {
+        'title': 'BVN',
+        'status': 'UNVERIFIED'
+    },
+    {
+        'title': 'Voters Card',
+        'status': 'UNVERIFIED'
+    },
+    {
+        'title': 'Drivers License',
+        'status': 'UNVERIFIED'
+    },
+    {
+        'title': 'International Passport',
+        'status': 'UNVERIFIED'
+    },
+]
+
 export const user__menu__items = [
     {
         title: 'Home',
@@ -303,6 +349,13 @@ export const modal__pages = {
     showPaymentScreen: false,
     showBuyDataScreen: false,
     showBuyAirtimeScreen: false,
+    showChangePinScreen: false,
+    showChangePasswordScreen: false,
+    showNinVerififcationScreen: false,
+    showBvnVerififcationScreen: false,
+    showVoterCardVerififcationScreen: false,
+    showDriverCardVerififcationScreen: false,
+    showInternationalPassportVerififcationScreen: false,
     showCableSubscriptionScreen: false,
 }
 

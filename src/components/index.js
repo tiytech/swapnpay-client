@@ -19,7 +19,10 @@ import TransactionConfirmationText from "./text/TransactionConfirmationText"
 
 // CARDS
 import BlogCard from "./cards/BlogCard"
+import ProfileCard from "./cards/ProfileCard"
 import HomeWalletCard from "./cards/HomeWalletCard"
+import SettingsItemCard from "./cards/SettingsItemCard"
+import ProfileAccountCard from "./cards/ProfileAccountCard"
 import TransactionTypeCard from "./cards/TransactionTypeCard"
 import DownloadAppSection from "./sections/DownloadAppSection"
 
@@ -60,7 +63,10 @@ export {
 
     // CARDS
     BlogCard,
+    ProfileCard,
     HomeWalletCard,
+    SettingsItemCard,
+    ProfileAccountCard,
     DownloadAppSection,
     TransactionTypeCard,
 

@@ -6,6 +6,13 @@ import Receive from '../../screens/dashboard/subscreens/recieve/Receive'
 import BuyData from '../../screens/dashboard/subscreens/buy_airtime_data/BuyData'
 import BuyAirtime from '../../screens/dashboard/subscreens/buy_airtime_data/BuyAirtime'
 import TVSubscription from '../../screens/dashboard/subscreens/buy_airtime_data/TVSubscription'
+import SettingsChangePassword from '../../screens/dashboard/subscreens/settings/change_password/SettingsChangePassword'
+import SettingsChangePin from '../../screens/dashboard/subscreens/settings/change_pin/SettingsChangePin'
+import VerifyNIN from '../../screens/dashboard/subscreens/settings/identity_verification/VerifyNIN'
+import VerifyBVN from '../../screens/dashboard/subscreens/settings/identity_verification/VerifyBVN'
+import VerifyVotersCard from '../../screens/dashboard/subscreens/settings/identity_verification/VerifyVotersCard'
+import VerifyDriversLicense from '../../screens/dashboard/subscreens/settings/identity_verification/VerifyDriversLicense'
+import VerifyPassport from '../../screens/dashboard/subscreens/settings/identity_verification/VerifyPassport'
 
 
 const ModalPages = () => {
@@ -35,6 +42,40 @@ const ModalPages = () => {
 
             {modalPages.showCableSubscriptionScreen && (
                 <TVSubscription />
+            )}
+
+
+            {modalPages.showChangePinScreen && (
+                <SettingsChangePin />
+            )}
+
+
+            {modalPages.showChangePasswordScreen && (
+                <SettingsChangePassword />
+            )}
+
+
+            {modalPages.showNinVerififcationScreen && (
+                <VerifyNIN />
+            )}
+
+
+            {modalPages.showBvnVerififcationScreen && (
+                <VerifyBVN />
+            )}
+
+
+            {modalPages.showVoterCardVerififcationScreen && (
+                <VerifyVotersCard />
+            )}
+
+
+            {modalPages.showDriverCardVerififcationScreen && (
+                <VerifyDriversLicense />
+            )}
+
+            {modalPages.showInternationalPassportVerififcationScreen && (
+                <VerifyPassport />
             )}
         </Fragment>
     )
