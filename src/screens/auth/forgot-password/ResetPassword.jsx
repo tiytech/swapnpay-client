@@ -40,7 +40,7 @@ const ResetPassword = () => {
     return (
         <div className='h-screen flex justify-between overflow-y-hidden font-lato relative'>
             <Modals />
-            <div className="w-[50%] h-full">
+            <div className="w-0 lg:w-[50%] h-full">
                 <img
                     src={AuthArt1}
                     alt="auth__art"
@@ -49,7 +49,7 @@ const ResetPassword = () => {
             </div>
 
             {!config.verifiedOTP && (
-                <div className="w-[50%] h-full flex flex-col px-28 py-20 space-y-5">
+                <div className="w-full lg:w-[50%] h-full flex flex-col px-5 lg:px-28 py-5 lg:py-20 space-y-5">
                     <LogoText
                         size={'lg'}
                         color={'black'}
@@ -106,7 +106,7 @@ const ResetPassword = () => {
             )}
 
             {config.verifiedOTP && (
-                <div className="w-[50%] h-full flex flex-col px-28 py-20 space-y-5">
+                <div className="w-full lg:w-[50%] h-full flex flex-col px-5 lg:px-28 py-5 lg:py-20 space-y-5">
                     <LogoText
                         size={'lg'}
                         color={'black'}

@@ -3,6 +3,7 @@ import Footer from "./navigation/Footer"
 import TopBar from "./navigation/TopBar"
 import SideBar from "./navigation/SideBar"
 import MobileNavbar from "./navigation/MobileNavbar"
+import MobileSideBar from "./navigation/MobileSideBar"
 import DesktopNavbar from "./navigation/DesktopNavbar"
 
 
@@ -46,6 +47,7 @@ export {
     Footer,
     TopBar,
     SideBar,
+    MobileSideBar,
     MobileNavbar,
     DesktopNavbar,
 

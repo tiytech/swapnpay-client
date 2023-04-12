@@ -19,7 +19,7 @@ export const GlobalContext = ({ children }) => {
     const [dashboardConfig, updateDashboardConfig] = useReducer((prev, next) => {
         return { ...prev, ...next }
     }, {
-        activeLink: 'Home', showSideBar: true,
+        activeLink: 'Home', showSideBar: false,
     })
 
     return (

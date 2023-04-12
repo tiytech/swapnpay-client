@@ -13,7 +13,7 @@ const SignupVerifyEmail = ({ handleChange, updateConfig }) => {
     }
 
     return (
-        <div className="w-[50%] h-full flex flex-col px-28 py-20 space-y-5">
+        <div className="w-full md:w-[50%] h-full flex flex-col px-5 md:px-28 py-5 lg:py-20 space-y-5">
             <LogoText
                 size={'lg'}
                 color={'black'}

@@ -1,8 +1,8 @@
 import React, { useReducer } from 'react'
 import { IconLogoWhite } from '../../assets'
 
-import { FormSelectInput, FormTextInput, HeaderText, IconButton, TransactionConfirmationText } from '../../components'
 import IconImage from '../../components/images/IconImage'
+import { FormSelectInput, FormTextInput, HeaderText, IconButton, TransactionConfirmationText } from '../../components'
 
 
 const Cards = () => {
@@ -17,8 +17,8 @@ const Cards = () => {
 	}
 
 	return (
-		<div className='pl-8 pr-8 pb-10 mt-20 flex justify-between items-start w-full'>
-			<div className="w-[40%] flex flex-col items-start space-y-5">
+		<div className='pl-8 pr-8 pb-10 mt-20 flex flex-wrap-reverse justify-between items-start w-full'>
+			<div className="w-full lg:w-[60%] flex flex-col items-start space-y-5">
 				<div className="flex flex-col items-start w-full">
 					<HeaderText
 						text={'Cards'}
@@ -27,7 +27,7 @@ const Cards = () => {
 					<p className="text-[12px]">Use SwapnPays virtual card to easily and securely make payment online.</p>
 				</div>
 
-				<div className="flex flex-col space-y-4 items-start w-[80%]">
+				<div className="flex flex-col space-y-4 items-start w-full lg:w-[80%]">
 					<div className="w-full h-[180px] bg-[url('/src/assets/images/card__bg__1.svg')] bg-cover rounded-lg flex flex-col justify-between px-4 py-8">
 						<div className="flex justify-between">
 							<p className='text-[12px] text-white'>Debit</p>
@@ -68,13 +68,15 @@ const Cards = () => {
 			</div>
 
 			{config.showCreateCard && (
-				<div className="w-[40%] flex flex-col items-start space-y-5">
+				<div className="w-full lg:w-[40%] flex flex-col items-start space-y-5 mb-20">
 					<HeaderText
 						text={'Want a card for online transactions?'}
 						classes={'font-bold text-[20px]'}
 					/>
 
-					<form onSubmit={() => { }}
+					<form onSubmit={(e) => {
+						e.preventDefault()
+					}}
 						className='w-full'
 					>
 						<FormTextInput
@@ -105,7 +107,7 @@ const Cards = () => {
 						<IconButton
 							type={'submit'}
 							width={'w-full'}
-							handleClick={() => {}}
+							handleClick={() => { }}
 							iconType={'icon-right'}
 							textColor={'text-white'}
 							title={'Create new virtual card'}
