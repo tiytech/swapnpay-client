@@ -65,3 +65,9 @@
     display: none;
     -webkit-appearance: none;
 }
+
+.shadow-menu {
+	-webkit-box-shadow: 18px 0px 74px 7px rgba(0,0,0,0.75);
+	-moz-box-shadow: 18px 0px 74px 7px rgba(0,0,0,0.75);
+	box-shadow: 18px 0px 74px 7px rgba(0,0,0,0.75);
+}

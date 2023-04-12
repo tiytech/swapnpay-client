@@ -34,7 +34,7 @@ const Signup = () => {
         <div className='h-screen flex justify-between overflow-y-hidden font-lato'>
             <Modals />
 
-            <div className="w-[50%] h-full">
+            <div className="w-0 md:w-[50%] h-full">
                 <img
                     src={AuthArt1}
                     alt="auth__art"

@@ -12,13 +12,13 @@ const Home = () => {
 	})
 
 	return (
-		<div className='pl-8 pr-8 pb-10 mt-20 flex justify-between items-start w-full'>
-			<div className="w-[45%] flex flex-col items-start space-y-10">
+		<div className='pl-4 pr-4 pb-10 md:px-8 mt-20 flex flex-wrap justify-between items-start w-full'>
+			<div className="w-full lg:w-[45%] flex flex-col items-start space-y-10">
 				<div className="flex flex-col items-start w-full">
-					<HeaderText
+					{/* <HeaderText
 						text={'Wallet'}
 						classes={'font-bold text-[20px]'}
-					/>
+					/> */}
 
 					<HomeWalletCard
 						config={config}
@@ -32,7 +32,7 @@ const Home = () => {
 						classes={'font-bold text-[20px]'}
 					/>
 
-					<div className="flex flex-col justify-between items-center h-[250px w-full rounded-xl bg-white py-5 px-10">
+					<div className="flex flex-col justify-between items-center h-[250px w-full rounded-xl bg-white py-5 px-5 md:px-10">
 						{appTransactions.map((transaction, index) => (
 							<div
 								key={index}
@@ -59,7 +59,7 @@ const Home = () => {
 				</div>
 			</div>
 
-			<div className="w-[45%] flex flex-col items-start space-y-5">
+			<div className="w-full lg:w-[45%] mt-10 lg:mt-0 flex flex-col items-start space-y-5">
 				<div className="flex flex-wrap justify-between items-center">
 					{appTransactionsTypes.map((item, index) => (
 						<TransactionTypeCard

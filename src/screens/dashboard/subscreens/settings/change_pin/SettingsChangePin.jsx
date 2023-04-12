@@ -23,7 +23,7 @@ const SettingsChangePin = () => {
 	return (
 		<div className="fixed h-screen z-20 bg-[#11111190] w-full backdrop-blur-sm flex justify-end">
 			{config.showDefault && (
-				<div className="w-[40%] h-full bg-gray-100 px-20 py-20 flex flex-col space-y-5">
+				<div className="w-full lg:w-[40%] h-full bg-gray-100 px-5 lg:px-20 py-20 flex flex-col space-y-5">
 					<BsArrowLeft
 						size={20}
 						className='cursor-pointer'

@@ -22,7 +22,7 @@ const TransactionTypeCard = ({ item }) => {
                             updateModalPages({ showCableSubscriptionScreen: !modalPages.showCableSubscriptionScreen })
                         }
                     }}
-                    className="mb-4 flex flex-col justify-between bg-white cursor-pointer p-4 w-[220px] h-[120px] rounded-lg transition-all ease-in-out duration-500 hover:-translate-y-1"
+                    className="mb-4 flex flex-col justify-between bg-white cursor-pointer p-4 w-full md:w-[220px] h-[120px] rounded-lg transition-all ease-in-out duration-500 hover:-translate-y-1"
                 >
                     <IconImage
                         icon={item.icon}
@@ -36,7 +36,7 @@ const TransactionTypeCard = ({ item }) => {
             )}
             {item.type === 'OTHERS' && (
                 <div
-                    className="mb-4 flex flex-col justify-center items-center bg-white cursor-pointer p-4 w-[220px] h-[120px] rounded-lg transition-all ease-in-out duration-500 hover:-translate-y-1"
+                    className="mb-4 flex flex-col justify-center items-center bg-white cursor-pointer p-4 w-full md:w-[220px] h-[120px] rounded-lg transition-all ease-in-out duration-500 hover:-translate-y-1"
                 >
                     <div className="flex items-center space-x-3">
                         <div className="w-4 h-4 rounded-full bg-gray-300"></div>

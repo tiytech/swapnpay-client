@@ -17,7 +17,7 @@ const HomeWalletCard = ({ config, updateConfig }) => {
                 }
             }}
             // className="flex flex-col space-y-5 justify-between items-center h-[250px w-full rounded-xl bg-primary py-5 px-10">
-            className="flex flex-col space-y-5 justify-between items-center h-[250px w-full rounded-xl bg-gradient-to-bl from-primary-light to-primary py-5 px-10">
+            className="flex flex-col space-y-5 justify-between items-center h-[250px w-full rounded-xl bg-gradient-to-bl from-primary-light to-primary py-5 px-4 md:px-10">
             <HeaderText
                 text={'$20,000'}
                 classes={'font-bold text-[30px] text-white'}
@@ -64,23 +64,23 @@ const HomeWalletCard = ({ config, updateConfig }) => {
                 )}
             </div>
 
-            <div className="flex justify-between w-full">
+            <div className="flex flex-wrap md:flex-nowrap justify-between w-full">
                 <IconButton
                     type={'submit'}
                     title={'Receive'}
-                    width={'w-[150px]'}
+                    width={'w-full md:w-[150px]'}
                     iconType={'icon-right'}
-                    textColor={'text-primary'}
+                    textColor={'text-white'}
                     classes={'py-4 text-[16px] rounded-xl bg-primary-light'}
                     handleClick={() => updateModalPages({ showReciveScreen: !modalPages.showReciveScreen })}
                 />
                 <IconButton
                     type={'submit'}
                     title={'Pay'}
-                    width={'w-[150px]'}
+                    width={'w-full md:w-[150px]'}
                     iconType={'icon-right'}
-                    textColor={'text-primary'}
-                    classes={'py-4 text-[16px] rounded-xl bg-primary-light'}
+                    textColor={'text-white'}
+                    classes={'py-4 text-[16px] rounded-xl bg-primary-light mt-5 md:mt-0'}
                     handleClick={() => updateModalPages({ showPaymentScreen: !modalPages.showPaymentScreen })}
                 />
             </div>

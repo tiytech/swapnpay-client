@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useGlobalContext } from '../../context'
 import { Home, Cards, Settings, Swap, Payments } from '../'
-import { ModalPages, Modals, SideBar, TopBar } from '../../components'
+import { MobileSideBar, ModalPages, Modals, SideBar, TopBar } from '../../components'
 
 
 const Dashboard = () => {
@@ -13,6 +13,8 @@ const Dashboard = () => {
 			<Modals />
 
 			<ModalPages />
+
+			<MobileSideBar />
 
 			<SideBar />
 

@@ -9,7 +9,7 @@ import IconImage from '../../../../components/images/IconImage'
 
 const ReceiveViaCrypto = ({ updateConfig }) => {
 	return (
-		<div className="w-[40%] h-full bg-gray-100 px-20 py-20 flex flex-col space-y-5">
+		<div className="w-full lg:w-[40%] h-full bg-gray-100 px-5 md:px-20 py-20 flex flex-col space-y-5">
 			<BsArrowLeft
 				size={20}
 				className='cursor-pointer'

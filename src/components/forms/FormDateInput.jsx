@@ -23,7 +23,7 @@ const FormDateInput = ({ classes, name, handleChange, label, placeHolder }) => {
                 id='date'
                 className={`
                     ${classes}
-                    border border-gray-300 placeholder:text-[12px] text-[12px] rounded w-full px-5 py-4 hover:outline-none focus:outline-none focus:border-gray-600 focus:ring-blue
+                    border border-gray-300 bg-white placeholder:text-[12px] text-[12px] rounded w-full px-5 py-4 hover:outline-none focus:outline-none focus:border-gray-600 focus:ring-blue
                 `}
             />
 
