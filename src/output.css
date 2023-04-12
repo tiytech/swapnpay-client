@@ -654,6 +654,10 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+
 .ml-10{
   margin-left: 2.5rem;
 }
@@ -688,14 +692,6 @@ video {
 
 .mt-5{
   margin-top: 1.25rem;
-}
-
-.mb-3{
-  margin-bottom: 0.75rem;
-}
-
-.mb-6{
-  margin-bottom: 1.5rem;
 }
 
 .flex{
@@ -1415,10 +1411,6 @@ video {
   padding-top: 1.5rem;
 }
 
-.pb-5{
-  padding-bottom: 1.25rem;
-}
-
 .text-center{
   text-align: center;
 }
@@ -1812,10 +1804,6 @@ video {
 
   .md\:flex-row-reverse{
     flex-direction: row-reverse;
-  }
-
-  .md\:flex-wrap{
-    flex-wrap: wrap;
   }
 
   .md\:items-start{
