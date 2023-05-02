@@ -23,7 +23,10 @@ const Signup = () => {
     const [formData, updateFormData] = useReducer((prev, next) => {
         return { ...prev, ...next }
     }, {
-        phoneCountryCode: 'NG', country: '', residence: '',
+        otp_1: '', otp_2: '', otp_3: '', otp_4: '', confirmPassword: '',
+        phoneCountryCode: 'NG', country: '', state: '', city: '', residence: '',
+        date_of_birth: '', house_address: '', postalCode: '', password:'', bvn: '',
+        first_name: '', last_name: '', occupation: '', email: '', phone_number: '',
     })
 
     const handleChange = (e) => {
@@ -44,12 +47,14 @@ const Signup = () => {
 
             {config.showFormOne && (
                 <SignupStepOne
+                    formData={formData}
                     updateConfig={updateConfig}
                     handleChange={handleChange}
                 />
             )}
             {config.showFormTwo && (
                 <SignupStepTwo
+                    formData={formData}
                     updateConfig={updateConfig}
                     handleChange={handleChange}
                 />
@@ -63,24 +68,29 @@ const Signup = () => {
             )}
             {config.showFormFour && (
                 <SignupStepFour
+                    formData={formData}
                     updateConfig={updateConfig}
                     handleChange={handleChange}
                 />
             )}
             {config.showFormFive && (
                 <SignupStepFive
+                    formData={formData}
                     updateConfig={updateConfig}
                     handleChange={handleChange}
+                    updateFormData={updateFormData}
                 />
             )}
             {config.showFormSix && (
                 <SignupVerifyEmail
+                    formData={formData}
                     updateConfig={updateConfig}
                     handleChange={handleChange}
                 />
             )}
             {config.showFormSeven && (
                 <SignupVerifyBVN
+                    formData={formData}
                     updateConfig={updateConfig}
                     handleChange={handleChange}
                 />

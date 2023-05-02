@@ -1,11 +1,19 @@
+import { toast } from 'react-toastify'
 import React, { useReducer } from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { AuthArt1 } from '../../assets'
-import { FormPasswordInput, FormTextInput, HeaderText, LinkIconButton, LogoText } from '../../components'
+import { authUserLogin } from '../../services/actions/auth.actions'
+import { FormPasswordInput, FormTextInput, HeaderText, IconButton, LinkIconButton, LoadingButtonOne, LogoText } from '../../components'
 
 
 const Login = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const { authRequestStatus } = useSelector(state => state.auth)
+
     const [formData, updateFormData] = useReducer((prev, next) => {
         return { ...prev, ...next }
     }, {
@@ -18,6 +26,10 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        if (!formData.email || !formData.password) return toast.error('All fields are required')
+
+        dispatch(authUserLogin({ formData, toast, navigate }))
     }
 
     return (
@@ -63,15 +75,23 @@ const Login = () => {
                     </div>
 
                     <div className="mt-5 ">
-                        <LinkIconButton
-                            to={'/dashboard'}
-                            type={'submit'}
-                            title={'Login'}
-                            iconType={'icon-right'}
-                            textColor={'text-white'}
-                            width={'w-full md:w-full'}
-                            classes={'py-4 text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
-                        />
+                        {authRequestStatus !== 'PENDING' ? (
+                            <IconButton
+                                to={'#'}
+                                type={'submit'}
+                                title={'Login'}
+                                textColor={'text-white'}
+                                width={'w-full md:w-full'}
+                                classes={'py-4 text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+                            />
+                        ) : (
+                            <LoadingButtonOne
+                                loadingType={'one'}
+                                textColor={'text-white'}
+                                width={'w-full md:w-full'}
+                                classes={'text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+                            />
+                        )}
                     </div>
 
                     <div className='mt-5 flex justify-center space-x-2'>

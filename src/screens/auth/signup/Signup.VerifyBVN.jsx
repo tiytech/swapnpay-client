@@ -1,18 +1,30 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { FormTextInput, HeaderText, IconButton, LogoText } from '../../../components'
 import { useGlobalContext } from '../../../context'
+import { authActivateAccount } from '../../../services/actions/auth.actions'
+import { FormTextInput, HeaderText, IconButton, LoadingButtonOne, LogoText } from '../../../components'
 
 
-const SignupVerifyBVN = ({ handleChange, updateConfig }) => {
+const SignupVerifyBVN = ({ formData, handleChange, updateConfig }) => {
+    const dispatch = useDispatch()
+
     const { modals, updateModals } = useGlobalContext()
+    const { authRequestStatus } = useSelector(state => state.auth)
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        updateConfig({ showFormFive: false, showFormSix: true })
-        updateModals({ showSignupSuccessModal: !modals.showSignupSuccessModal })
+        if (!formData.bvn) return toast.error('BVN is required')
+
+        const data = {
+            email: formData.email,
+            bvn: formData.bvn
+        }
+        dispatch(authActivateAccount({ formData: data, toast, updateModals }))
+        // updateConfig({ showFormFive: false, showFormSix: true })
+        // updateModals({ showSignupSuccessModal: !modals.showSignupSuccessModal })
     }
 
     return (
@@ -40,15 +52,24 @@ const SignupVerifyBVN = ({ handleChange, updateConfig }) => {
                 </div>
 
                 <div className="mt-5">
-                    <IconButton
-                        to={'#'}
-                        type={'submit'}
-                        title={'Proceed'}
-                        iconType={'icon-right'}
-                        textColor={'text-white'}
-                        width={'w-full md:w-full'}
-                        classes={'py-4 text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
-                    />
+                    {authRequestStatus !== 'PENDING' ? (
+                        <IconButton
+                            to={'#'}
+                            type={'submit'}
+                            title={'Proceed'}
+                            iconType={'icon-right'}
+                            textColor={'text-white'}
+                            width={'w-full md:w-full'}
+                            classes={'py-4 text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+                        />
+                    ) : (
+                        <LoadingButtonOne
+                            loadingType={'one'}
+                            textColor={'text-white'}
+                            width={'w-full md:w-full'}
+                            classes={'text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+                        />
+                    )}
                 </div>
 
                 {/* <div className='mt-2 flex justify-center space-x-2'>

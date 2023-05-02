@@ -1,19 +1,24 @@
 import React from 'react'
+import {toast} from 'react-toastify'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { IconLogoWhite } from '../../assets'
 import { user__menu__items } from '../../data'
 import IconButton from '../buttons/IconButton'
 import { useGlobalContext } from '../../context'
+import { authUserLogout } from '../../services/actions/auth.actions'
 
 
 const SideBar = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+
     const { dashboardConfig, updateDashboardConfig } = useGlobalContext()
 
     return (
         <div className='w-0 mn:min-w-72 mn:w-72 h-screen bg-primary duration-500 mn:p-5 mn:pt-4 sticky top-0 left-0'>
-        {/* <div className='min-w-72 w-72 h-screen bg-gradient-to-r from-primary to-primary-light duration-500 p-5 pt-4 sticky top-0 left-0'> */}
+            {/* <div className='min-w-72 w-72 h-screen bg-gradient-to-r from-primary to-primary-light duration-500 p-5 pt-4 sticky top-0 left-0'> */}
             <div className="flex space-x-2 justify-center items-center font-spacegrotesk">
                 <img
                     alt="logo"
@@ -49,7 +54,7 @@ const SideBar = () => {
                     title={'Logout'}
                     width={'w-full'}
                     handleClick={() => {
-                        navigate('/login', { replace: true })
+                        dispatch(authUserLogout({ toast, navigate }))
                     }}
                     iconType={'icon-right'}
                     textColor={'text-white'}

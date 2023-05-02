@@ -1,15 +1,30 @@
-import { Link } from 'react-router-dom'
-import React, { useReducer } from 'react'
+import React from 'react'
+import { toast } from 'react-toastify'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { FormTextInput, HeaderText, IconButton, LogoText } from '../../../components'
+import { authVerifyUserEmail } from '../../../services/actions/auth.actions'
+import { FormTextInput, HeaderText, IconButton, LoadingButtonOne, LogoText } from '../../../components'
 
 
-const SignupVerifyEmail = ({ handleChange, updateConfig }) => {
+const SignupVerifyEmail = ({ formData, handleChange, updateConfig }) => {
+    const dispatch = useDispatch()
+
+    const { authRequestStatus } = useSelector(state => state.auth)
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        updateConfig({ showFormSix: false, showFormSeven: true })
+        if (!formData.otp_1 || !formData.otp_2 || !formData.otp_3 || !formData.otp_4) {
+            return toast.error('Invalid OTP')
+        }
+        const data = {
+            // ...formData,
+            email: formData.email,
+            verification_code: parseInt(formData.otp_1 + formData.otp_2 + formData.otp_3 + formData.otp_4)
+        }
+        console.log(data)
+        dispatch(authVerifyUserEmail({ formData: data, toast, updateConfig }))
+        // updateConfig({ showFormSix: false, showFormSeven: true })
     }
 
     return (
@@ -19,31 +34,35 @@ const SignupVerifyEmail = ({ handleChange, updateConfig }) => {
                 color={'black'}
             />
             <HeaderText
-                text={'Verify your email'}
                 classes={'text-[30px]'}
+                text={'Verify your email'}
                 color={'text-black font-bold'}
             />
-            <p className=''>Enter the 4-digit code sent to johndoe12@gmail.com</p>
+            <p className=''>Enter the 4-digit code sent to {formData.email}</p>
 
             <form onSubmit={handleSubmit}>
                 <div className="flex items-center space-x-10 w-full">
                     <FormTextInput
-                        name={'otp'}
+                        minLength={1}
+                        name={'otp_1'}
                         handleChange={handleChange}
                         classes={'text-[20px] placeholder:text-[20px] rounded-xl w-[60px] px-1 text-center'}
                     />
                     <FormTextInput
-                        name={'otp'}
+                        name={'otp_2'}
+                        minLength={1}
                         handleChange={handleChange}
                         classes={'text-[20px] placeholder:text-[20px] rounded-xl w-[60px] px-1 text-center'}
                     />
                     <FormTextInput
-                        name={'otp'}
+                        name={'otp_3'}
+                        minLength={1}
                         handleChange={handleChange}
                         classes={'text-[20px] placeholder:text-[20px] rounded-xl w-[60px] px-1 text-center'}
                     />
                     <FormTextInput
-                        name={'otp'}
+                        minLength={1}
+                        name={'otp_4'}
                         handleChange={handleChange}
                         classes={'text-[20px] placeholder:text-[20px] rounded-xl w-[60px] px-1 text-center'}
                     />
@@ -53,15 +72,24 @@ const SignupVerifyEmail = ({ handleChange, updateConfig }) => {
                 </div>
 
                 <div className="mt-5">
-                    <IconButton
-                        to={'#'}
-                        type={'submit'}
-                        title={'Proceed'}
-                        iconType={'icon-right'}
-                        textColor={'text-white'}
-                        width={'w-full md:w-full'}
-                        classes={'py-4 text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
-                    />
+                    {authRequestStatus !== 'PENDING' ? (
+                        <IconButton
+                            to={'#'}
+                            type={'submit'}
+                            title={'Proceed'}
+                            iconType={'icon-right'}
+                            textColor={'text-white'}
+                            width={'w-full md:w-full'}
+                            classes={'py-4 text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+                        />
+                    ) : (
+                        <LoadingButtonOne
+                            loadingType={'one'}
+                            textColor={'text-white'}
+                            width={'w-full md:w-full'}
+                            classes={'text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+                        />
+                    )}
                 </div>
 
                 {/* <div className='mt-2 flex justify-center space-x-2'>

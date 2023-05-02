@@ -24,9 +24,9 @@ const App = () => {
 
 				{/* DASHBOARD */}
 				<Route path="/dashboard" element={
-					// <PrivateRoute redirectTo={'/login'}>
-					<Dashboard />
-					// </PrivateRoute>
+					<PrivateRoute redirectTo={'/login'}>
+						<Dashboard />
+					</PrivateRoute>
 				} />
 
 				{/* 404 */}

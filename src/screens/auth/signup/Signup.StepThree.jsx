@@ -1,13 +1,21 @@
 import React from 'react'
+import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 
-import { FormPhoneInput, FormTextInput, HeaderText, IconButton, LogoText } from '../../../components'
+import { FormPasswordInput, FormPhoneInput, FormTextInput, HeaderText, IconButton, LogoText } from '../../../components'
 
 
 const SignupStepThree = ({ handleChange, formData, updateConfig }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        if (!formData.email || !formData.phone_number || !formData.password) {
+            return toast.error('All fields are required!')
+        }
+
+        if (formData.password !== formData.confirmPassword) {
+            return toast.error('Passwords do not match')
+        }
         updateConfig({ showFormThree: false, showFormFour: true })
     }
 
@@ -33,12 +41,24 @@ const SignupStepThree = ({ handleChange, formData, updateConfig }) => {
                     classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
                 />
                 <FormPhoneInput
-                    name={'phone'}
+                    name={'phone_number'}
                     classes={'mb-2 rounded-xl py-2'}
                     formData={formData}
                     handleChange={handleChange}
                     updateConfig={updateConfig}
                     placeHolder={'Phone number'}
+                />
+                <FormPasswordInput
+                    name={'password'}
+                    handleChange={handleChange}
+                    placeHolder={'Enter your password'}
+                    classes={'text-[14px] placeholder:text-[14px] rounded-xl pr-14 mb-2'}
+                />
+                <FormPasswordInput
+                    name={'confirmPassword'}
+                    handleChange={handleChange}
+                    placeHolder={'Confirm password'}
+                    classes={'text-[14px] placeholder:text-[14px] rounded-xl pr-14'}
                 />
 
                 <div className="mt-5">
