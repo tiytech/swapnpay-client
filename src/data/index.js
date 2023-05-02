@@ -359,6 +359,12 @@ export const modal__pages = {
     showCableSubscriptionScreen: false,
 }
 
+export const occupations = [
+    'Student',
+    'Self-Employed',
+    'Doctor',
+    'Nurse'
+]
 
 export const countries = [
     "Afghanistan",

@@ -1,14 +1,18 @@
+import React from 'react'
+import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
-import React, { useReducer } from 'react'
 
 import { countries } from '../../../data'
-import { FormSelectInput, HeaderText, IconButton, LogoText } from '../../../components'
+import { FormSelectInput, FormTextInput, HeaderText, IconButton, LoadingButtonOne, LogoText } from '../../../components'
 
 
-const SignupStepOne = ({ handleChange, updateConfig }) => {
+const SignupStepOne = ({ formData, handleChange, updateConfig }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        if (!formData.country || !formData.country_of_residence || !formData.state || !formData.city) {
+            return toast.error('All fields are required!')
+        }
         updateConfig({ showFormOne: false, showFormTwo: true })
     }
 
@@ -20,10 +24,10 @@ const SignupStepOne = ({ handleChange, updateConfig }) => {
             />
             <HeaderText
                 text={'Nationality'}
-                classes={'text-[30px]'}
+                classes={'text-[20px] md:text-[30px]'}
                 color={'text-black font-bold'}
             />
-            <p className=''>Select you current country of residence and country of origin</p>
+            <p className='text-[14px] md:text-[16px]'>Select you current country of residence and country of origin</p>
 
             <form onSubmit={handleSubmit}>
                 <FormSelectInput
@@ -32,19 +36,38 @@ const SignupStepOne = ({ handleChange, updateConfig }) => {
                     items={countries}
                     label={'Nationality'}
                     handleChange={handleChange}
-                    classes={'py-4 rounded-xl mb-5'}
+                    classes={'py-4 rounded-xl mb-3'}
                 />
                 <FormSelectInput
                     showLabel={false}
-                    name={'residence'}
+                    name={'country_of_residence'}
                     items={countries}
                     handleChange={handleChange}
                     label={'Country of Residence'}
-                    classes={'py-4 rounded-xl mb-5'}
+                    classes={'py-4 rounded-xl mb-3'}
+                />
+                <FormTextInput
+                    name={'state'}
+                    handleChange={handleChange}
+                    placeHolder={'State'}
+                    padding={'py-4 px-4'}
+                    classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-3'}
+                />
+                <FormTextInput
+                    name={'city'}
+                    handleChange={handleChange}
+                    placeHolder={'City'}
+                    padding={'py-4 px-4'}
+                    classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-5'}
                 />
 
-
-                <div className="mt-10">
+                <div className="mt-">
+                    {/* <LoadingButtonOne
+                        loadingType={'one'}
+                        textColor={'text-white'}
+                        width={'w-full md:w-full'}
+                        classes={'py- text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+                    /> */}
                     <IconButton
                         to={'#'}
                         type={'submit'}

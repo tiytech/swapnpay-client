@@ -1,15 +1,19 @@
+import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 import React, { useReducer } from 'react'
 
-import { countries } from '../../../data'
+import { countries, occupations } from '../../../data'
 import { FormSelectInput, FormTextInput, HeaderText, IconButton, LogoText } from '../../../components'
 
 
-const SignupStepTwo = ({ handleChange, updateConfig }) => {
+const SignupStepTwo = ({ formData, handleChange, updateConfig }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        if (!formData.first_name || !formData.last_name || !formData.occupation) {
+            return toast.error('All fields are required!')
+        }
         updateConfig({ showFormTwo: false, showFormThree: true })
     }
 
@@ -28,26 +32,26 @@ const SignupStepTwo = ({ handleChange, updateConfig }) => {
 
             <form onSubmit={handleSubmit}>
                 <FormTextInput
-                    name={'firstName'}
+                    name={'first_name'}
                     handleChange={handleChange}
                     placeHolder={'First name'}
                     classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
                 />
                 <FormTextInput
-                    name={'lastName'}
+                    name={'last_name'}
                     handleChange={handleChange}
                     placeHolder={'Last name'}
                     classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
                 />
-                <FormTextInput
-                    name={'middelName'}
+                {/* <FormTextInput
+                    name={'middle_name'}
                     handleChange={handleChange}
                     placeHolder={'Middle name (optional)'}
                     classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
-                />
+                /> */}
                 <FormSelectInput
-                    items={countries}
                     showLabel={false}
+                    items={occupations}
                     name={'occupation'}
                     label={'Occupation'}
                     handleChange={handleChange}

@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 import React, { useReducer } from 'react'
 
@@ -5,11 +6,14 @@ import { countries } from '../../../data'
 import { FormDateInput, FormSelectInput, FormTextInput, HeaderText, IconButton, LogoText } from '../../../components'
 
 
-const SignupStepFour = ({ handleChange, updateConfig }) => {
+const SignupStepFour = ({ formData, handleChange, updateConfig }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        if (!formData.date_of_birth || !formData.house_address || !formData.postalCode) {
+            return toast.error('All fields are required!')
+        }
         updateConfig({ showFormFour: false, showFormFive: true })
     }
 
@@ -27,23 +31,23 @@ const SignupStepFour = ({ handleChange, updateConfig }) => {
             <p className=''>Select you current country of residence and country of origin</p>
 
             <form onSubmit={handleSubmit}>
-                <FormSelectInput
+                {/* <FormSelectInput
                     showLabel={false}
                     name={'gender'}
                     label={'Gender'}
                     items={['Male', 'Female']}
                     handleChange={handleChange}
                     classes={'py-4 rounded-xl mb-2'}
-                />
+                /> */}
                 <FormDateInput
                     label={'Date of birth'}
-                    name={'dateOfBirth'}
+                    name={'date_of_birth'}
                     handleChange={handleChange}
                     placeHolder={'Date of birth'}
                     classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
                 />
                 <FormTextInput
-                    name={'residentialAddress'}
+                    name={'house_address'}
                     handleChange={handleChange}
                     placeHolder={'Enter your residential address'}
                     classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}

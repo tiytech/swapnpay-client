@@ -12,9 +12,9 @@ const FormSelectInput = ({ classes, name, handleChange, label, items, showLabel 
                 name={name}
                 autoComplete={name}
                 onChange={handleChange}
-                className={`w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${classes}`}
+                className={`w-full py-2 px-3 border text-[12px] border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${classes}`}
             >
-                <option>{label}</option>
+                <option className='text-[12px]'>{label}</option>
                 {items?.map((item, index) => (
                     <option
                         key={index}

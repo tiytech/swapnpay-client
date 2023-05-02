@@ -16,7 +16,7 @@ instance.interceptors.request.use(
 	(req) => {
 		USERFROMLS = localStorage.getItem('swapnpay-user') ? JSON.parse(localStorage.getItem('swapnpay-user')) : null
 		if (USERFROMLS) {
-			req.headers['Authorization'] = `Bearer ${USERFROMLS.accessToken}`
+			req.headers['Authorization'] = `Bearer ${USERFROMLS.access}`
 		}
 		return req
 	},
@@ -36,10 +36,8 @@ instance.interceptors.response.use(
 
 		if (err.response) {
 			if (err.response.status === 401) {
-				// alert('Session expired. Please login again!')
 				localStorage.removeItem('swapnpay-user')
-				window.history.pushState({}, '', '/login')
-				window.location.reload()
+				window.location.href = '/login'
 
 				return instance(originalConfig)
 			}

@@ -11,6 +11,7 @@ import DesktopNavbar from "./navigation/DesktopNavbar"
 import IconButton from "./buttons/IconButton"
 import ImageButton from "./buttons/ImageButon"
 import LinkIconButton from "./buttons/LinkIconButton"
+import LoadingButtonOne from "./buttons/LoadingButtonOne"
 
 
 // TEXT
@@ -56,6 +57,7 @@ export {
     IconButton,
     ImageButton,
     LinkIconButton,
+    LoadingButtonOne,
 
 
     // TEXT
