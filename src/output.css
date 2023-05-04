@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap');
 
 /*
-! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.2 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -37,6 +37,7 @@
 3. Use a more readable tab size.
 4. Use the user's configured `sans` font-family by default.
 5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
 */
 
 html {
@@ -53,6 +54,8 @@ html {
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
 }
 
 /*
@@ -439,6 +442,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -486,6 +492,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -658,13 +667,10 @@ video {
   margin-bottom: 5rem;
 }
 
-<<<<<<< HEAD
-=======
 .mb-3{
   margin-bottom: 0.75rem;
 }
 
->>>>>>> ui_setup
 .mb-4{
   margin-bottom: 1rem;
 }
@@ -895,10 +901,6 @@ video {
 
 .w-full{
   width: 100%;
-}
-
-.w-\[150px\]{
-  width: 150px;
 }
 
 .max-w-\[300px\]{
@@ -1245,23 +1247,23 @@ video {
 }
 
 .from-primary{
-  --tw-gradient-from: #002F46;
-  --tw-gradient-to: rgb(0 47 70 / 0);
+  --tw-gradient-from: #002F46 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 47 70 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .from-primary-light{
-  --tw-gradient-from: #0085C6;
-  --tw-gradient-to: rgb(0 133 198 / 0);
+  --tw-gradient-from: #0085C6 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 133 198 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .to-primary{
-  --tw-gradient-to: #002F46;
+  --tw-gradient-to: #002F46 var(--tw-gradient-to-position);
 }
 
 .to-primary-light{
-  --tw-gradient-to: #0085C6;
+  --tw-gradient-to: #0085C6 var(--tw-gradient-to-position);
 }
 
 .bg-cover{
@@ -1925,8 +1927,6 @@ video {
     padding-top: 80px;
     padding-bottom: 80px;
   }
-<<<<<<< HEAD
-=======
 
   .md\:text-\[16px\]{
     font-size: 16px;
@@ -1935,7 +1935,6 @@ video {
   .md\:text-\[30px\]{
     font-size: 30px;
   }
->>>>>>> ui_setup
 }
 
 @media (min-width: 900px){
