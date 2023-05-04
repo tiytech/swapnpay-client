@@ -90,14 +90,20 @@ export const authUserLogin = createAsyncThunk(
         try {
             const { data } = await authUserLoginRoute(formData)
 
+            const payload = {
+                ...data,
+                crendentials: data.data
+            }
+            
             console.log(data)
             toast.success('Login successful.')
 
-            localStorage.setItem('swapnpay-user', JSON.stringify(data.data))
+            localStorage.setItem('swapnpay-user', JSON.stringify(payload))
 
             navigate('/dashboard', { replace: true })
+            delete payload.data
 
-            return data.data
+            return payload
         } catch (error) {
             console.log(error.response)
             toast.warning('Invalid credentials')
@@ -109,7 +115,7 @@ export const authUserLogin = createAsyncThunk(
 
 export const authUserLogout = createAsyncThunk(
     'auth/authUserLogout',
-    async ({  toast, navigate }, { rejectWithValue }) => {
+    async ({ toast, navigate }, { rejectWithValue }) => {
         try {
             toast.success('Logout successful.')
 
