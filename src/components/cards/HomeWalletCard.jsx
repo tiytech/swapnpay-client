@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 import { appCountries } from '../../data'
 import HeaderText from '../text/HeaderText'
@@ -9,6 +10,8 @@ import { useGlobalContext } from '../../context'
 const HomeWalletCard = ({ config, updateConfig }) => {
     const { modalPages, updateModalPages } = useGlobalContext()
 
+    const { dollarWallet, nairaWallet } = useSelector(state => state.user)
+
     return (
         <div
             onClick={() => {
@@ -18,10 +21,17 @@ const HomeWalletCard = ({ config, updateConfig }) => {
             }}
             // className="flex flex-col space-y-5 justify-between items-center h-[250px w-full rounded-xl bg-primary py-5 px-10">
             className="flex flex-col space-y-5 justify-between items-center h-[250px w-full rounded-xl bg-gradient-to-bl from-primary-light to-primary py-5 px-4 md:px-10">
-            <HeaderText
-                text={'$20,000'}
+            {/* <HeaderText
+                text={config.currentCurrency === 'NGN' ? `${nairaWallet?.availableBalance}`: `$ ${dollarWallet?.amount}`}
                 classes={'font-bold text-[30px] text-white'}
-            />
+            /> */}
+            <h1 className='font-bold text-[30px] text-white font-spacegrotesk'>
+                {config.currentCurrency === 'NGN' ? (
+                    <span>&#8358; {nairaWallet?.availableBalance}</span>
+                ) : (
+                    <span>$ {dollarWallet?.amount}</span>
+                )}
+            </h1>
 
             <div className="flex justify-between items-center bg-white w-[220px] h-[50px] py-1 px-4 rounded-lg relative">
                 <p className='text-[12px]'>Account Balance</p>

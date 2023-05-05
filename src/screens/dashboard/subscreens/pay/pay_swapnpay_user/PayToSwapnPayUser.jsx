@@ -1,13 +1,23 @@
-import React from 'react'
+import { toast } from 'react-toastify'
+import React, { useReducer } from 'react'
 import { BsArrowLeft } from 'react-icons/bs'
 
-import { IconInfo } from '../../../../../assets'
 import { appBeneficiaries } from '../../../../../data'
-import IconImage from '../../../../../components/images/IconImage'
 import { FormTextInput, HeaderText, IconButton, TransactionConfirmationText } from '../../../../../components'
 
 
-const PayToSwapnPayUser = ({ handleChange, updateConfig }) => {
+const PayToSwapnPayUser = ({ formData, handleChange, updateConfig }) => {
+	const handleSubmit = (e) => {
+		e.preventDefault()
+
+		if (isNaN(formData.amount)) return toast.error('Amount is not a number')
+		if (!formData.receiver_username || !formData.narration || !formData.amount) return toast.error('All fields are required')
+		console.log(formData)
+
+		updateConfig({ showDefault: false, showSendViaUsername: false, showConfirmTransferToSwapnPayUser: true })
+	}
+
+
 	return (
 		<div className="w-[40%] h-full bg-gray-100 px-20 py-20 flex flex-col space-y-5">
 			<BsArrowLeft
@@ -21,7 +31,7 @@ const PayToSwapnPayUser = ({ handleChange, updateConfig }) => {
 					text={'SwapnPay User'}
 					classes={'font-bold text-[20px] text-black'}
 				/>
-				<p className='text-[14px]'>Pay another registered user with the use of their username.</p>
+				<p className='text-[12px]'>Pay another registered user with the use of their username.</p>
 			</div>
 
 			<div className="flex flex-col w-full">
@@ -48,39 +58,42 @@ const PayToSwapnPayUser = ({ handleChange, updateConfig }) => {
 					</div>
 				</div>
 
-				<FormTextInput
-					name={'username'}
-					padding={'py-3 px-5'}
-					placeHolder={'@Username'}
-					handleChange={handleChange}
-					classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
-				/>
-				<FormTextInput
-					name={'amount'}
-					padding={'py-3 px-5'}
-					placeHolder={'Amount'}
-					handleChange={handleChange}
-					classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
-				/>
-				<FormTextInput
-					name={'narration'}
-					padding={'py-3 px-5'}
-					placeHolder={'Narration'}
-					handleChange={handleChange}
-					classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-5'}
-				/>
+				<form onSubmit={handleSubmit}>
+					<FormTextInput
+						name={'receiver_username'}
+						padding={'py-3 px-5'}
+						placeHolder={'@Username'}
+						handleChange={handleChange}
+						classes={'text-[12px] placeholder:text-[12px] rounded-xl mb-2'}
+					/>
+					<FormTextInput
+						type={'text'}
+						name={'amount'}
+						padding={'py-3 px-5'}
+						placeHolder={'Amount'}
+						handleChange={handleChange}
+						classes={'text-[12px] placeholder:text-[12px] rounded-xl mb-2'}
+					/>
+					<FormTextInput
+						name={'narration'}
+						padding={'py-3 px-5'}
+						placeHolder={'Narration'}
+						handleChange={handleChange}
+						classes={'text-[12px] placeholder:text-[12px] rounded-xl mb-5'}
+					/>
 
-				<TransactionConfirmationText />
+					<TransactionConfirmationText />
 
-				<IconButton
-					type={'submit'}
-					title={'Confirm'}
-					width={'w-full'}
-					iconType={'icon-right'}
-					textColor={'text-white'}
-					classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
-					handleClick={() => updateConfig({ showDefault: false, showSendViaUsername: false, showConfirmTransaction: true })}
-				/>
+					<IconButton
+						type={'submit'}
+						title={'Confirm'}
+						width={'w-full'}
+						iconType={'icon-right'}
+						textColor={'text-white'}
+						classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+					// handleClick={() => updateConfig({ showDefault: false, showSendViaUsername: false, showConfirmTransaction: true })}
+					/>
+				</form>
 			</div>
 		</div>
 	)

@@ -91,10 +91,11 @@ export const authUserLogin = createAsyncThunk(
             const { data } = await authUserLoginRoute(formData)
 
             const payload = {
-                ...data,
-                crendentials: data.data
+                access: data.access,
+                refresh: data.refresh,
+                credentials: data.data
             }
-            
+
             console.log(data)
             toast.success('Login successful.')
 

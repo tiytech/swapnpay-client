@@ -14,8 +14,8 @@ const TopBar = () => {
             />
 
             <div className="flex flex-col">
-                <p className='font-bold text-[14px]'>Hello, {user?.first_name}</p>
-                <p className='text-[12px] font-light'>{user?.username}</p>
+                <p className='font-bold text-[14px]'>Hello, {user?.credentials?.first_name}</p>
+                <p className='text-[12px] font-light'>{user?.credentials?.username}</p>
             </div>
         </div>
     )

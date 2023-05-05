@@ -59,18 +59,18 @@ const Login = () => {
                         name={'email'}
                         handleChange={handleChange}
                         placeHolder={'Enter your email address'}
-                        classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-5'}
+                        classes={'text-[14px] placeholder:text-[12px] rounded-xl mb-5'}
                     />
                     <FormPasswordInput
                         name={'password'}
                         handleChange={handleChange}
                         placeHolder={'Enter your password'}
-                        classes={'text-[14px] placeholder:text-[14px] rounded-xl pr-14'}
+                        classes={'text-[12px] placeholder:text-[12px] rounded-xl pr-14'}
                     />
 
                     <div className="flex justify-end mt-1">
                         <Link to={'/forgot-password'}>
-                            <p className='text-gray-500 text-[14px]'>Forgot password?</p>
+                            <p className='text-gray-500 text-[12px]'>Forgot password?</p>
                         </Link>
                     </div>
 

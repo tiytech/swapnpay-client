@@ -2,7 +2,7 @@ import React from 'react'
 import Label from '../text/Label'
 
 
-const FormSelectInput = ({ classes, name, handleChange, label, items, showLabel = true }) => {
+const FormCablePlansInput = ({ classes, name, handleChange, label, items, showLabel = true }) => {
     return (
         <div className="col-span-6 sm:col-span-3">
             {showLabel && (
@@ -18,10 +18,10 @@ const FormSelectInput = ({ classes, name, handleChange, label, items, showLabel 
                 {items?.map((item, index) => (
                     <option
                         key={index}
-                        value={item}
+                        value={item.id}
                         className='text-[12px]'
                     >
-                        {item}
+                        {item?.short_name} &#8358;{item?.amount + item?.fee}
                     </option>
                 ))}
             </select>
@@ -29,4 +29,4 @@ const FormSelectInput = ({ classes, name, handleChange, label, items, showLabel 
     )
 }
 
-export default FormSelectInput
+export default FormCablePlansInput

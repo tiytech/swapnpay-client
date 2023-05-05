@@ -13,6 +13,9 @@ import PaySchoolChargesStepOne from './pay_school_charges/PaySchoolChargesStepOn
 import PaySchoolChargesStepTwo from './pay_school_charges/PaySchoolChargesStepTwo'
 import PaySchoolChargesStepFour from './pay_school_charges/PaySchoolChargesStepFour'
 import PaySchoolChargesStepThree from './pay_school_charges/PaySchoolChargesStepThree'
+import ConfirmTransferToSwapnPayUser from './pay_swapnpay_user/ConfirmTransferToSwapnPayUser'
+import ConfirmBankTransfer from './pay_via_banktransfer/ConfirmBankTransfer'
+import ConfirmSchoolPaymentTransaction from './pay_school_charges/ConfirmSchoolPaymentTransaction'
 
 
 const Payments = () => {
@@ -21,17 +24,26 @@ const Payments = () => {
 	const [config, updateConfig] = useReducer((prev, next) => {
 		return { ...prev, ...next }
 	}, {
-		showPaySchoolDuesStepThree: false, showPaySchoolDuesStepFour: false,
-		showDefault: true, showPaySchoolDuesStepOne: false, showPaySchoolDuesStepTwo: false,
-		showSendViaUsername: false, showSendViaBankTransfer: false, showConfirmTransaction: false,
+		showPaySchoolDuesStepThree: false, showPaySchoolDuesStepFour: false, showConfirmSchoolPaymentTransaction: false,
+		showDefault: true, showPaySchoolDuesStepOne: false, showPaySchoolDuesStepTwo: false, showConfirmBankTransfer: false,
+		showSendViaUsername: false, showSendViaBankTransfer: false, showConfirmTransaction: false, showConfirmTransferToSwapnPayUser: false
 	})
 	const [formData, updateFormData] = useReducer((prev, next) => {
 		return { ...prev, ...next }
 	}, {
-		bank: '', currency: 'NGN'
+		bank: '', bankcode: '', account_number: '', fee: 0.0,
+		sponsor_id_type: '', sponsor_id_number: '', sponsor_id: '',
+		receiver_username: '', narration: '', amount: 0, currency: 'NGN', transaction_pin: '',
+		student_name: '', name_of_school: '', country: '', admission_letter: '', school_account_number: '', school_iban: '',
 	})
 
 	const handleChange = (e) => {
+		if (e.target.name === 'amount') {
+			updateFormData({ amount: parseInt(e.target.value) })
+		}
+		if (e.target.name === 'bankcode') {
+			updateFormData({ bankcode: parseInt(e.target.value) })
+		}
 		updateFormData({ [e.target.name]: e.target.value })
 	}
 
@@ -90,6 +102,7 @@ const Payments = () => {
 
 			{config.showSendViaUsername && (
 				<PayToSwapnPayUser
+					formData={formData}
 					handleChange={handleChange}
 					updateConfig={updateConfig}
 				/>
@@ -100,11 +113,13 @@ const Payments = () => {
 					formData={formData}
 					handleChange={handleChange}
 					updateConfig={updateConfig}
+					updateFormData={updateFormData}
 				/>
 			)}
 
 			{config.showPaySchoolDuesStepOne && (
 				<PaySchoolChargesStepOne
+					formData={formData}
 					handleChange={handleChange}
 					updateConfig={updateConfig}
 				/>
@@ -112,15 +127,19 @@ const Payments = () => {
 
 			{config.showPaySchoolDuesStepTwo && (
 				<PaySchoolChargesStepTwo
+					formData={formData}
 					handleChange={handleChange}
 					updateConfig={updateConfig}
+					updateFormData={updateFormData}
 				/>
 			)}
 
 			{config.showPaySchoolDuesStepThree && (
 				<PaySchoolChargesStepThree
+					formData={formData}
 					handleChange={handleChange}
 					updateConfig={updateConfig}
+					updateFormData={updateFormData}
 				/>
 			)}
 
@@ -129,6 +148,7 @@ const Payments = () => {
 					formData={formData}
 					handleChange={handleChange}
 					updateConfig={updateConfig}
+					updateFormData={updateFormData}
 				/>
 			)}
 
@@ -150,7 +170,7 @@ const Payments = () => {
 
 					<div className="flex flex-col w-full space-y-5">
 						<FormTextInput
-							name={'username'}
+							name={'transaction_pin'}
 							padding={'py-3 px-5'}
 							placeHolder={'Enter OTP here'}
 							handleChange={handleChange}
@@ -172,6 +192,30 @@ const Payments = () => {
 						/>
 					</div>
 				</div>
+			)}
+
+			{config.showConfirmBankTransfer && (
+				<ConfirmBankTransfer
+					formData={formData}
+					handleChange={handleChange}
+					updateConfig={updateConfig}
+				/>
+			)}
+
+			{config.showConfirmTransferToSwapnPayUser && (
+				<ConfirmTransferToSwapnPayUser
+					formData={formData}
+					handleChange={handleChange}
+					updateConfig={updateConfig}
+				/>
+			)}
+
+			{config.showConfirmSchoolPaymentTransaction && (
+				<ConfirmSchoolPaymentTransaction
+					formData={formData}
+					handleChange={handleChange}
+					updateConfig={updateConfig}
+				/>
 			)}
 		</div>
 	)

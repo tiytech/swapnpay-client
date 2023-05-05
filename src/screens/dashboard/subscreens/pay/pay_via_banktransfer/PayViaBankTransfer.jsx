@@ -1,15 +1,33 @@
-import React from 'react'
+import { useEffect } from 'react'
+import { toast } from 'react-toastify'
 import { BsArrowLeft } from 'react-icons/bs'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { IconInfo } from '../../../../../assets'
 import { appBeneficiaries } from '../../../../../data'
-import IconImage from '../../../../../components/images/IconImage'
+import { userFetchBanksList } from '../../../../../services/actions/user.actions'
 import { FormBankSelectInput, FormTextInput, HeaderText, IconButton, TransactionConfirmationText } from '../../../../../components'
 
 
-const PayViaBankTransfer = ({ formData, handleChange, updateConfig }) => {
+const PayViaBankTransfer = ({ formData, updateFormData, handleChange, updateConfig }) => {
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(userFetchBanksList());
+	}, [])
+
+	const handleSubmit = (e) => {
+		e.preventDefault()
+
+		if (isNaN(formData.amount)) return toast.error('Invalid transaction amount')
+		if (isNaN(formData.account_number)) return toast.error('Invalid account number')
+		if (!formData.bankcode || !formData.account_number || !formData.amount) return toast.error('All fields are required')
+		console.log(formData)
+
+		updateConfig({ showDefault: false, showSendViaUsername: false, showSendViaBankTransfer: false, showConfirmBankTransfer: true })
+	}
+
 	return (
-		<div className="w-[40%] h-full bg-gray-100 px-20 py-16 flex flex-col space-y-5">
+		<div className="w-full md:w-[40%] h-full bg-gray-100 px-6 md:px-20 py-16 flex flex-col space-y-5">
 			<BsArrowLeft
 				size={20}
 				className='cursor-pointer'
@@ -47,46 +65,41 @@ const PayViaBankTransfer = ({ formData, handleChange, updateConfig }) => {
 						))}
 					</div>
 				</div>
-				<FormBankSelectInput
-					bank={formData.bank}
-					handleChange={(bank) => {
-						updateFormData({ bank: bank.name })
-					}}
-					classes={'py-3 px-5 rounded-xl mb-2'}
-				/>
-				<FormTextInput
-					name={'username'}
-					padding={'py-3 px-5'}
-					placeHolder={'@Username'}
-					handleChange={handleChange}
-					classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
-				/>
-				<FormTextInput
-					name={'amount'}
-					padding={'py-3 px-5'}
-					placeHolder={'Amount'}
-					handleChange={handleChange}
-					classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
-				/>
-				<FormTextInput
-					name={'narration'}
-					padding={'py-3 px-5'}
-					placeHolder={'Narration'}
-					handleChange={handleChange}
-					classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-5'}
-				/>
+				<form onSubmit={handleSubmit}>
+					<FormBankSelectInput
+						bank={formData.bank}
+						handleChange={(bank) => {
+							updateFormData({ bank: bank.name, bankcode: bank.bankCode })
+						}}
+						classes={'py-3 px-5 rounded-xl mb-2'}
+					/>
+					<FormTextInput
+						name={'account_number'}
+						padding={'py-3 px-5'}
+						placeHolder={'Account number'}
+						handleChange={handleChange}
+						classes={'text-[12px] placeholder:text-[12px] rounded-xl mb-2'}
+					/>
+					<FormTextInput
+						name={'amount'}
+						padding={'py-3 px-5'}
+						placeHolder={'Amount'}
+						handleChange={handleChange}
+						classes={'text-[12px] placeholder:text-[12px] rounded-xl mb-2'}
+					/>
 
-				<TransactionConfirmationText />
+					<TransactionConfirmationText />
 
-				<IconButton
-					type={'submit'}
-					title={'Proceed'}
-					width={'w-full'}
-					iconType={'icon-right'}
-					textColor={'text-white'}
-					classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
-					handleClick={() => updateConfig({ showDefault: false, showSendViaUsername: false, showSendViaBankTransfer: false, showConfirmTransaction: true })}
-				/>
+					<IconButton
+						type={'submit'}
+						title={'Proceed'}
+						width={'w-full'}
+						iconType={'icon-right'}
+						textColor={'text-white'}
+						classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+					// handleClick={() => }
+					/>
+				</form>
 			</div>
 		</div>
 	)

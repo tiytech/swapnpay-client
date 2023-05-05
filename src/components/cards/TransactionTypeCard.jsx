@@ -21,6 +21,9 @@ const TransactionTypeCard = ({ item }) => {
                         if (item.type === 'CABLE') {
                             updateModalPages({ showCableSubscriptionScreen: !modalPages.showCableSubscriptionScreen })
                         }
+                        if (item.type === 'ELECTRICITY') {
+                            updateModalPages({ showElectricityPaymentScreen: !modalPages.showElectricityPaymentScreen })
+                        }
                     }}
                     className="mb-4 flex flex-col justify-between bg-white cursor-pointer p-4 w-full md:w-[220px] h-[120px] rounded-lg transition-all ease-in-out duration-500 hover:-translate-y-1"
                 >

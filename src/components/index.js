@@ -37,6 +37,9 @@ import FormSelectInput from "./forms/FormSelectInput"
 import FormCurrencyInput from "./forms/FormCurrencyInput"
 import FormPasswordInput from "./forms/FormPasswordInput"
 import FormBankSelectInput from "./forms/FormBankSelectInput"
+import FormCablePlansInput from "./forms/FormCablePlansInput"
+import FormDataBundlesInput from "./forms/FormDataBundlesInput"
+import FormElectricityDiscosInput from "./forms/FormElectricityDiscosInput"
 
 
 // UTILS
@@ -82,6 +85,9 @@ export {
     FormCurrencyInput,
     FormPasswordInput,
     FormBankSelectInput,
+    FormCablePlansInput,
+    FormDataBundlesInput,
+    FormElectricityDiscosInput,
 
     // MODALS
     Modals,

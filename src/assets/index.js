@@ -45,6 +45,7 @@ import IconPlayStore from './icons/icon__playstore.svg'
 import IconRightHome from './icons/icon__right__home.svg'
 import IconLogoWhite from './icons/icon__logo__white.svg'
 import IconAppleDark from './icons/icon__apple__dark.svg'
+import IconElectricity from './icons/icon__electricity.svg'
 import IconPlayStoreDark from './icons/icon__playstore__dark.svg'
 
 // BLOG-MEDIA
@@ -122,6 +123,7 @@ export {
     IconApple,
     IconAppleDark,
     IconPlayStore,
+    IconElectricity,
     IconPlayStoreDark,
 
     // BLOG-MEDIA

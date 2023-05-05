@@ -1,15 +1,28 @@
-import React, { useReducer } from 'react'
+import { useDispatch } from 'react-redux'
+import React, { useEffect, useReducer } from 'react'
 
 import { appTransactions, appTransactionsTypes } from '../../data'
 import { HeaderText, HomeWalletCard, TransactionTypeCard } from '../../components'
+import { userFetchDollarWalletBalance, userFetchNairaWalletBalance } from '../../services/actions/user.actions'
 
 
 const Home = () => {
+	const dispatch = useDispatch()
+
 	const [config, updateConfig] = useReducer((prev, next) => {
 		return { ...prev, ...next }
 	}, {
 		currentCurrency: 'NGN', showCurrencySelect: false,
 	})
+
+	useEffect(() => {
+		if (config.currentCurrency === 'NGN') {
+			dispatch(userFetchNairaWalletBalance())
+		}
+		if (config.currentCurrency === 'USD') {
+			dispatch(userFetchDollarWalletBalance())
+		}
+	}, [config.currentCurrency])
 
 	return (
 		<div className='pl-4 pr-4 pb-10 md:px-8 mt-20 flex flex-wrap justify-between items-start w-full'>

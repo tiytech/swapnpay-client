@@ -1,4 +1,4 @@
-import { Blog1, Blog2, Blog3, FlagNGN, FlagUSA, IconAccessBank, IconBank, IconBUSD, IconCard, IconCardBlack, IconCardDark, IconCredit, IconCrypto, IconDebit, IconEcoBank, IconFcmbBank, IconFirstBank, IconGTBank, IconHome, IconHomeDark, IconKeyStoneBank, IconLearning, IconMenu, IconMenuDark, IconPhone, IconProfile1, IconSchool, IconSchoolDark, IconSwap, IconSwapDark, IconSwapSuccess, IconTV, IconUbaBank, IconUSDC, IconUSDT } from "../assets"
+import { Blog1, Blog2, Blog3, FlagNGN, FlagUSA, IconAccessBank, IconBank, IconBUSD, IconCard, IconCardBlack, IconCardDark, IconCredit, IconCrypto, IconDebit, IconEcoBank, IconElectricity, IconFcmbBank, IconFirstBank, IconGTBank, IconHome, IconHomeDark, IconKeyStoneBank, IconLearning, IconMenu, IconMenuDark, IconPhone, IconProfile1, IconSchool, IconSchoolDark, IconSwap, IconSwapDark, IconSwapSuccess, IconTV, IconUbaBank, IconUSDC, IconUSDT } from "../assets"
 
 
 export const blogItems = [
@@ -84,15 +84,21 @@ export const appTransactionsTypes = [
     {
         'type': 'CABLE',
         'icon': IconTV,
-        'title': 'Cable subscription',
-        'intro': 'Subscribe for power or TV cable',
+        'title': 'Cable Subscription',
+        'intro': 'Subscribe for TV cable',
     },
     {
-        'type': 'OTHERS',
-        'icon': '',
-        'title': '',
-        'intro': '',
+        'type': 'ELECTRICITY',
+        'icon': IconElectricity,
+        'title': 'Electricity Payment',
+        'intro': 'Subscribe for electrity',
     },
+    // {
+    //     'type': 'OTHERS',
+    //     'icon': '',
+    //     'title': '',
+    //     'intro': '',
+    // },
 ]
 
 export const appTransactions = [
@@ -269,22 +275,22 @@ export const appReferrals = [
     {
         'name': 'William Ibrahim',
         'timeline': 'Joined 2 days ago',
-        'auth':'Signup complete',
+        'auth': 'Signup complete',
     },
     {
         'name': 'Joyce Danladi',
         'timeline': 'Joined 2 days ago',
-        'auth':'Signup ongoing',
+        'auth': 'Signup ongoing',
     },
     {
         'name': 'Amstrong Daniel',
         'timeline': 'Joined 2 days ago',
-        'auth':'Signup complete',
+        'auth': 'Signup complete',
     },
     {
         'name': 'Kenneth Ofudi',
         'timeline': 'Joined 2 days ago',
-        'auth':'Signup ongoing',
+        'auth': 'Signup ongoing',
     },
 ]
 
@@ -357,6 +363,7 @@ export const modal__pages = {
     showDriverCardVerififcationScreen: false,
     showInternationalPassportVerififcationScreen: false,
     showCableSubscriptionScreen: false,
+    showElectricityPaymentScreen: false,
 }
 
 export const occupations = [

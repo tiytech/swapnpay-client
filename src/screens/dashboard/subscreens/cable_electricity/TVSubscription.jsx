@@ -4,33 +4,36 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useGlobalContext } from '../../../../context'
-import { FormSelectInput, FormTextInput, HeaderText, IconButton } from '../../../../components'
-import { userAirtimePurchase, userFetchNairaWalletBalance } from '../../../../services/actions/user.actions'
+import { FormCablePlansInput, FormSelectInput, FormTextInput, HeaderText, IconButton } from '../../../../components'
+import { userFetchCablePlans, userFetchNairaWalletBalance, userGenerateCableSubscription } from '../../../../services/actions/user.actions'
 
 
-const BuyAirtime = () => {
+const TVSubscription = () => {
 	const dispatch = useDispatch()
 
 	const { updateModalPages } = useGlobalContext()
 
 	const { user } = useSelector(state => state.auth)
-	const { nairaWallet } = useSelector(state => state.user)
+	const { cablePlans, nairaWallet } = useSelector(state => state.user)
 
 	const [config, updateConfig] = useReducer((prev, next) => {
 		return { ...prev, ...next }
 	}, {
 		showDefault: true, showConfirmTransaction: false
 	})
-
 	const [formData, updateFormData] = useReducer((prev, next) => {
 		return { ...prev, ...next }
 	}, {
-		balance: 0, type: 'AIRTIME', description: 'airtime', amount: 0, phone_number: '', transaction_pin: ''
+		billerName: '', number: '', amount: 0, balance: 0, description: 'cable', type: '', transaction_pin: ''
 	})
 
 	useEffect(() => {
 		dispatch(userFetchNairaWalletBalance())
-	}, [])
+
+		if (formData.billerName) {
+			dispatch(userFetchCablePlans({ cable: formData.billerName }))
+		}
+	}, [formData.billerName])
 
 	useEffect(() => {
 		if (nairaWallet) {
@@ -48,9 +51,8 @@ const BuyAirtime = () => {
 		if (user?.credentials?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
 		console.log(formData)
 
-		dispatch(userAirtimePurchase({ formData, toast, updateConfig }))
+		dispatch(userGenerateCableSubscription({ formData, toast, updateConfig }))
 	}
-
 
 	return (
 		<div className="fixed h-screen z-20 bg-[#11111190] w-full backdrop-blur-sm flex justify-end">
@@ -59,39 +61,44 @@ const BuyAirtime = () => {
 					<BsArrowLeft
 						size={20}
 						className='cursor-pointer'
-						onClick={() => updateModalPages({ showBuyAirtimeScreen: false })}
+						onClick={() => updateModalPages({ showCableSubscriptionScreen: false })}
 					/>
 
 					<div className="space-y-2">
 						<HeaderText
-							text={'Buy Airtime'}
+							text={'TV Subscription'}
 							classes={'font-bold text-[20px] text-black'}
 						/>
-						<p className='text-[12px] hidden'></p>
+						<p className='text-[14px] hidden'></p>
 					</div>
 
 					<div className="flex flex-col w-full space-y-1">
 						<FormSelectInput
 							showLabel={false}
-							name={'provider'}
+							name={'billerName'}
+							label={'Cable TV brand'}
 							handleChange={handleChange}
-							classes={'py-3 rounded-xl mb-2'}
-							label={'Select network provider'}
-							items={['Mtn', 'Glo', 'Airtel', '9Mobile']}
+							classes={'py-4 rounded-xl mb-2'}
+							items={['DSTV', 'GOTV', 'STARTIMES', 'STARSAT']}
+						/>
+						<FormCablePlansInput
+							name={''}
+							showLabel={false}
+							items={cablePlans}
+							handleChange={(e) => {
+								const index = cablePlans?.findIndex(item => item.id === parseInt(e.target.value))
+
+								updateFormData({ type: cablePlans[index]?.biller_name, amount: (cablePlans[index]?.amount + cablePlans[index]?.fee) })
+							}}
+							label={'Subscription plan'}
+							classes={'py-4 rounded-xl mb-2'}
 						/>
 						<FormTextInput
-							name={'phone_number'}
-							padding={'py-3 px-5'}
-							placeHolder={'Mobile number'}
+							name={'number'}
+							padding={'py-4 px-5'}
 							handleChange={handleChange}
-							classes={'text-[12px] placeholder:text-[12px] rounded-xl mb-2'}
-						/>
-						<FormTextInput
-							name={'amount'}
-							padding={'py-3 px-5'}
-							placeHolder={'Amount'}
-							handleChange={handleChange}
-							classes={'text-[12px] placeholder:text-[12px] rounded-xl mb-10'}
+							placeHolder={'Smart card number'}
+							classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-10'}
 						/>
 
 						<IconButton
@@ -102,8 +109,9 @@ const BuyAirtime = () => {
 							textColor={'text-white'}
 							classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
 							handleClick={() => {
-								if (!formData.amount) return toast.error('Amount is required')
-								if (!formData.phone_number) return toast.error('Phone number is required')
+								if (!formData.billerName) return toast.error('Cable provider is required')
+								if (!formData.amount) return toast.error('Subscription plan is required')
+								if (!formData.number) return toast.error('Smart card|IUC number is required')
 
 								updateConfig({ showDefault: false, showConfirmTransaction: true })
 							}}
@@ -122,10 +130,10 @@ const BuyAirtime = () => {
 
 					<div className="space-y-2">
 						<HeaderText
-							text={'Confirm Airtime Purchase'}
+							text={'Confirm Cable Subscription'}
 							classes={'font-bold text-[20px] text-black'}
 						/>
-						<p className='text-[12px]'>Enter the your transaction pin to confirm this transaction.</p>
+						<p className='text-[14px]'>Enter your transaction pin to confirm this transaction.</p>
 					</div>
 
 					<div className="flex flex-col w-full space-y-5">
@@ -133,9 +141,9 @@ const BuyAirtime = () => {
 							<FormTextInput
 								name={'transaction_pin'}
 								padding={'py-3 px-5'}
-								placeHolder={'Enter transaction pin'}
+								placeHolder={'Enter OTP here'}
 								handleChange={handleChange}
-								classes={'text-[12px] placeholder:text-[12px] rounded-xl mb-2'}
+								classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
 							/>
 
 							<IconButton
@@ -154,4 +162,4 @@ const BuyAirtime = () => {
 	)
 }
 
-export default BuyAirtime
+export default TVSubscription

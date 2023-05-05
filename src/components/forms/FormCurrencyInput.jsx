@@ -5,7 +5,7 @@ import PhoneCountryCodes from '../../data/phoneContryCode.json'
 import { appCurrencies } from '../../data'
 
 
-const FormCurrencyInput = ({ classes, currency, name, handleChange, placeHolder, }) => {
+const FormCurrencyInput = ({ classes, currency, name, handleChange, placeHolder, updateFormData }) => {
     const [config, updateConfig] = useReducer((prev, next) => {
         return { ...prev, ...next }
     }, {
@@ -24,7 +24,7 @@ const FormCurrencyInput = ({ classes, currency, name, handleChange, placeHolder,
             `}
         >
             <div
-                onClick={() => updateConfig({ showDropDown: true })}
+                onClick={() => updateConfig({ showDropDown: !config.showDropDown })}
                 className="flex items-center space-x-2 cursor-pointer"
             >
                 <img
@@ -50,8 +50,9 @@ const FormCurrencyInput = ({ classes, currency, name, handleChange, placeHolder,
                         <div
                             key={index}
                             onClick={() => {
-                                setCurrentCurrency(appCurrencies.find(e => e.title === country.title))
                                 updateConfig({ showDropDown: false })
+                                updateFormData({ currency: country.title })
+                                setCurrentCurrency(appCurrencies.find(e => e.title === country.title))
                             }}
                             className='flex items-center space-x-3 cursor-pointer hover:scale-105 transition-all ease-in-out duration-500'
                         >
