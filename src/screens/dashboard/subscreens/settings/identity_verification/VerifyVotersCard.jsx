@@ -1,15 +1,30 @@
+import React, { useReducer, useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
-import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { BsArrowLeft } from 'react-icons/bs'
 
 import { useGlobalContext } from '../../../../../context'
-import { FormDateInput, FormPasswordInput, FormTextInput, HeaderText, IconButton } from '../../../../../components'
+import { FormDateInput, FormPasswordInput, FormTextInput, HeaderText, IconButton, LoadingButtonOne } from '../../../../../components'
+import { iDverificationAction } from '../../../../../services/actions/user.actions'
 
 
 const VerifyVotersCard = () => {
 	const { updateModalPages } = useGlobalContext()
 
+	const { idVerificationLoading } = useSelector(state => state.user)
+	const [formData, setformData] = useState({ is_files_uploaded: true, kyc_type: 'Voters_Card' })
+	const dispatch = useDispatch()
+	// const navigate = useNavigate()
+
 	const handleChange = (e) => {
+		setformData({ ...formData, [e.target.name]: e.target.value })
+
+	}
+	const handleFileSubmit = (e) => {
+		console.log(e.target.files);
+		setformData({ ...formData, [e.target.name]: e.target.files[0] });
+
+
 
 	}
 
@@ -33,19 +48,23 @@ const VerifyVotersCard = () => {
 
 					<div className="flex flex-col w-full space-y-2">
 						<FormTextInput
-							name={'email'}
+							name={'identity_number'}
 							handleChange={handleChange}
 							placeHolder={'Enter VIN number'}
 							classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
 						/>
 						<FormDateInput
-							name={'dateOfBirth'}
-							label={'Date of birth'}
+							name={'identity_expiration_date'}
+							label={'Expiration date'}
 							handleChange={handleChange}
-							placeHolder={'Date of birth'}
+							placeHolder={'Expiration date'}
 							classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
 						/>
-						<IconButton
+
+						<div className='border px-2 py-4 rounded-lg border-slate-400'>
+							<input type="file" name="voters_card" id="" onChange={handleFileSubmit} />
+						</div>
+						{/* <IconButton
 							type={'submit'}
 							title={'Snap a selfie'}
 							width={'w-full'}
@@ -55,21 +74,43 @@ const VerifyVotersCard = () => {
 							handleClick={() => {
 								// FILE UPLOAD
 							}}
-						/>
+						/> */}
 					</div>
 				</div>
 
-				<IconButton
-					type={'submit'}
-					title={'Verify'}
-					width={'w-full'}
-					iconType={'icon-right'}
-					textColor={'text-white'}
-					classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
-					handleClick={() => {
-						updateModalPages({ showVoterCardVerififcationScreen: false })
-					}}
-				/>
+				{idVerificationLoading == true ? (
+					<LoadingButtonOne
+						loadingType={'one'}
+						textColor={'text-white'}
+						width={'w-full md:w-full'}
+						classes={'text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+					/>
+				) : (
+
+
+					<IconButton
+						type={'submit'}
+						title={'Verify'}
+						width={'w-full'}
+						iconType={'icon-right'}
+						textColor={'text-white'}
+						classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+						handleClick={async () => {
+
+							const response = await dispatch(iDverificationAction({ formData }))
+							if (response.error == undefined) {
+								toast.success('File uploaded successfully')
+								updateModalPages({ showVoterCardVerififcationScreen: false })
+
+							} else {
+								return
+							}
+
+						}}
+					/>
+
+				)}
+
 			</div>
 
 		</div>

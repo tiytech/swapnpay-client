@@ -1,21 +1,38 @@
+
+import React, { useReducer, useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
-import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { BsArrowLeft } from 'react-icons/bs'
 
 import { useGlobalContext } from '../../../../../context'
-import { FormDateInput, FormPasswordInput, FormTextInput, HeaderText, IconButton } from '../../../../../components'
+import { FormDateInput, FormPasswordInput, FormTextInput, HeaderText, IconButton, LoadingButtonOne } from '../../../../../components'
+import { iDverificationAction } from '../../../../../services/actions/user.actions'
 
 
 const VerifyPassport = () => {
 	const { updateModalPages } = useGlobalContext()
 
+
+	const { idVerificationLoading } = useSelector(state => state.user)
+	const [formData, setformData] = useState({ is_files_uploaded: true, kyc_type: 'International_Passport' })
+	const dispatch = useDispatch()
+	// const navigate = useNavigate()
+
 	const handleChange = (e) => {
+		setformData({ ...formData, [e.target.name]: e.target.value })
+
+	}
+	const handleFileSubmit = (e) => {
+		console.log(e.target.files);
+		setformData({ ...formData, [e.target.name]: e.target.files[0] });
+
+
 
 	}
 
 	return (
 		<div className="fixed h-screen z-20 bg-[#11111190] w-full backdrop-blur-sm flex justify-end">
-				<div className="w-full lg:w-[40%] h-full bg-gray-100 px-5 lg:px-20 py-20 flex flex-col space-y-5">
+			<div className="w-full lg:w-[40%] h-full bg-gray-100 px-5 lg:px-20 py-20 flex flex-col space-y-5">
 				<div>
 					<BsArrowLeft
 						size={20}
@@ -33,27 +50,30 @@ const VerifyPassport = () => {
 
 					<div className="flex flex-col w-full space-y-2">
 						<FormTextInput
-							name={'email'}
+							name={'identity_number'}
 							handleChange={handleChange}
 							placeHolder={'Passport number'}
 							classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
 						/>
 						<FormDateInput
-							name={'dateOfBirth'}
-							label={'Date of birth'}
+							label={'Issuance date'}
+							name={'identity_issuance_date'}
 							handleChange={handleChange}
-							placeHolder={'Date issued'}
-							classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
-						/>
-						<FormDateInput
-							label={'Date of birth'}
-							name={'dateOfBirth'}
-							handleChange={handleChange}
-							placeHolder={'Expiry date'}
+							placeHolder={'Issuance date'}
 							classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-6'}
 						/>
+						<FormDateInput
+							name={'identity_expiration_date'}
+							label={'Expiration date'}
+							handleChange={handleChange}
+							placeHolder={'Expiration date'}
+							classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
+						/>
+						<div className='border px-2 py-4 rounded-lg border-slate-400'>
+							<input type="file" name="interntional_passport" id="" onChange={handleFileSubmit} />
+						</div>
 
-						<IconButton
+						{/* <IconButton
 							type={'submit'}
 							title={'Snap a selfie'}
 							width={'w-full'}
@@ -63,11 +83,44 @@ const VerifyPassport = () => {
 							handleClick={() => {
 								// FILE UPLOAD
 							}}
-						/>
+						/> */}
 					</div>
 				</div>
 
-				<IconButton
+
+				{idVerificationLoading == true ? (
+					<LoadingButtonOne
+						loadingType={'one'}
+						textColor={'text-white'}
+						width={'w-full md:w-full'}
+						classes={'text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+					/>
+				) : (
+
+
+					<IconButton
+						type={'submit'}
+						title={'Verify'}
+						width={'w-full'}
+						iconType={'icon-right'}
+						textColor={'text-white'}
+						classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+						handleClick={async () => {
+
+							const response = await dispatch(iDverificationAction({ formData }))
+							if (response.error == undefined) {
+								toast.success('File uploaded successfully')
+								updateModalPages({ showInternationalPassportVerififcationScreen: false })
+
+							} else {
+								return
+							}
+
+						}}
+					/>
+
+				)}
+				{/* <IconButton
 					type={'submit'}
 					title={'Verify'}
 					width={'w-full'}
@@ -77,7 +130,7 @@ const VerifyPassport = () => {
 					handleClick={() => {
 						updateModalPages({ showNinVerififcationScreen: false })
 					}}
-				/>
+				/> */}
 			</div>
 
 		</div>
