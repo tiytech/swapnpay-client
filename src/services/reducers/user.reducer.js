@@ -1,6 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { userAirtimePurchase, userBankTransfer, userDataPurchase, userFetchBanksList, userFetchCablePlans, userFetchDataBundles, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userGenerateSchoolPayment, userGenerateCableSubscription, userResetStateProperty, userTransferToSwapnPayUser, userFetchElectricityDiscos, userGenerateElectricitySubscription } from '../actions/user.actions'
+import {
+    userAirtimePurchase, userBankTransfer, userDataPurchase, userFetchBanksList, userFetchCablePlans,
+    userFetchDataBundles, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userGenerateSchoolPayment,
+    userGenerateCableSubscription, userResetStateProperty, userTransferToSwapnPayUser, userFetchElectricityDiscos,
+    userGenerateElectricitySubscription,
+    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction
+} from '../actions/user.actions'
 
 
 const userSlice = createSlice({
@@ -16,6 +22,13 @@ const userSlice = createSlice({
         stateValue: null,
         userRequestStatus: null,
         userRequestLoading: false,
+        naira_wallet_details: null,
+        resetPasswordOtpRequestLoading: null,
+        resetPinOtpRequestLoading: null,
+        resetTransactionPinLoading: null,
+        verifyPasswordOtpAndResetLoading: null,
+        idVerificationLoading: null
+
     },
     extraReducers: (builder) => {
         builder.addCase(userFetchDollarWalletBalance.pending, (state, action) => {
@@ -135,8 +148,8 @@ const userSlice = createSlice({
             state.userRequestLoading = false
             state.userRequestStatus = 'FAILED'
         })
-        
-        
+
+
 
         builder.addCase(userFetchCablePlans.pending, (state, action) => {
             state.userRequestLoading = true
@@ -148,7 +161,7 @@ const userSlice = createSlice({
         builder.addCase(userFetchCablePlans.rejected, (state, action) => {
             state.userRequestLoading = false
         })
-        
+
         builder.addCase(userGenerateCableSubscription.pending, (state, action) => {
             state.userRequestLoading = true
             state.userRequestStatus = 'PENDING'
@@ -162,8 +175,8 @@ const userSlice = createSlice({
             state.userRequestLoading = false
             state.userRequestStatus = 'FAILED'
         })
-        
-        
+
+
 
         builder.addCase(userFetchElectricityDiscos.pending, (state, action) => {
             state.userRequestLoading = true
@@ -189,7 +202,77 @@ const userSlice = createSlice({
             state.userRequestLoading = false
             state.userRequestStatus = 'FAILED'
         })
-        
+
+
+
+        builder.addCase(userResetStateProperty.rejected, (state, action) => {
+            state.userRequestLoading = false
+            state.authLoading = false
+        }),
+
+            builder.addCase(getNairaWallet.pending, (state, action) => {
+                state.authLoading = true
+            })
+        builder.addCase(getNairaWallet.fulfilled, (state, action) => {
+            // state.authLoading = false
+            state.naira_wallet_details = action.payload
+        })
+        builder.addCase(getNairaWallet.rejected, (state, action) => {
+            // state.authLoading = false
+        }),
+
+            builder.addCase(resetPasswordOtpAction.pending, (state, action) => {
+                state.resetPasswordOtpRequestLoading = true
+
+            })
+        builder.addCase(resetPasswordOtpAction.fulfilled, (state, action) => {
+            state.resetPasswordOtpRequestLoading = false
+        })
+        builder.addCase(resetPasswordOtpAction.rejected, (state, action) => {
+            state.resetPasswordOtpRequestLoading = false
+        }),
+
+            builder.addCase(resetPinOtpAction.pending, (state, action) => {
+                state.resetPinOtpRequestLoading = true
+            })
+        builder.addCase(resetPinOtpAction.fulfilled, (state, action) => {
+            state.resetPinOtpRequestLoading = false
+        })
+        builder.addCase(resetPinOtpAction.rejected, (state, action) => {
+            state.resetPinOtpRequestLoading = false
+        }),
+
+            builder.addCase(resetTransactionPinAction.pending, (state, action) => {
+                state.resetTransactionPinLoading = true
+            })
+        builder.addCase(resetTransactionPinAction.fulfilled, (state, action) => {
+            state.resetTransactionPinLoading = false
+        })
+        builder.addCase(resetTransactionPinAction.rejected, (state, action) => {
+            state.resetTransactionPinLoading = false
+        }),
+
+            builder.addCase(verifyPasswordOtpAndResetAction.pending, (state, action) => {
+                state.verifyPasswordOtpAndResetLoading = true
+            })
+        builder.addCase(verifyPasswordOtpAndResetAction.fulfilled, (state, action) => {
+            state.verifyPasswordOtpAndResetLoading = false
+        })
+        builder.addCase(verifyPasswordOtpAndResetAction.rejected, (state, action) => {
+            state.verifyPasswordOtpAndResetLoading = false
+        }),
+
+            builder.addCase(iDverificationAction.pending, (state, action) => {
+                state.idVerificationLoading = true
+            })
+        builder.addCase(iDverificationAction.fulfilled, (state, action) => {
+            state.idVerificationLoading = false
+        })
+        builder.addCase(iDverificationAction.rejected, (state, action) => {
+            state.idVerificationLoading = false
+        })
+
+
 
         builder.addCase(userResetStateProperty.pending, (state, action) => {
             state.userRequestLoading = true
@@ -199,9 +282,6 @@ const userSlice = createSlice({
             if (action.payload.key === 'STATE-VALUE') {
                 state.stateValue = action.payload.value
             }
-        })
-        builder.addCase(userResetStateProperty.rejected, (state, action) => {
-            state.userRequestLoading = false
         })
     }
 })

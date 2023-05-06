@@ -32,3 +32,30 @@ export const cableAndElectricitySubscriptionRoute = (formData) => API.post(`/uti
 
 
 export const electricityDiscosRoute = () => API.get(`/utilities/electricity-plans/aedc`)
+
+
+
+
+
+export const getNairaWalletDetails = () => API.get('/wallets/get-naira-wallet')
+
+
+export const receiveWithCard = (formData) => API.post('/transactions/flutterwave-card-charge', formData)
+
+
+export const resetPasswordOtpRoute = (formData) => API.post('/user/forgot-password-otp', formData)
+
+
+export const resetPinOtpRoute = (formData) => API.post('/user/receive-pin-reset-code', formData)
+
+
+export const resetPinOtpVerification = (formData) => API.post('/user/pin-reset-verification', formData)
+
+
+export const resetTransactionPin = (formData) => API.patch('/user/reset-transaction-pin', formData)
+
+
+export const verifyPasswordOtpAndResetRoute = (formData) => API.post('/user/', formData)
+
+
+export const iDverificationRoute = (formData) => API.put('/profiles/profile', formData, { headers: { "Content-Type": "multipart/form-data" } })

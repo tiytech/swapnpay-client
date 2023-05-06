@@ -1,12 +1,18 @@
 import React from 'react'
 import { toast } from 'react-toastify'
 import { BsArrowLeft } from 'react-icons/bs'
+import { useSelector, useDispatch } from 'react-redux'
 
-import { FormTextInput, HeaderText, IconButton } from '../../../../../components'
+import { FormTextInput, HeaderText, IconButton, LoadingButtonOne } from '../../../../../components'
+import { verifyPasswordOtpAndResetAction } from '../../../../../services/actions/user.actions'
 
 
-const SettingsConfirimChangePassword = ({ updateConfig }) => {
+const SettingsConfirimChangePassword = ({ updateConfig, formData, setformData }) => {
+	const { verifyPasswordOtpAndResetLoading } = useSelector(state => state.user)
+	const dispatch = useDispatch()
+
 	const handleChange = (e) => {
+		setformData({ ...formData, [e.target.name]: e.target.value })
 
 	}
 
@@ -28,26 +34,42 @@ const SettingsConfirimChangePassword = ({ updateConfig }) => {
 
 			<div className="flex flex-col w-full space-y-5">
 				<FormTextInput
-					name={'username'}
+					name={'forgot_password_otp'}
 					padding={'py-3 px-5'}
 					placeHolder={'Enter OTP here'}
 					handleChange={handleChange}
 					classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
 				/>
+				{verifyPasswordOtpAndResetLoading == true ?
+					(
+						<LoadingButtonOne
+							loadingType={'one'}
+							textColor={'text-white'}
+							width={'w-full md:w-full'}
+							classes={'text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+						/>
+					) :
 
-				<IconButton
-					type={'submit'}
-					title={'Confirm'}
-					width={'w-full'}
-					iconType={'icon-right'}
-					textColor={'text-white'}
-					classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
-					handleClick={() => {
-						toast.info('Password update successful!')
+					(<IconButton
+						type={'submit'}
+						title={'Confirm'}
+						width={'w-full'}
+						iconType={'icon-right'}
+						textColor={'text-white'}
+						classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+						handleClick={async () => {
+							console.log(formData);
+							const response = await dispatch(verifyPasswordOtpAndResetAction({ formData }))
+							if (response.error == undefined) {
+								window.location.href = '/dashboard';
+								toast.info('Password update successful!')
 
-						updateConfig({ showDefault: true, showConfirmTransaction: false })
-					}}
-				/>
+								updateConfig({ showDefault: true, showConfirmTransaction: false })
+
+							}
+
+						}}
+					/>)}
 			</div>
 		</div>
 	)

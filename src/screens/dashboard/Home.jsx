@@ -1,5 +1,5 @@
-import { useDispatch } from 'react-redux'
-import React, { useEffect, useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { appTransactions, appTransactionsTypes } from '../../data'
 import { HeaderText, HomeWalletCard, TransactionTypeCard } from '../../components'

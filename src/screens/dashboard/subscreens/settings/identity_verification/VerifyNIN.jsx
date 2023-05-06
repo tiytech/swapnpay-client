@@ -1,21 +1,37 @@
+import React, { useReducer, useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
-import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { BsArrowLeft } from 'react-icons/bs'
 
 import { useGlobalContext } from '../../../../../context'
-import { FormPasswordInput, HeaderText, IconButton } from '../../../../../components'
+import { FormPasswordInput, FormTextInput, HeaderText, IconButton, LoadingButtonOne } from '../../../../../components'
+import { iDverificationAction } from '../../../../../services/actions/user.actions'
 
 
 const VerifyNIN = () => {
 	const { updateModalPages } = useGlobalContext()
+	const { idVerificationLoading } = useSelector(state => state.user)
+	const [formData, setformData] = useState({ is_files_uploaded: true, kyc_type: 'NIN' })
+	const dispatch = useDispatch()
+	// const navigate = useNavigate()
 
 	const handleChange = (e) => {
+		setformData({ ...formData, [e.target.name]: e.target.value })
+
+	}
+	const handleFileSubmit = (e) => {
+		console.log(e.target.files);
+		setformData({ ...formData, [e.target.name]: e.target.files[0]});
+	
+
 
 	}
 
+
+
 	return (
 		<div className="fixed h-screen z-20 bg-[#11111190] w-full backdrop-blur-sm flex justify-end">
-				<div className="w-full lg:w-[40%] h-full bg-gray-100 px-5 lg:px-20 py-20 flex flex-col space-y-5">
+			<div className="w-full lg:w-[40%] h-full bg-gray-100 px-5 lg:px-20 py-20 flex flex-col space-y-5">
 				<div>
 					<BsArrowLeft
 						size={20}
@@ -32,39 +48,62 @@ const VerifyNIN = () => {
 					</div>
 
 					<div className="flex flex-col w-full space-y-5">
-						<FormPasswordInput
+						<FormTextInput
 							showIcon={false}
-							name={'password'}
+							name={'identity_number'}
 							handleChange={handleChange}
-							placeHolder={'Enter your NIN id'}
+							placeHolder={'Enter your NIN Number'}
 							classes={'text-[14px] placeholder:text-[14px] rounded-xl pr-14'}
 						/>
+						<div className='border px-2 py-4 rounded-lg border-slate-400'>
+							<input type="file" name="nin" id="" onChange={handleFileSubmit} />
+						</div>
 
-						<IconButton
+						{/* <IconButton
 							type={'submit'}
 							title={'Add Image'}
 							width={'w-full'}
 							iconType={'icon-camera'}
 							textColor={'text-primary'}
 							classes={'py-4 text-[14px] rounded-xl bg-white border border-primary'}
-							handleClick={() => {
-								// FILE UPLOAD
-							}}
-						/>
+							handleClick={() =>handleFileSubmit}
+						/> */}
 					</div>
 				</div>
+				{idVerificationLoading == true ? (
+					<LoadingButtonOne
+						loadingType={'one'}
+						textColor={'text-white'}
+						width={'w-full md:w-full'}
+						classes={'text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+					/>
+				) : (
 
-				<IconButton
-					type={'submit'}
-					title={'Verify'}
-					width={'w-full'}
-					iconType={'icon-right'}
-					textColor={'text-white'}
-					classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
-					handleClick={() => {
-						updateModalPages({ showNinVerififcationScreen: false })
-					}}
-				/>
+
+					<IconButton
+						type={'submit'}
+						title={'Verify'}
+						width={'w-full'}
+						iconType={'icon-right'}
+						textColor={'text-white'}
+						classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+						handleClick={async () => {
+			
+							const response = await dispatch(iDverificationAction({formData}))
+							if (response.error == undefined){
+								toast.success('File uploaded successfully')
+								updateModalPages({ showNinVerififcationScreen: false })
+
+							} else{
+								return
+							}
+						
+						}}
+					/>
+
+				)}
+
+
 			</div>
 
 		</div>

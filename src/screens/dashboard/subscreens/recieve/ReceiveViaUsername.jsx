@@ -2,9 +2,11 @@ import React from 'react'
 import { BsArrowLeft } from 'react-icons/bs'
 
 import { HeaderText, IconButton } from '../../../../components'
-
+import { useSelector } from 'react-redux'
 
 const ReceiveViaUsername = ({ updateConfig }) => {
+	const { user } = useSelector(state => state.auth)
+
 	return (
 		<div className="lg:w-[40%] h-full bg-gray-100 px-5 md:px-20 py-20 flex flex-col space-y-5">
 			<BsArrowLeft
@@ -23,7 +25,7 @@ const ReceiveViaUsername = ({ updateConfig }) => {
 
 			<div className="flex justify-between items-center border-t border-b py-3">
 				<p className='text-[12px] font-normal'>Your username</p>
-				<p className='text-[12px] font-bold'>@john1023</p>
+				<p className='text-[12px] font-bold'>{user?.crendentials?.username}</p>
 			</div>
 
 			<IconButton

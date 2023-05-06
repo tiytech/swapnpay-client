@@ -1,38 +1,39 @@
 import React from 'react'
-
+import { useSelector, useDispatch } from 'react-redux'
 import { ProfileCard } from '../../../../components'
 import { IconMessage, IconPhone2, IconProfile1, IconProfile2 } from '../../../../assets'
 
 
 const Profile = () => {
+	const { user } = useSelector(state => state.auth)
 	return (
 		<div className='flex flex-col space-y-5 w-full'>
 			<ProfileCard
 				icon={IconProfile1}
-				title={'John'}
+				title={user?.crendentials?.first_name}
 				label={'First name'}
-				/>
+			/>
 			<ProfileCard
 				icon={IconProfile1}
-				title={'Mary'}
+				title={user?.crendentials?.last_name}
 				label={'Last name'}
 				classes={'mt-1'}
-				/>
+			/>
 			<ProfileCard
 				icon={IconProfile2}
-				title={'@john1011'}
+				title={user?.crendentials?.username}
 				label={'Username'}
 				classes={'mt-1'}
 			/>
 			<ProfileCard
 				icon={IconPhone2}
-				title={'090302929992'}
+				title={user?.crendentials?.profile?.phone_number}
 				label={'Phone number'}
 			/>
 			<ProfileCard
 				icon={IconMessage}
 				label={'Email address'}
-				title={'johndoe@gmail.com'}
+				title={user?.crendentials?.email}
 			/>
 		</div>
 	)

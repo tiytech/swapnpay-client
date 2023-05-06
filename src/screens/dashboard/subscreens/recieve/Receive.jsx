@@ -12,6 +12,7 @@ import CryptoUSDCInfo from './crypto-screens/CryptoUSDCInfo'
 import CryptoBUSDInfo from './crypto-screens/CryptoBUSDInfo'
 import ReceiveViaBankTransfer from './ReceiveViaBankTransfer'
 import IconImage from '../../../../components/images/IconImage'
+import ReceiveViaCard from './ReceiveViaCard'
 
 
 const Receive = () => {
@@ -58,7 +59,7 @@ const Receive = () => {
 										updateConfig({ showDefault: false, showReceiveViaBankTransfer: true })
 									}
 									if (item.type === 'CARD') {
-										updateConfig({ showDefault: true, showReceiveViaCard: false })
+										updateConfig({ showDefault: false, showReceiveViaCard: true })
 									}
 								}}
 								className='w-full mb-4 py-3 px-4 rounded-lg bg-white flex justify-between items-center cursor-pointer transition-all ease-in-out duration-500 hover:translate-x-1'
@@ -112,6 +113,11 @@ const Receive = () => {
 
 			{config.showReceiveViaBankTransfer && (
 				<ReceiveViaBankTransfer
+					updateConfig={updateConfig}
+				/>
+			)}
+			{config.showReceiveViaCard && (
+				<ReceiveViaCard
 					updateConfig={updateConfig}
 				/>
 			)}

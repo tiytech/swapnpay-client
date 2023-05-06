@@ -1,15 +1,18 @@
 import React from 'react'
 import { FiCopy } from 'react-icons/fi'
+import { useSelector, useDispatch } from 'react-redux'
 
 import HeaderText from '../text/HeaderText'
 
 
 const ProfileAccountCard = () => {
+    const { user } = useSelector(state => state.auth)
+    const { naira_wallet_details } = useSelector(state => state.user)
     return (
         <div className="p-5 rounded-md flex flex-col justify-between h-[250px] items-center bg-primary w-full">
             <div>
                 <HeaderText
-                    text={'John Doe'}
+                    text={`${user?.crendentials?.first_name} ${user?.crendentials?.last_name}`}
                     classes={'text-white font-bold text-[60px]'}
                 />
 
@@ -21,7 +24,7 @@ const ProfileAccountCard = () => {
                     }}
                     className="flex space-x-3 justify-center items-center text-white cursor-pointer"
                 >
-                    <p className="text-[16px]" id='username'>@johndoe</p>
+                    <p className="text-[16px]" id='username'>{user?.crendentials?.username}</p>
                     <FiCopy />
                 </div>
             </div>
@@ -34,7 +37,7 @@ const ProfileAccountCard = () => {
                 }}
                 className='rounded-md cursor-pointer bg-[#1173a4] w-[50%] flex justify-between items-center p-2 text-white'
             >
-                <p className="text-[16px] font-bold" id='accountNumber'>21188399382</p>
+                <p className="text-[16px] font-bold" id='accountNumber'>{naira_wallet_details?.account_number}</p>
                 <FiCopy />
             </div>
         </div>

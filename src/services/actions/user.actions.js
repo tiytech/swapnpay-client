@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
+import { getNairaWalletDetails, iDverificationRoute, receiveWithCard, resetPasswordOtpRoute, resetPinOtpRoute, resetPinOtpVerification, resetTransactionPin, verifyPasswordOtpAndResetRoute } from '../routes/user.routes'
 import { airtimeDataPurchaseRoute, bankTransferRoute, cableAndElectricitySubscriptionRoute, electricityDiscosRoute, fetchBanksListRoute, fetchCablePlansRoute, fetchDataBundlesRoute, fetchDollarWalletBalanceRoute, fetchNairaWalletBalanceRoute, schoolPaymentRoute, transferToSwapnPayUserRoute } from "../routes/user.routes"
 
 
@@ -257,6 +258,130 @@ export const userResetStateProperty = createAsyncThunk(
             return { key, value }
         } catch (error) {
             console.log(error)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+
+
+
+export const getNairaWallet = createAsyncThunk(
+    'user/getNairaWallet',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await getNairaWalletDetails()
+
+            return data
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const fundAccountWithCard = createAsyncThunk(
+    'user/fundAccountWithCard',
+    async ({ formData }, { rejectWithValue }) => {
+        try {
+            const { data } = await receiveWithCard(formData)
+
+            const link = data['data']['data']['link']
+            window.location = link;
+
+            return data
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const resetPasswordOtpAction = createAsyncThunk(
+    'user/resetPasswordOtpAction',
+    async ({ formData }, { rejectWithValue }) => {
+        try {
+            const { data } = await resetPasswordOtpRoute(formData)
+
+            return data
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const resetPinOtpAction = createAsyncThunk(
+    'user/resetPinOtpAction',
+    async ({ formData }, { rejectWithValue }) => {
+        try {
+            const { data } = await resetPinOtpRoute(formData)
+
+            return data
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const resetPinOtpVerificationAction = createAsyncThunk(
+    'user/resetPinOtpVerificationAction',
+    async ({ formData }, { rejectWithValue }) => {
+        try {
+            const { data } = await resetPinOtpVerification(formData)
+
+            return data
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const resetTransactionPinAction = createAsyncThunk(
+    'user/resetTransactionPinAction',
+    async ({ formData }, { rejectWithValue }) => {
+        try {
+            const { data } = await resetTransactionPin(formData)
+
+            return data
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const verifyPasswordOtpAndResetAction = createAsyncThunk(
+    'user/verifyPasswordOtpAndResetAction',
+    async ({ formData }, { rejectWithValue }) => {
+        try {
+            const { data } = await verifyPasswordOtpAndResetRoute(formData)
+
+            return data
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const iDverificationAction = createAsyncThunk(
+    'user/iDverificationAction',
+    async ({ formData }, { rejectWithValue }) => {
+        try {
+            const { data } = await iDverificationRoute(formData)
+
+            return data
+        } catch (error) {
+            console.log(error.response)
             return rejectWithValue(null)
         }
     }
