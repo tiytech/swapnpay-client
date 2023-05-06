@@ -7,6 +7,9 @@ export const fetchDollarWalletBalanceRoute = () => API.get(`/wallets/get-dollar-
 export const fetchNairaWalletBalanceRoute = () => API.get(`/wallets/naira-balance`)
 
 
+export const fetchTransactionsRoute = () => API.get(`/transactions/user-transactions`)
+
+
 export const transferToSwapnPayUserRoute = (formData) => API.post(`/transactions/interwallet-transfer`, formData)
 
 

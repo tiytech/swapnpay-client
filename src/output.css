@@ -790,8 +790,24 @@ video {
   height: 100vh;
 }
 
+.h-\[110px\]{
+  height: 110px;
+}
+
 .max-h-\[300px\]{
   max-height: 300px;
+}
+
+.max-h-\[100px\]{
+  max-height: 100px;
+}
+
+.max-h-\[200px\]{
+  max-height: 200px;
+}
+
+.max-h-\[400px\]{
+  max-height: 400px;
 }
 
 .w-0{
@@ -1952,6 +1968,10 @@ video {
   .md\:py-\[80px\]{
     padding-top: 80px;
     padding-bottom: 80px;
+  }
+
+  .md\:pl-8{
+    padding-left: 2rem;
   }
 
   .md\:text-\[16px\]{

@@ -2,18 +2,24 @@ import React, { useReducer, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { appTransactions, appTransactionsTypes } from '../../data'
-import { HeaderText, HomeWalletCard, TransactionTypeCard } from '../../components'
-import { userFetchDollarWalletBalance, userFetchNairaWalletBalance } from '../../services/actions/user.actions'
+import { HeaderText, HomeWalletCard, TransactionCard, TransactionTypeCard } from '../../components'
+import { userFetchDollarWalletBalance, userFetchNairaWalletBalance, userFetchTransactions } from '../../services/actions/user.actions'
 
 
 const Home = () => {
 	const dispatch = useDispatch()
+
+	const { transactions } = useSelector(state => state.user)
 
 	const [config, updateConfig] = useReducer((prev, next) => {
 		return { ...prev, ...next }
 	}, {
 		currentCurrency: 'NGN', showCurrencySelect: false,
 	})
+
+	useEffect(() => {
+		dispatch(userFetchTransactions())
+	}, [])
 
 	useEffect(() => {
 		if (config.currentCurrency === 'NGN') {
@@ -45,35 +51,19 @@ const Home = () => {
 						classes={'font-bold text-[20px]'}
 					/>
 
-					<div className="flex flex-col justify-between items-center h-[250px w-full rounded-xl bg-white py-5 px-5 md:px-10">
-						{appTransactions.map((transaction, index) => (
-							<div
+					<div className="flex flex-col justify-between items-center w-full rounded-xl bg-white py-5 px-5 md:px-10 max-h-[400px] overflow-y-auto scrollbar-4">
+						{transactions?.map((transaction, index) => (
+							<TransactionCard
 								key={index}
-								className="flex justify-between items-center w-full border-b py-2 cursor-pointer transition-all ease-in-out duration-500 hover:translate-x-1"
-							>
-								<div className="flex items-center space-x-4">
-									<img
-										src={transaction.icon}
-										alt=""
-									/>
-									<div className="flex flex-col space-y-1">
-										<p className='text-[14px] font-bold'>{transaction.title}</p>
-										<p className='text-[12px]'>{transaction.recipient}</p>
-									</div>
-								</div>
-
-								<div className="flex flex-col space-y-1">
-									<p className={`text-[14px] font-bold ${transaction.type === 'DEBIT' ? 'text-red-500' : 'text-green-500'}`}>{transaction.amount}</p>
-									<p className='text-[12px]'>{transaction.date}</p>
-								</div>
-							</div>
+								transaction={transaction}
+							/>
 						))}
 					</div>
 				</div>
 			</div>
 
 			<div className="w-full lg:w-[45%] mt-10 lg:mt-0 flex flex-col items-start space-y-5">
-				<div className="flex flex-wrap justify-between items-center">
+				<div className="flex flex-wrap justify-between items-center ax-h-[400px] overflow-y-auto scrollbar-4">
 					{appTransactionsTypes.map((item, index) => (
 						<TransactionTypeCard
 							key={index}

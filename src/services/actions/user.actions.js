@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { getNairaWalletDetails, iDverificationRoute, receiveWithCard, resetPasswordOtpRoute, resetPinOtpRoute, resetPinOtpVerification, resetTransactionPin, verifyPasswordOtpAndResetRoute } from '../routes/user.routes'
+import { fetchTransactionsRoute, getNairaWalletDetails, iDverificationRoute, receiveWithCard, resetPasswordOtpRoute, resetPinOtpRoute, resetPinOtpVerification, resetTransactionPin, verifyPasswordOtpAndResetRoute } from '../routes/user.routes'
 import { airtimeDataPurchaseRoute, bankTransferRoute, cableAndElectricitySubscriptionRoute, electricityDiscosRoute, fetchBanksListRoute, fetchCablePlansRoute, fetchDataBundlesRoute, fetchDollarWalletBalanceRoute, fetchNairaWalletBalanceRoute, schoolPaymentRoute, transferToSwapnPayUserRoute } from "../routes/user.routes"
 
 
@@ -28,6 +28,22 @@ export const userFetchNairaWalletBalance = createAsyncThunk(
             console.log(data)
 
             return data.data.data
+        } catch (error) {
+            console.log(error)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const userFetchTransactions = createAsyncThunk(
+    'user/userFetchTransactions',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await fetchTransactionsRoute()
+            console.log(data)
+
+            return data
         } catch (error) {
             console.log(error)
             return rejectWithValue(null)

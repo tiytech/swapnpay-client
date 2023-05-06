@@ -5,7 +5,7 @@ import {
     userFetchDataBundles, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userGenerateSchoolPayment,
     userGenerateCableSubscription, userResetStateProperty, userTransferToSwapnPayUser, userFetchElectricityDiscos,
     userGenerateElectricitySubscription,
-    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction
+    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions
 } from '../actions/user.actions'
 
 
@@ -23,6 +23,7 @@ const userSlice = createSlice({
         userRequestStatus: null,
         userRequestLoading: false,
         naira_wallet_details: null,
+        transactions: null,
         resetPasswordOtpRequestLoading: null,
         resetPinOtpRequestLoading: null,
         resetTransactionPinLoading: null,
@@ -50,6 +51,17 @@ const userSlice = createSlice({
             state.nairaWallet = action.payload
         })
         builder.addCase(userFetchNairaWalletBalance.rejected, (state, action) => {
+            state.userRequestLoading = false
+        })
+
+        builder.addCase(userFetchTransactions.pending, (state, action) => {
+            state.userRequestLoading = true
+        })
+        builder.addCase(userFetchTransactions.fulfilled, (state, action) => {
+            state.userRequestLoading = false
+            state.transactions = action.payload
+        })
+        builder.addCase(userFetchTransactions.rejected, (state, action) => {
             state.userRequestLoading = false
         })
 
