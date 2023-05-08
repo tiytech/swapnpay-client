@@ -26,8 +26,8 @@ const SettingsChangePassword = () => {
 
 	}
 	useEffect(() => {
-		setformData({ ...formData, email: user?.crendentials?.email })
-	
+		setformData({ ...formData, email: user?.credentials?.email })
+
 
 	}, [formData.new_password])
 
@@ -124,7 +124,7 @@ const SettingsChangePassword = () => {
 				<SettingsConfirimChangePassword
 					updateConfig={updateConfig}
 					formData={formData}
-					setformData = {setformData}
+					setformData={setformData}
 				/>
 			)}
 		</div>

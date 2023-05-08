@@ -3,8 +3,6 @@ import { IconCredit, IconDebit, IconSwapSuccess } from '../../assets'
 
 const TransactionCard = ({ transaction }) => {
 
-    console.log(transaction)
-
     return (
         <div className="flex justify-between items-center w-full border-b py-2 cursor-pointer transition-all ease-in-out duration-500 hover:translate-x-1">
             <div className="flex items-center space-x-4">

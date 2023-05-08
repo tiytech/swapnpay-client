@@ -17,14 +17,14 @@ const ReceiveViaCard = ({ updateConfig }) => {
     const submitHandler = () => {
 
         console.log(formData);
-        dispatch(fundAccountWithCard({formData}))
+        dispatch(fundAccountWithCard({ formData }))
     }
 
-    
+
     useEffect(() => {
         setFormData({
-            ...formData, email: user?.crendentials?.email,
-            name: `${user?.crendentials?.first_name} ${user?.crendentials?.last_name}`,
+            ...formData, email: user?.credentials?.email,
+            name: `${user?.credentials?.first_name} ${user?.credentials?.last_name}`,
             phonenumber: user?.data?.profile?.phone_number
         }
         )

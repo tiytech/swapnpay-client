@@ -5,7 +5,7 @@ import PhoneCountryCodes from '../../data/phoneContryCode.json'
 import { appCurrencies } from '../../data'
 
 
-const FormCurrencyInput = ({ classes, currency, name, handleChange, placeHolder, updateFormData }) => {
+const FormCurrencyInput = ({ classes, source, name, handleChange, placeHolder, updateFormData, setCurrent, value }) => {
     const [config, updateConfig] = useReducer((prev, next) => {
         return { ...prev, ...next }
     }, {
@@ -14,8 +14,13 @@ const FormCurrencyInput = ({ classes, currency, name, handleChange, placeHolder,
     const [currentCurrency, setCurrentCurrency] = useState({})
 
     useEffect(() => {
-        setCurrentCurrency(appCurrencies.find(e => e.title === currency))
-    }, [currency])
+        setCurrentCurrency(appCurrencies.find(e => e.title === source))
+        if (currentCurrency['title'] == 'NGN') {
+            updateFormData({ source: 'NGN', destination: 'USD' })
+        } else {
+            updateFormData({ source: 'USD', destination: 'NGN' })
+        }
+    }, [source])
 
     return (
         <div className={`
@@ -35,6 +40,7 @@ const FormCurrencyInput = ({ classes, currency, name, handleChange, placeHolder,
             </div>
 
             <input
+                value={value}
                 name={name}
                 type={"text"}
                 onChange={handleChange}
@@ -51,7 +57,8 @@ const FormCurrencyInput = ({ classes, currency, name, handleChange, placeHolder,
                             key={index}
                             onClick={() => {
                                 updateConfig({ showDropDown: false })
-                                updateFormData({ currency: country.title })
+                                updateFormData({ source: country.title })
+                                console.log(currentCurrency, 'source');
                                 setCurrentCurrency(appCurrencies.find(e => e.title === country.title))
                             }}
                             className='flex items-center space-x-3 cursor-pointer hover:scale-105 transition-all ease-in-out duration-500'

@@ -5,7 +5,7 @@ import {
     userFetchDataBundles, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userGenerateSchoolPayment,
     userGenerateCableSubscription, userResetStateProperty, userTransferToSwapnPayUser, userFetchElectricityDiscos,
     userGenerateElectricitySubscription,
-    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions
+    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction, generateQuoteAction, swapCurrencyAction
 } from '../actions/user.actions'
 
 
@@ -28,7 +28,11 @@ const userSlice = createSlice({
         resetPinOtpRequestLoading: null,
         resetTransactionPinLoading: null,
         verifyPasswordOtpAndResetLoading: null,
-        idVerificationLoading: null
+        idVerificationLoading: null,
+        conversionRate: null,
+        customLoadingState: false,
+        transactionsFee: null,
+        generatedQuote:null
 
     },
     extraReducers: (builder) => {
@@ -283,6 +287,50 @@ const userSlice = createSlice({
         builder.addCase(iDverificationAction.rejected, (state, action) => {
             state.idVerificationLoading = false
         })
+
+        builder.addCase(getConversionRateAction.pending, (state, action) => {
+            state.conversionRate = null
+        })
+        builder.addCase(getConversionRateAction.fulfilled, (state, action) => {
+            state.conversionRate = action.payload
+        })
+        builder.addCase(getConversionRateAction.rejected, (state, action) => {
+            state.conversionRate = null
+        })
+        builder.addCase(getTransactionsFeeAction.pending, (state, action) => {
+            state.transactionsFee = null
+        })
+        builder.addCase(getTransactionsFeeAction.fulfilled, (state, action) => {
+            state.transactionsFee = action.payload
+        })
+        builder.addCase(getTransactionsFeeAction.rejected, (state, action) => {
+            state.transactionsFee = null
+        })
+        builder.addCase(generateQuoteAction.pending, (state, action) => {
+            state.customLoadingState = true
+            state.generatedQuote = null
+        })
+        builder.addCase(generateQuoteAction.fulfilled, (state, action) => {
+            state.customLoadingState = false
+            state.generatedQuote = action.payload
+        })
+        builder.addCase(generateQuoteAction.rejected, (state, action) => {
+            state.customLoadingState = false
+            state.generatedQuote = null
+        })
+        builder.addCase(swapCurrencyAction.pending, (state, action) => {
+            state.customLoadingState = true
+            
+        })
+        builder.addCase(swapCurrencyAction.fulfilled, (state, action) => {
+            state.customLoadingState = false
+            
+        })
+        builder.addCase(swapCurrencyAction.rejected, (state, action) => {
+            state.customLoadingState = false
+           
+        })
+
 
 
 

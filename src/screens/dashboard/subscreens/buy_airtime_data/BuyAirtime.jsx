@@ -45,7 +45,7 @@ const BuyAirtime = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 
-		if (user?.credentials?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
+		if (user?.credentialss?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
 		console.log(formData)
 
 		dispatch(userAirtimePurchase({ formData, toast, updateConfig }))
