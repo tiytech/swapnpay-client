@@ -5,7 +5,7 @@ import {
     userFetchDataBundles, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userGenerateSchoolPayment,
     userGenerateCableSubscription, userResetStateProperty, userTransferToSwapnPayUser, userFetchElectricityDiscos,
     userGenerateElectricitySubscription,
-    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction, generateQuoteAction, swapCurrencyAction
+    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction, generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction
 } from '../actions/user.actions'
 
 
@@ -32,7 +32,8 @@ const userSlice = createSlice({
         conversionRate: null,
         customLoadingState: false,
         transactionsFee: null,
-        generatedQuote:null
+        generatedQuote: null,
+        userCards: null
 
     },
     extraReducers: (builder) => {
@@ -320,15 +321,42 @@ const userSlice = createSlice({
         })
         builder.addCase(swapCurrencyAction.pending, (state, action) => {
             state.customLoadingState = true
-            
+
         })
         builder.addCase(swapCurrencyAction.fulfilled, (state, action) => {
             state.customLoadingState = false
-            
+
         })
         builder.addCase(swapCurrencyAction.rejected, (state, action) => {
             state.customLoadingState = false
-           
+
+        })
+
+        builder.addCase(createVirtualCardAction.pending, (state, action) => {
+            state.customLoadingState = true
+
+        })
+        builder.addCase(createVirtualCardAction.fulfilled, (state, action) => {
+            state.customLoadingState = false
+
+        })
+        builder.addCase(createVirtualCardAction.rejected, (state, action) => {
+            state.customLoadingState = false
+
+        })
+
+        builder.addCase(getUserCardsAction.pending, (state, action) => {
+            state.userCards = null
+
+        })
+        builder.addCase(getUserCardsAction.fulfilled, (state, action) => {
+            state.userCards = action.payload
+         
+
+        })
+        builder.addCase(getUserCardsAction.rejected, (state, action) => {
+            state.userCards = null
+
         })
 
 

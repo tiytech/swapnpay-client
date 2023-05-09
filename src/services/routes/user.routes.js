@@ -68,7 +68,13 @@ export const getConverstionRateRoute = () => API.get('/transactions/conversion-r
 export const getTransactionFeeRoute = () => API.get('/administrator/transactions-fee')
 
 export const generateQuoteRoute = (formData) => API.post('/transactions/generate-quote', formData)
+
 export const swapCurrencyRoute = (formData) => API.post('/transactions/swap-currency', formData)
+
+export const createVirtualCardRoute = (formData) => API.post('/cards/create-virtual-card', formData)
+
+export const getUserCardsRoute = () => API.get('/cards/get-user-cards')
+
 
 
 

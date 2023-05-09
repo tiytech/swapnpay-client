@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { appTransactions, appTransactionsTypes } from '../../data'
 import { HeaderText, HomeWalletCard, TransactionCard, TransactionTypeCard } from '../../components'
-import { getConversionRateAction, getNairaWallet, getTransactionsFeeAction, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userFetchTransactions } from '../../services/actions/user.actions'
+import { getConversionRateAction, getNairaWallet, getTransactionsFeeAction, getUserCardsAction, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userFetchTransactions } from '../../services/actions/user.actions'
 
 
 const Home = () => {
@@ -23,6 +23,7 @@ const Home = () => {
 		dispatch(getConversionRateAction())
 		dispatch(getTransactionsFeeAction())
 		dispatch(userFetchDollarWalletBalance())
+		dispatch(getUserCardsAction())
 	}, [])
 
 	useEffect(() => {
