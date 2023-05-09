@@ -19,7 +19,6 @@ const Cards = () => {
 	const navigate = useNavigate()
 	const { transactionsFee, userCards, nairaWallet, dollarWallet, conversionRate, customLoadingState } = useSelector(state => state.user)
 	const { user, userRequestStatus } = useSelector(state => state.auth)
-
 	const handleChange = (e) => {
 
 		setFormData({ ...formData, [e.target.name]: e.target.value })
