@@ -14,7 +14,8 @@ const SignupStepFive = ({ formData, updateFormData, handleChange, updateConfig }
 
     useEffect(() => {
         if (generatedUsername) {
-            updateFormData({ username: generatedUsername })
+            updateFormData({ username: generatedUsername, referral_code: '' })
+
         }
     }, [generatedUsername])
 

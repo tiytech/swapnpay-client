@@ -1260,22 +1260,6 @@ video {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
-.bg-\[url\(\`\'\/src\/assets\/images\/card__bg__1\.svg\'\`\)\]{
-  background-image: url(`'/src/assets/images/card__bg__1.svg'`);
-}
-
-.bg-\[url\(\`\/src\/assets\/images\/card__bg__1\.svg\`\)\]{
-  background-image: url(`/src/assets/images/card__bg__1.svg`);
-}
-
-.bg-\[url\(\`\{\/src\/assets\/images\/card__bg__1\.svg\}\`\)\]{
-  background-image: url(`{/src/assets/images/card__bg__1.svg}`);
-}
-
-.bg-\[url\(\`\$\{\/src\/assets\/images\/card__bg__1\.svg\}\`\)\]{
-  background-image: url(`${/src/assets/images/card__bg__1.svg}`);
-}
-
 .from-primary{
   --tw-gradient-from: #002F46 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(0 47 70 / 0) var(--tw-gradient-to-position);
