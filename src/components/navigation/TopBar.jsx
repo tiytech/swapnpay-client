@@ -5,8 +5,6 @@ import { UserAvatar1 } from '../../assets'
 const TopBar = () => {
     const { user } = useSelector(state => state.auth)
 
-    console.log(user?.credentials)
-
     return (
         <div className='flex z-10 space-x-4 items-start w-full bg-white pl-4 md:pl-8 py-2 fixed top-0'>
             <img

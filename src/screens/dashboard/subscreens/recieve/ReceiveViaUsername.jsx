@@ -25,7 +25,7 @@ const ReceiveViaUsername = ({ updateConfig }) => {
 
 			<div className="flex justify-between items-center border-t border-b py-3">
 				<p className='text-[12px] font-normal'>Your username</p>
-				<p className='text-[12px] font-bold'>{user?.crendentials?.username}</p>
+				<p className='text-[12px] font-bold'>{user?.credentials?.username}</p>
 			</div>
 
 			<IconButton

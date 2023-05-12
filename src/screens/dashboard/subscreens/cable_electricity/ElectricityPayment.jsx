@@ -39,7 +39,7 @@ const ElectricityPayment = () => {
     }, [nairaWallet])
 
     const handleChange = (e) => {
-        if(e.target.name === 'amount'){
+        if (e.target.name === 'amount') {
             return updateFormData({ amount: parseInt(e.target.value) })
 
         }
@@ -49,7 +49,7 @@ const ElectricityPayment = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (user?.credentials?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
+        if (user?.credentialss?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
         console.log(formData)
 
         dispatch(userGenerateElectricitySubscription({ formData, toast, updateConfig }))

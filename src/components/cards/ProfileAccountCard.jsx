@@ -12,7 +12,7 @@ const ProfileAccountCard = () => {
         <div className="p-5 rounded-md flex flex-col justify-between h-[250px] items-center bg-primary w-full">
             <div>
                 <HeaderText
-                    text={`${user?.crendentials?.first_name} ${user?.crendentials?.last_name}`}
+                    text={`${user?.credentials?.first_name} ${user?.credentials?.last_name}`}
                     classes={'text-white font-bold text-[60px]'}
                 />
 
@@ -24,7 +24,7 @@ const ProfileAccountCard = () => {
                     }}
                     className="flex space-x-3 justify-center items-center text-white cursor-pointer"
                 >
-                    <p className="text-[16px]" id='username'>{user?.crendentials?.username}</p>
+                    <p className="text-[16px]" id='username'>{user?.credentials?.username}</p>
                     <FiCopy />
                 </div>
             </div>

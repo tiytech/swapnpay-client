@@ -10,30 +10,30 @@ const Profile = () => {
 		<div className='flex flex-col space-y-5 w-full'>
 			<ProfileCard
 				icon={IconProfile1}
-				title={user?.crendentials?.first_name}
+				title={user?.credentials?.first_name}
 				label={'First name'}
 			/>
 			<ProfileCard
 				icon={IconProfile1}
-				title={user?.crendentials?.last_name}
+				title={user?.credentials?.last_name}
 				label={'Last name'}
 				classes={'mt-1'}
 			/>
 			<ProfileCard
 				icon={IconProfile2}
-				title={user?.crendentials?.username}
+				title={user?.credentials?.username}
 				label={'Username'}
 				classes={'mt-1'}
 			/>
 			<ProfileCard
 				icon={IconPhone2}
-				title={user?.crendentials?.profile?.phone_number}
+				title={user?.credentials?.profile?.phone_number}
 				label={'Phone number'}
 			/>
 			<ProfileCard
 				icon={IconMessage}
 				label={'Email address'}
-				title={user?.crendentials?.email}
+				title={user?.credentials?.email}
 			/>
 		</div>
 	)

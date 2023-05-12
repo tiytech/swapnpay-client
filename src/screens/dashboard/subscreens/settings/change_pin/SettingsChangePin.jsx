@@ -19,14 +19,14 @@ const SettingsChangePin = ({ }) => {
 		return { ...prev, ...next }
 	}, {
 		showDefault: true, showConfirmTransaction: false
-	})	
+	})
 
 	const handleChange = (e) => {
 		setformData({ ...formData, [e.target.name]: e.target.value })
 
 	}
 	useEffect(() => {
-		setformData({ ...formData, email: user?.data?.email })
+		setformData({ ...formData, email: user?.credentials?.email })
 
 	}, [formData.transaction_pin])
 

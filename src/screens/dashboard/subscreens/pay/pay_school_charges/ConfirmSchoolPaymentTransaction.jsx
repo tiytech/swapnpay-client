@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import { BsArrowLeft } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
 
-import {  userGenerateSchoolPayment } from '../../../../../services/actions/user.actions'
+import { userGenerateSchoolPayment } from '../../../../../services/actions/user.actions'
 import { FormTextInput, HeaderText, IconButton, LoadingButtonOne } from '../../../../../components'
 
 
@@ -15,7 +15,7 @@ const ConfirmSchoolPaymentTransaction = ({ formData, handleChange, updateConfig 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (user?.credentials?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
+        if (user?.credentialss?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
 
         dispatch(userGenerateSchoolPayment({ formData, toast, updateConfig }))
     }

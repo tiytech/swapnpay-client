@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { fetchTransactionsRoute, getNairaWalletDetails, iDverificationRoute, receiveWithCard, resetPasswordOtpRoute, resetPinOtpRoute, resetPinOtpVerification, resetTransactionPin, verifyPasswordOtpAndResetRoute } from '../routes/user.routes'
+import { createVirtualCardRoute, fetchTransactionsRoute, generateQuoteRoute, getConverstionRateRoute, getNairaWalletDetails, getTransactionFeeRoute, getUserCardsRoute, iDverificationRoute, receiveWithCard, resetPasswordOtpRoute, resetPinOtpRoute, resetPinOtpVerification, resetTransactionPin, swapCurrencyRoute, verifyPasswordOtpAndResetRoute } from '../routes/user.routes'
 import { airtimeDataPurchaseRoute, bankTransferRoute, cableAndElectricitySubscriptionRoute, electricityDiscosRoute, fetchBanksListRoute, fetchCablePlansRoute, fetchDataBundlesRoute, fetchDollarWalletBalanceRoute, fetchNairaWalletBalanceRoute, schoolPaymentRoute, transferToSwapnPayUserRoute } from "../routes/user.routes"
 
 
@@ -9,7 +9,6 @@ export const userFetchDollarWalletBalance = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const { data } = await fetchDollarWalletBalanceRoute()
-            console.log(data)
 
             return data
         } catch (error) {
@@ -25,8 +24,6 @@ export const userFetchNairaWalletBalance = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const { data } = await fetchNairaWalletBalanceRoute()
-            console.log(data)
-
             return data.data.data
         } catch (error) {
             console.log(error)
@@ -41,8 +38,6 @@ export const userFetchTransactions = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const { data } = await fetchTransactionsRoute()
-            console.log(data)
-
             return data
         } catch (error) {
             console.log(error)
@@ -394,6 +389,95 @@ export const iDverificationAction = createAsyncThunk(
     async ({ formData }, { rejectWithValue }) => {
         try {
             const { data } = await iDverificationRoute(formData)
+
+            return data
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const getConversionRateAction = createAsyncThunk(
+    'user/getConversionRateAction',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await getConverstionRateRoute()
+
+            return data['data']
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const getTransactionsFeeAction = createAsyncThunk(
+    'user/getTransactionsFeeAction',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await getTransactionFeeRoute()
+
+            return data
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const generateQuoteAction = createAsyncThunk(
+    'user/generateQuoteAction',
+    async ({ formData }, { rejectWithValue }) => {
+        try {
+            const { data } = await generateQuoteRoute(formData)
+
+            return data['data']
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const swapCurrencyAction = createAsyncThunk(
+    'user/swapCurrencyAction',
+    async ({ formData }, { rejectWithValue }) => {
+        try {
+            const { data } = await swapCurrencyRoute(formData)
+
+            return data['data']
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+
+export const createVirtualCardAction = createAsyncThunk(
+    'user/createVirtualCardAction',
+    async ({ formData }, { rejectWithValue }) => {
+        try {
+            const { data } = await createVirtualCardRoute(formData)
+
+            return data['data']
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const getUserCardsAction = createAsyncThunk(
+    'user/getUserCardsAction',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await getUserCardsRoute()
 
             return data
         } catch (error) {
