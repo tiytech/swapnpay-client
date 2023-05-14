@@ -5,7 +5,7 @@ import {
     userFetchDataBundles, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userGenerateSchoolPayment,
     userGenerateCableSubscription, userResetStateProperty, userTransferToSwapnPayUser, userFetchElectricityDiscos,
     userGenerateElectricitySubscription,
-    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction, generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction
+    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction, generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction, userFetchReferrals
 } from '../actions/user.actions'
 
 
@@ -33,7 +33,8 @@ const userSlice = createSlice({
         customLoadingState: false,
         transactionsFee: null,
         generatedQuote: null,
-        userCards: null
+        userCards: null,
+        referrals: null,
 
     },
     extraReducers: (builder) => {
@@ -218,6 +219,19 @@ const userSlice = createSlice({
         builder.addCase(userGenerateElectricitySubscription.rejected, (state, action) => {
             state.userRequestLoading = false
             state.userRequestStatus = 'FAILED'
+        })
+
+
+
+        builder.addCase(userFetchReferrals.pending, (state, action) => {
+            state.userRequestLoading = true
+        })
+        builder.addCase(userFetchReferrals.fulfilled, (state, action) => {
+            state.userRequestLoading = false
+            state.referrals = action.payload
+        })
+        builder.addCase(userFetchReferrals.rejected, (state, action) => {
+            state.userRequestLoading = false
         })
 
 

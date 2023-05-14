@@ -1,11 +1,19 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { FiCopy } from 'react-icons/fi'
+import { useDispatch } from 'react-redux'
 
 import { appReferrals } from '../../../../data'
 import { HeaderText } from '../../../../components'
+import { userFetchReferrals } from '../../../../services/actions/user.actions'
 
 
 const Referrals = () => {
+	const dispatch = useDispatch()
+
+	useEffect(()=>{
+		dispatch(userFetchReferrals())
+	}, [])
+
 	return (
 		<div className='flex flex-col space-y-5 w-full'>
 			<p className='text-[14px] text-center mt-10'>Each time a new user signup with your link, you earn.</p>
