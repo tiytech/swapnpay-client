@@ -14,7 +14,8 @@ const SignupStepTwo = ({ formData, handleChange, updateConfig }) => {
         if (!formData.first_name) return toast.error('First name required!')
         if (!formData.last_name) return toast.error('Last name required!')
         if (!formData.occupation) return toast.error('Occupation name required!')
-    
+        
+
         updateConfig({ showFormTwo: false, showFormThree: true })
     }
 
@@ -55,7 +56,7 @@ const SignupStepTwo = ({ formData, handleChange, updateConfig }) => {
                 <FormTextInput
                     name={'referral_code'}
                     handleChange={handleChange}
-                    placeHolder={'Referral dode (optional)'}
+                    placeHolder={'Referral code (optional)'}
                     classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
                 />
 

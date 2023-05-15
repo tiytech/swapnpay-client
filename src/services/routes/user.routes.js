@@ -39,6 +39,8 @@ export const electricityDiscosRoute = () => API.get(`/utilities/electricity-plan
 
 export const fetchReferralsRoute = () => API.get(`/user/referral`)
 
+export const userClaimReferralRoute = (formData) => API.post(`/user/referral`, formData)
+
 
 
 

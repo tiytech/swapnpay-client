@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { FormCurrencyInput, HeaderText, IconButton, LoadingButtonOne } from '../../components'
 import { parse } from 'postcss'
-import { generateQuoteAction } from '../../services/actions/user.actions'
+import { generateQuoteAction, getConversionRateAction } from '../../services/actions/user.actions'
 import ConfirmTransactions from '../utils/confirm_transactions'
 
 
@@ -61,6 +61,11 @@ const Swap = () => {
 		updateFormData({ ...formData, amountToReceive: amountToReceive, fee: (parseFloat(transactionsFee?.amount) * (formData.amount == undefined ? 1 : formData.amount)).toFixed(2) })
 
 	}, [amountToReceive])
+
+	useEffect(() => {
+		dispatch(getConversionRateAction())
+	}, [])
+
 
 
 
@@ -132,29 +137,29 @@ const Swap = () => {
 									handleClick={async () => {
 
 										if (formData.source == "NGN" && (formData.amount).toString().length > 3) {
-											updateFormData({ ...formData, amountToReceive: amountToReceive})
-											
+											updateFormData({ ...formData, amountToReceive: amountToReceive })
+
 											const response = await dispatch(generateQuoteAction({ formData }))
-											
+
 											if (response.error == undefined) {
 												setConfirmTransactionState(true)
 											}
 										}
 										if (formData.source == "USD") {
-											updateFormData({ ...formData, amountToReceive: amountToReceive})
-											
+											updateFormData({ ...formData, amountToReceive: amountToReceive })
+
 											const response = await dispatch(generateQuoteAction({ formData }))
-											
+
 											if (response.error == undefined) {
 												setConfirmTransactionState(true)
 											}
 										}
 
 										else {
-											
+
 											return;
 										}
-										
+
 
 									}}
 								/>

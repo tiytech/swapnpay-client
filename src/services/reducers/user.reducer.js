@@ -5,7 +5,7 @@ import {
     userFetchDataBundles, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userGenerateSchoolPayment,
     userGenerateCableSubscription, userResetStateProperty, userTransferToSwapnPayUser, userFetchElectricityDiscos,
     userGenerateElectricitySubscription,
-    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction, generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction, userFetchReferrals
+    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction, generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction, userFetchReferrals, userClaimRefferals
 } from '../actions/user.actions'
 
 
@@ -370,6 +370,20 @@ const userSlice = createSlice({
         })
         builder.addCase(getUserCardsAction.rejected, (state, action) => {
             state.userCards = null
+
+        })
+
+        builder.addCase(userClaimRefferals.pending, (state, action) => {
+            state.customLoadingState = true
+
+        })
+        builder.addCase(userClaimRefferals.fulfilled, (state, action) => {
+            state.customLoadingState = false
+         
+
+        })
+        builder.addCase(userClaimRefferals.rejected, (state, action) => {
+            state.customLoadingState = false
 
         })
 
