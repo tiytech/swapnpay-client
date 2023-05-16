@@ -323,11 +323,11 @@ export const user__menu__items = [
         icon: IconHome,
         iconDark: IconHomeDark
     },
-    {
-        title: 'Pay School Tuition',
-        icon: IconSchool,
-        iconDark: IconSchoolDark,
-    },
+    // {
+    //     title: 'Pay School Tuition',
+    //     icon: IconSchool,
+    //     iconDark: IconSchoolDark,
+    // },
     {
         title: 'Cards',
         icon: IconCard,
@@ -340,6 +340,39 @@ export const user__menu__items = [
     },
     {
         title: 'Settings',
+        icon: IconMenu,
+        iconDark: IconMenuDark,
+    },
+]
+
+export const admin__menu__items = [
+    {
+        title: 'Dashboard',
+        icon: IconHome,
+        iconDark: IconHomeDark
+    },
+    {
+        title: 'School Payments',
+        icon: IconSchool,
+        iconDark: IconSchoolDark,
+    },
+    {
+        title: 'Balances',
+        icon: IconCard,
+        iconDark: IconCardDark,
+    },
+    {
+        title: 'Transactions',
+        icon: IconSwap,
+        iconDark: IconSwapDark,
+    },
+    {
+        title: 'Verification',
+        icon: IconMenu,
+        iconDark: IconMenuDark,
+    },
+    {
+        title: 'Admin Settings',
         icon: IconMenu,
         iconDark: IconMenuDark,
     },
