@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useGlobalContext } from '../../context'
-import { Home, Cards, Settings, Swap, Payments } from '../'
+import {
+	Home, Cards, Settings, Swap,
+	AdminDashboard, AdminSchoolPayments, AdminBalances, AdminTransactions, AdminSettings
+} from '../'
 import { MobileSideBar, ModalPages, Modals, SideBar, TopBar } from '../../components'
+import { useSelector } from 'react-redux'
 
 
 const Dashboard = () => {
 	const { dashboardConfig, updateDashboardConfig } = useGlobalContext()
+	const { user } = useSelector(state => state.auth)
+
+	useEffect(() => {
+		if (user?.credentials?.is_administrator) {
+			updateDashboardConfig({ activeLink: 'Admin Settings' })
+		}
+	}, [user])
 
 	return (
 		<div className='relative flex font-lato'>
@@ -24,9 +35,6 @@ const Dashboard = () => {
 				{dashboardConfig.activeLink === 'Home' && (
 					<Home />
 				)}
-				{/* {dashboardConfig.activeLink === 'Pay School Tuition' && (
-					<Payments />
-				)} */}
 				{dashboardConfig.activeLink === 'Cards' && (
 					<Cards />
 				)}
@@ -35,6 +43,24 @@ const Dashboard = () => {
 				)}
 				{dashboardConfig.activeLink === 'Settings' && (
 					<Settings />
+				)}
+
+
+				{/* ADMIN DASHBOARD */}
+				{dashboardConfig.activeLink === 'Admin Home' && (
+					<AdminDashboard />
+				)}
+				{dashboardConfig.activeLink === 'School Payments' && (
+					<AdminSchoolPayments />
+				)}
+				{dashboardConfig.activeLink === 'Balances' && (
+					<AdminBalances />
+				)}
+				{dashboardConfig.activeLink === 'Transactions' && (
+					<AdminTransactions />
+				)}
+				{dashboardConfig.activeLink === 'Admin Settings' && (
+					<AdminSettings />
 				)}
 			</div>
 		</div>

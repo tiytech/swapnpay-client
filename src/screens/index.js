@@ -36,6 +36,13 @@ import NotFound from "./utils/NotFound"
 import PrivateRoute from "./utils/PrivateRoute"
 import LoadingToRedirect from "./utils/LoadingToRedirect"
 
+// ADMIN PAGES
+import AdminDashboard from "./dashboard/admin/AdminDashboard"
+import AdminSchoolPayments from "./dashboard/admin/AdminSchoolPayments"
+import AdminBalances from "./dashboard/admin/AdminBalances"
+import AdminTransactions from "./dashboard/admin/AdminTransactions"
+import AdminSettings from "./dashboard/admin/AdminSettings"
+
 
 export {
     // PUBLIC
@@ -65,7 +72,7 @@ export {
     Payments,
     Settings,
     Dashboard,
-    
+
 
     // IMAGES
     IconImage,
@@ -75,4 +82,12 @@ export {
     NotFound,
     PrivateRoute,
     LoadingToRedirect,
+
+
+    // ADMIN
+    AdminDashboard,
+    AdminSchoolPayments,
+    AdminBalances,
+    AdminTransactions,
+    AdminSettings,
 }

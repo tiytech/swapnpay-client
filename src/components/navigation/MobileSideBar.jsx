@@ -1,15 +1,17 @@
 import React, { Fragment } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { IconLogoWhite, IconMenuDark } from '../../assets'
-import { user__menu__items } from '../../data'
 import IconButton from '../buttons/IconButton'
 import { useGlobalContext } from '../../context'
+import { IconLogoWhite, IconMenuDark } from '../../assets'
+import { admin__menu__items, user__menu__items } from '../../data'
 
 
 const MobileSideBar = () => {
     const navigate = useNavigate()
     const { dashboardConfig, updateDashboardConfig } = useGlobalContext()
+    const { user } = useSelector(state => state.auth)
 
     return (
         <Fragment>
@@ -46,7 +48,7 @@ const MobileSideBar = () => {
 
                     <div className="flex flex-col mt-5 space-y-8">
                         <ul className='pt-6 relative space-y-3'>
-                            {user__menu__items?.map((menu, index) => (
+                            {!user?.credentials?.is_administrator && user__menu__items?.map((menu, index) => (
                                 <li
                                     key={`${index}`}
                                     className={`text-gray-300 text-[12px] grid grid-cols-2 items-center space-x-[-4em] cursor-pointer px-4 py-4 mt-4 transition-all ease-in-out duration-500 hover:bg-[#ffffff60] hover:rounded-lg ${dashboardConfig.activeLink === menu.title && 'bg-white rounded-lg'}`}
@@ -64,6 +66,26 @@ const MobileSideBar = () => {
                                 </li>
                             ))}
                         </ul>
+                        <ul className='pt- relative space-y-3'>
+                            {user?.credentials?.is_administrator && admin__menu__items?.map((menu, index) => (
+                                <li
+                                    key={`${index}`}
+                                    className={`text-gray-300 text-[12px] grid grid-cols-2 items-center space-x-[-4em] cursor-pointer px-4 py-3 mt-4 transition-all ease-in-out duration-500 hover:bg-[#ffffff60] hover:rounded-lg ${dashboardConfig.activeLink === menu.title && 'bg-white rounded-lg'}`}
+                                    onClick={() => updateDashboardConfig({ activeLink: menu.title })}
+                                >
+                                    <img
+                                        className='text-red-400' alt=""
+                                        src={dashboardConfig.activeLink === menu.title ? menu.iconDark : menu.icon}
+                                    />
+                                    <span
+                                        className={`uppercase font-medium origin-left duration-200 text-[12px] ${dashboardConfig.activeLink === menu.title ? 'text-primary font-medium' : 'text-white'}`}
+                                    >
+                                        {menu.title === 'Admin Settings' ? 'Settings' : menu.title}
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+
 
                         <IconButton
                             type={'submit'}

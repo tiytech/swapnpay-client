@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
 
 import EventSuccessModal from '../modals/EventSuccessModal'
+import AdminUpdateTransactionFeeModal from '../modals/AdminUpdateTransactionFeeModal'
+import AdminUpdateReferralFeeModal from '../modals/AdminUpdateReferralFeeModal'
 
 
 const FormModal = ({ type }) => {
@@ -17,6 +19,16 @@ const FormModal = ({ type }) => {
                     to={'/login'}
                     title={'Account created successfully'}
                 />
+            )}
+
+
+
+            {type === 'admin__update__transaction__fee__modal' && (
+                <AdminUpdateTransactionFeeModal />
+            )}
+
+            {type === 'admin__update__referral__fee__modal' && (
+                <AdminUpdateReferralFeeModal />
             )}
         </Fragment>
     )
