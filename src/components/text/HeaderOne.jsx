@@ -4,7 +4,7 @@ const HeaderOne = ({ text, classes, color, medium, align, size, bold, semibold }
     <h1
         className={`
             ${classes}
-            ${size ? size : 'text-[20px]'} 
+            ${size ? size : 'text-[18px]'} 
             ${medium && 'font-medium'} 
             ${!semibold && !bold && 'font-normal'} 
             ${semibold && 'font-semibold'} 

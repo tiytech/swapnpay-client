@@ -5,7 +5,7 @@ import IconButton from '../buttons/IconButton'
 import { useGlobalContext } from '../../context'
 
 
-const AdminSettingsCard = ({ title }) => {
+const AdminSettingsCard = ({ title, users_count, transactions , referral_fee, transactions_fee}) => {
     const { updateModals } = useGlobalContext()
 
     return (
@@ -20,7 +20,7 @@ const AdminSettingsCard = ({ title }) => {
                 <div className='flex flex-col space-y-[40px]'>
                     <div className="flex justify-between">
                         <p className="text-[14px]">Fee (NGN)</p>
-                        <p className="text-[14px]">100</p>
+                        <p className="text-[12px]">{transactions_fee?.amount} ({parseFloat(transactions_fee?.amount * 100)} %) </p>
                     </div>
 
                     <IconButton
@@ -41,7 +41,7 @@ const AdminSettingsCard = ({ title }) => {
                 <div className='flex flex-col space-y-[40px]'>
                     <div className="flex justify-between">
                         <p className="text-[14px]">Fee (NGN)</p>
-                        <p className="text-[14px]">100</p>
+                        <p className="text-[14px]">{referral_fee?.amount}</p>
                     </div>
 
                     <IconButton
@@ -62,24 +62,24 @@ const AdminSettingsCard = ({ title }) => {
                 <div className='flex flex-col space-y-5'>
                     <div className="flex justify-between">
                         <p className="text-[14px]">Registered Users</p>
-                        <p className="text-[14px]">10,43</p>
+                        <p className="text-[14px]">{users_count?.users_count}</p>
                     </div>
                     <div className="flex justify-between">
                         <p className="text-[14px]">Active Users</p>
-                        <p className="text-[14px]">803</p>
+                        <p className="text-[14px]">{users_count?.active_users_count}</p>
                     </div>
                 </div>
             )}
 
             {title === 'Transactions' && (
-                <div className='flex flex-col space-y-5'>
+                <div className='flex flex-col'>
                     <div className="flex justify-between">
                         <p className="text-[14px]">Successful Transactions</p>
-                        <p className="text-[14px]">143</p>
+                        <p className="text-[14px]">{transactions?.length}</p>
                     </div>
                     <div className="flex justify-between">
                         <p className="text-[14px]">Pending Transactions</p>
-                        <p className="text-[14px]">803</p>
+                        <p className="text-[14px]">0</p>
                     </div>
                 </div>
             )}

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { adminResetStateProperty } from '../actions/admin.actions'
+import { adminResetStateProperty, getReferralFeeAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchReferralFeeAction, patchTransactionsFeeAction } from '../actions/admin.actions'
 
 
 const adminSlice = createSlice({
@@ -8,6 +8,10 @@ const adminSlice = createSlice({
         currentData: null,
         adminRequestStatus: null,
         adminRequestLoading: false,
+        users_count: null,
+        transactions: null,
+        referral_fee: null,
+        transactions_fee: null
     },
     extraReducers: (builder) => {
         builder.addCase(adminResetStateProperty.pending, (state, action) => {
@@ -20,6 +24,84 @@ const adminSlice = createSlice({
             }
         })
         builder.addCase(adminResetStateProperty.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        builder.addCase(getUserCountAction.pending, (state, action) => {
+            state.users_count = null
+        })
+        builder.addCase(getUserCountAction.fulfilled, (state, action) => {
+            state.users_count = action.payload
+            // if (action.payload.key === 'CurrentData') {
+            //     state.currentData = action.payload.value
+            // }
+        })
+        builder.addCase(getUserCountAction.rejected, (state, action) => {
+            state.users_count = null
+        })
+
+        builder.addCase(getTransactionsAction.pending, (state, action) => {
+            state.transactions = null
+        })
+        builder.addCase(getTransactionsAction.fulfilled, (state, action) => {
+            state.transactions = action.payload
+
+        })
+        builder.addCase(getTransactionsAction.rejected, (state, action) => {
+            state.transactions = null
+        })
+
+        builder.addCase(getTransactionsFeeAction.pending, (state, action) => {
+            state.transactions_fee = null
+        })
+        builder.addCase(getTransactionsFeeAction.fulfilled, (state, action) => {
+            state.transactions_fee = action.payload
+
+        })
+
+        builder.addCase(getTransactionsFeeAction.rejected, (state, action) => {
+            state.transactions_fee = null
+        })
+
+
+
+        builder.addCase(patchTransactionsFeeAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(patchTransactionsFeeAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.transactions_fee = action.payload
+
+        })
+
+        builder.addCase(patchTransactionsFeeAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+
+
+
+
+        builder.addCase(getReferralFeeAction.pending, (state, action) => {
+            state.referral_fee = null
+        })
+        builder.addCase(getReferralFeeAction.fulfilled, (state, action) => {
+            state.referral_fee = action.payload
+
+        })
+        builder.addCase(getReferralFeeAction.rejected, (state, action) => {
+            state.referral_fee = null
+        })
+
+
+
+        builder.addCase(patchReferralFeeAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(patchReferralFeeAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.referral_fee = action.payload
+
+        })
+        builder.addCase(patchReferralFeeAction.rejected, (state, action) => {
             state.adminRequestLoading = false
         })
     }
