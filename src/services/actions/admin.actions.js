@@ -60,11 +60,13 @@ export const getTransactionsFeeAction = createAsyncThunk(
 
 export const patchTransactionsFeeAction = createAsyncThunk(
     'admin/patchTransactionsFeeAction',
-    async ({ formData, toast }, { rejectWithValue }) => {
+    async ({ formData, toast, updateModals }, { rejectWithValue }) => {
         try {
-          
+
             const { data } = await patchTransacationsFeeRoute(formData)
-            toast.sucess('Transaction fee updated successfully')
+            toast.success('Transaction fee updated successfully')
+            updateModals({ showAdminUpdateTransactionFeeModal: false })
+
             return data
         } catch (error) {
             toast.warning('Transaction fee failed to update')

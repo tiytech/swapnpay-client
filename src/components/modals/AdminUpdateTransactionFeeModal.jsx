@@ -27,7 +27,7 @@ const AdminUpdateTransactionFeeModal = () => {
 
         if (!formData.amount) return toast.error('Amount is required')
         console.log(formData);
-        dispatch(patchTransactionsFeeAction({ formData, toast }))
+        dispatch(patchTransactionsFeeAction({ formData, toast, updateModals }))
     }
 
     return (
