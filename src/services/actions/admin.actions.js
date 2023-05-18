@@ -62,9 +62,8 @@ export const patchTransactionsFeeAction = createAsyncThunk(
     'admin/patchTransactionsFeeAction',
     async ({ formData, toast }, { rejectWithValue }) => {
         try {
-            const token = `Bearer ${USERFROMLS.access}`
-            console.log(token);
-            const { data } = await patchTransacationsFeeRoute(formData, token)
+          
+            const { data } = await patchTransacationsFeeRoute(formData)
             toast.sucess('Transaction fee updated successfully')
             return data
         } catch (error) {

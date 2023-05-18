@@ -11,7 +11,7 @@ export const patchReferralFeeRoute = (formData) => API.patch('/administrator/ref
 
 export const getTranasactionsFeeRoute = () => API.get('/administrator/transactions-fee')
 
-export const patchTransacationsFeeRoute = (formData, token) => API.patch('/administrator/transaction-fee', formData, { headers: { Authorization: token } })
+export const patchTransacationsFeeRoute = (formData, token) => API.patch('/administrator/transaction-fee', formData)
 
 
 
