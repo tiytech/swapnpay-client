@@ -54,21 +54,21 @@ const AdminSchoolPaymentsTable = ({ data }) => {
                                 </tr>
                             </thead>
                             <tbody className='border-b border-l border-r bg-white w-full'>
-                                {data?.map((department, index) => (
+                                {data?.map((item, index) => (
                                     <tr key={index}>
                                         <td className="text-[10px] text-gray-900 font-semibold pl-4 py-4 whitespace-nowrap">
                                             {index + 1}
                                         </td>
                                         <td className="text-sm text-gray-900 font-light py-4 whitespace-nowrap">
-                                            Dorathy Eze
+                                            {item?.student_name}
                                         </td>
                                         <td className="text-sm text-gray-900 font-light py-4 whitespace-nowrap">
-                                            20000
+                                           {item?.amount} ({item?.currency})
                                         </td>
                                         <td className="text-sm text-gray-900 font-light py-4 whitespace-nowrap">
-                                            Failed
+                                           {item?.status}
                                         </td>
-                                        {/* <td className="flex items-center space-x-5 text-sm py-4 text-gray-900 font-light whitespace-nowrap">
+                                        <td className="flex items-center space-x-5 text-sm py-4 text-gray-900 font-light whitespace-nowrap">
                                             <GoPencil
                                                 size={20}
                                                 className='text-sky-600 cursor-pointer'
@@ -85,7 +85,7 @@ const AdminSchoolPaymentsTable = ({ data }) => {
                                                 }}
                                                 className='text-red-400 cursor-pointer'
                                             />
-                                        </td> */}
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

@@ -11,7 +11,9 @@ export const patchReferralFeeRoute = (formData) => API.patch('/administrator/ref
 
 export const getTranasactionsFeeRoute = () => API.get('/administrator/transactions-fee')
 
-export const patchTransacationsFeeRoute = (formData, token) => API.patch('/administrator/transaction-fee', formData)
+export const patchTransacationsFeeRoute = (formData) => API.patch('/administrator/transaction-fee', formData)
+
+export const getSchoolFeesPaymentRoute = () => API.get('/administrator/pay-school-fees')
 
 
 
