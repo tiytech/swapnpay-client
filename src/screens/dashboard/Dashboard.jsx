@@ -15,7 +15,7 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		if (user?.credentials?.is_administrator) {
-			updateDashboardConfig({ activeLink: 'Admin Settings' })
+			updateDashboardConfig({ activeLink: 'Admin Home' })
 		}
 	}, [user])
 

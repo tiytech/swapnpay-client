@@ -26,6 +26,7 @@ import BalanceCard from "./cards/BalanceCard"
 import HomeWalletCard from "./cards/HomeWalletCard"
 import TransactionCard from "./cards/TransactionCard"
 import SettingsItemCard from "./cards/SettingsItemCard"
+import AdminOverviewCard from "./cards/AdminOverviewCard"
 import AdminSettingsCard from "./cards/AdminSettingsCard"
 import ProfileAccountCard from "./cards/ProfileAccountCard"
 import TransactionTypeCard from "./cards/TransactionTypeCard"
@@ -83,6 +84,7 @@ export {
     HomeWalletCard,
     TransactionCard,
     SettingsItemCard,
+    AdminOverviewCard,
     AdminSettingsCard,
     ProfileAccountCard,
     DownloadAppSection,
