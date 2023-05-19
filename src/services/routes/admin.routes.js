@@ -13,5 +13,9 @@ export const getTranasactionsFeeRoute = () => API.get('/administrator/transactio
 
 export const patchTransacationsFeeRoute = (formData) => API.patch('/administrator/transactions-fee', formData)
 
+export const getSchoolFeesPaymentRoute = () => API.get('/administrator/pay-school-fees')
+
+
+
 
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { getReferralFeeRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, patchReferralFeeRoute, patchTransacationsFeeRoute } from "../routes/admin.routes"
+import { getReferralFeeRoute, getSchoolFeesPaymentRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, patchReferralFeeRoute, patchTransacationsFeeRoute } from "../routes/admin.routes"
 
 
 let USERFROMLS = localStorage.getItem('swapnpay-user') ? JSON.parse(localStorage.getItem('swapnpay-user')) : null
@@ -90,14 +90,42 @@ export const getReferralFeeAction = createAsyncThunk(
 
 export const patchReferralFeeAction = createAsyncThunk(
     'admin/patchReferralFeeAction',
-    async ({ formData, toast }, { rejectWithValue }) => {
+    async ({ formData, toast, updateModals }, { rejectWithValue }) => {
         try {
             const { data } = await patchReferralFeeRoute(formData)
-            toast.sucess('Referral fee updated successfully')
+            toast.success('Referral fee updated successfully')
+            updateModals({ showAdminUpdateReferralFeeModal: false })
             return data
         } catch (error) {
             toast.warning('Referral fee failed to update')
             console.log(error)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const getSchoolFeesPaymentAction = createAsyncThunk(
+    'admin/getSchoolFeesPaymentAction',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await getSchoolFeesPaymentRoute()
+            return data['data']
+        } catch (error) {
+            console.log(error)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const schoolFeesDetails = createAsyncThunk(
+    'admin/schoolFeesDetails',
+    async ({ data }, { rejectWithValue }) => {
+        try {
+
+            return data
+        } catch (error) {
+
             return rejectWithValue(null)
         }
     }

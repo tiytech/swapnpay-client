@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { adminResetStateProperty, getReferralFeeAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchReferralFeeAction, patchTransactionsFeeAction } from '../actions/admin.actions'
+import { adminResetStateProperty, getReferralFeeAction, getSchoolFeesPaymentAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchReferralFeeAction, patchTransactionsFeeAction, schoolFeesDetails } from '../actions/admin.actions'
 
 
 const adminSlice = createSlice({
@@ -11,7 +11,9 @@ const adminSlice = createSlice({
         users_count: null,
         transactions: null,
         referral_fee: null,
-        transactions_fee: null
+        transactions_fee: null,
+        school_fees: null,
+        schoolFees_Details: null
     },
     extraReducers: (builder) => {
         builder.addCase(adminResetStateProperty.pending, (state, action) => {
@@ -102,6 +104,31 @@ const adminSlice = createSlice({
 
         })
         builder.addCase(patchReferralFeeAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+
+        builder.addCase(getSchoolFeesPaymentAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(getSchoolFeesPaymentAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.school_fees = action.payload
+
+        })
+        builder.addCase(getSchoolFeesPaymentAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+
+
+        builder.addCase(schoolFeesDetails.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(schoolFeesDetails.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.schoolFees_Details = action.payload
+
+        })
+        builder.addCase(schoolFeesDetails.rejected, (state, action) => {
             state.adminRequestLoading = false
         })
     }
