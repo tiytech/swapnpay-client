@@ -13,9 +13,11 @@ const AdminSchoolPaymentsTable = ({ data }) => {
     const [showSchoolFeesDetails, setShowSchoolFeesDetails] = useState(false)
     const { adminRequestLoading, schoolFees_Details } = useSelector(state => state.admin)
     const url = `${import.meta.env.VITE_APP_DEV_API_ROOT}`
-    // console.log(url);
-    
-    
+
+
+
+
+
 
 
     const { modals, updateModals } = useGlobalContext()
@@ -23,6 +25,7 @@ const AdminSchoolPaymentsTable = ({ data }) => {
     const handleDownloadImage = (url, image_title) => {
 
         saveAs(url, image_title);
+        console.log('callled');
     }
 
     return (
@@ -43,7 +46,7 @@ const AdminSchoolPaymentsTable = ({ data }) => {
                                         scope="col"
                                         className="text-sm font-medium text-gray-900 py-3 text-left"
                                     >
-                                        Name
+                                        Name {import.meta.env.VITE_APP_DEV_API_ROOT}
                                     </th>
                                     <th
                                         scope="col"
@@ -161,18 +164,35 @@ const AdminSchoolPaymentsTable = ({ data }) => {
                                     <p className='text-[14px] text-black' >Sponsor id type : {schoolFees_Details?.sponsor_id_type}</p>
                                     <p>Country : {schoolFees_Details?.country}</p>
                                 </div>
+                                <div className='flex justify-between px-4 py-1'>
+
+                                    <img
+                                        alt="userAvatar"
+                                        src={`${import.meta.env.VITE_APP_DEV_API_ROOT}${schoolFees_Details?.admission_letter}`}
+                                        className="w-[50px] rounded-lg border"
+                                    />
+                                    <img
+                                        alt="userAvatar"
+                                        src={`${import.meta.env.VITE_APP_DEV_API_ROOT}${schoolFees_Details?.sponsor_id}`}
+                                        className="w-[50px] rounded-lg border"
+                                    />
+                                </div>
                                 <div className='flex justify-between px-4 py-4'>
                                     <button
                                         onClick={() => {
+                                            let custom_url = `${import.meta.env.VITE_APP_DEV_API_ROOT}${schoolFees_Details?.admission_letter}`
 
-                                            handleDownloadImage()
+                                            handleDownloadImage(custom_url, 'admission_letter')
                                         }}
                                         className="mt-1 w-1/4 bg-primary rounded text-white text-[12px] py-2 px-1 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
                                     >
                                         Download admission letter
                                     </button>
                                     <button
-                                        type="submit"
+                                        onClick={() => {
+                                            let custom_url = `${import.meta.env.VITE_APP_DEV_API_ROOT}${schoolFees_Details?.sponsor_id}`
+                                            handleDownloadImage(custom_url, 'sponsor_id')
+                                        }}
                                         className="mt-1 w-1/4 bg-primary rounded text-white text-[12px] py-2 px-1 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
                                     >
                                         Download sponsor id
