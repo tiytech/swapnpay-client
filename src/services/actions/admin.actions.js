@@ -90,10 +90,11 @@ export const getReferralFeeAction = createAsyncThunk(
 
 export const patchReferralFeeAction = createAsyncThunk(
     'admin/patchReferralFeeAction',
-    async ({ formData, toast }, { rejectWithValue }) => {
+    async ({ formData, toast, updateModals }, { rejectWithValue }) => {
         try {
             const { data } = await patchReferralFeeRoute(formData)
-            toast.sucess('Referral fee updated successfully')
+            toast.success('Referral fee updated successfully')
+            updateModals({ showAdminUpdateReferralFeeModal: false })
             return data
         } catch (error) {
             toast.warning('Referral fee failed to update')
@@ -111,6 +112,20 @@ export const getSchoolFeesPaymentAction = createAsyncThunk(
             return data['data']
         } catch (error) {
             console.log(error)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const schoolFeesDetails = createAsyncThunk(
+    'admin/schoolFeesDetails',
+    async ({ data }, { rejectWithValue }) => {
+        try {
+
+            return data
+        } catch (error) {
+
             return rejectWithValue(null)
         }
     }
