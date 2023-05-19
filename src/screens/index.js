@@ -40,6 +40,7 @@ import LoadingToRedirect from "./utils/LoadingToRedirect"
 import AdminDashboard from "./dashboard/admin/AdminDashboard"
 import AdminSchoolPayments from "./dashboard/admin/AdminSchoolPayments"
 import AdminBalances from "./dashboard/admin/AdminBalances"
+import AdminVerification from "./dashboard/admin/AdminVerification"
 import AdminTransactions from "./dashboard/admin/AdminTransactions"
 import AdminSettings from "./dashboard/admin/AdminSettings"
 
@@ -88,6 +89,7 @@ export {
     AdminDashboard,
     AdminSchoolPayments,
     AdminBalances,
+    AdminVerification,
     AdminTransactions,
     AdminSettings,
 }

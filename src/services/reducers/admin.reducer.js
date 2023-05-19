@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { adminResetStateProperty, getReferralFeeAction, getSchoolFeesPaymentAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchReferralFeeAction, patchTransactionsFeeAction, schoolFeesDetails } from '../actions/admin.actions'
+import { adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, getReferralFeeAction, getSchoolFeesPaymentAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchReferralFeeAction, patchTransactionsFeeAction, schoolFeesDetails } from '../actions/admin.actions'
 
 
 const adminSlice = createSlice({
@@ -13,21 +13,10 @@ const adminSlice = createSlice({
         referral_fee: null,
         transactions_fee: null,
         school_fees: null,
-        schoolFees_Details: null
+        schoolFees_Details: null,
+        unverifiedUsers: null,
     },
     extraReducers: (builder) => {
-        builder.addCase(adminResetStateProperty.pending, (state, action) => {
-            state.adminRequestLoading = true
-        })
-        builder.addCase(adminResetStateProperty.fulfilled, (state, action) => {
-            state.adminRequestLoading = false
-            if (action.payload.key === 'CurrentData') {
-                state.currentData = action.payload.value
-            }
-        })
-        builder.addCase(adminResetStateProperty.rejected, (state, action) => {
-            state.adminRequestLoading = false
-        })
         builder.addCase(getUserCountAction.pending, (state, action) => {
             state.users_count = null
         })
@@ -129,6 +118,46 @@ const adminSlice = createSlice({
 
         })
         builder.addCase(schoolFeesDetails.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+
+
+        builder.addCase(adminFetchUnverifiedUsersAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(adminFetchUnverifiedUsersAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.unverifiedUsers = action.payload
+
+        })
+        builder.addCase(adminFetchUnverifiedUsersAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+
+        builder.addCase(adminVerifyUserAccountAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(adminVerifyUserAccountAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.unverifiedUsers = state.unverifiedUsers.filter(user => user.pkid !== action.payload)
+
+        })
+        builder.addCase(adminVerifyUserAccountAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+
+
+
+        builder.addCase(adminResetStateProperty.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(adminResetStateProperty.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            if (action.payload.key === 'CurrentData') {
+                state.currentData = action.payload.value
+            }
+        })
+        builder.addCase(adminResetStateProperty.rejected, (state, action) => {
             state.adminRequestLoading = false
         })
     }

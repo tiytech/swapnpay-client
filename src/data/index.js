@@ -382,6 +382,7 @@ export const root__modals = {
     showSignupSuccessModal: false,
     showPasswordResetSuccessModal: false,
     showAdminUpdateTransactionFeeModal: false,
+    showAdminManageUserModal: false,
     showAdminUpdateReferralFeeModal: false,
 }
 

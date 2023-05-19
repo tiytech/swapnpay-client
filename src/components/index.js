@@ -53,6 +53,7 @@ import ModalPages from "./utils/ModalPages"
 
 // TABLES
 import AdminTransactionsTable from "./tables/AdminTransactionsTable"
+import AdminVerificationTable from "./tables/AdminVerificationTable"
 import AdminSchoolPaymentsTable from "./tables/AdminSchoolPaymentsTable"
 
 export {
@@ -108,5 +109,6 @@ export {
 
     // TABLES
     AdminTransactionsTable,
+    AdminVerificationTable,
     AdminSchoolPaymentsTable,
 }

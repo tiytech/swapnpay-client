@@ -70,7 +70,7 @@ const AdminSchoolPaymentsTable = ({ data }) => {
                                         scope="col"
                                         className="text-sm font-medium text-gray-900 py-3 text-left"
                                     >
-                                        Actions
+                                        
                                     </th>
                                     {/* <th
                                         scope="col"

@@ -15,6 +15,10 @@ export const patchTransacationsFeeRoute = (formData) => API.patch('/administrato
 
 export const getSchoolFeesPaymentRoute = () => API.get('/administrator/pay-school-fees')
 
+export const fetchUnverifiedUsersRoute = () => API.get('/administrator/unverified-users/fetch-all')
+
+export const verifyUserAccountRoute = (formData) => API.patch('/administrator/verify-user', formData)
+
 
 
 

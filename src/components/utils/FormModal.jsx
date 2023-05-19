@@ -3,6 +3,7 @@ import React, { Fragment } from 'react'
 import EventSuccessModal from '../modals/EventSuccessModal'
 import AdminUpdateTransactionFeeModal from '../modals/AdminUpdateTransactionFeeModal'
 import AdminUpdateReferralFeeModal from '../modals/AdminUpdateReferralFeeModal'
+import AdminManageUserModal from '../modals/AdminManageUserModal'
 
 
 const FormModal = ({ type }) => {
@@ -29,6 +30,10 @@ const FormModal = ({ type }) => {
 
             {type === 'admin__update__referral__fee__modal' && (
                 <AdminUpdateReferralFeeModal />
+            )}
+
+            {type === 'admin__manage__user__modal' && (
+                <AdminManageUserModal />
             )}
         </Fragment>
     )
