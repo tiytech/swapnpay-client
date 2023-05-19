@@ -1,35 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { Fragment, useState } from 'react'
-import { GoPencil } from 'react-icons/go'
-import { IoMdTrash } from 'react-icons/io'
-import { useDispatch, useSelector } from 'react-redux'
-import { saveAs } from "file-saver";
+import { toast } from 'react-toastify'
+import React, { Fragment } from 'react'
+import { useDispatch } from 'react-redux'
+
 import { useGlobalContext } from '../../context'
-import { adminResetStateProperty, schoolFeesDetails } from '../../services/actions/admin.actions'
+import { adminResetStateProperty, adminVerifyUserAccountAction } from '../../services/actions/admin.actions'
 
 
 const AdminVerificationTable = ({ data }) => {
     const dispatch = useDispatch()
-    const [showSchoolFeesDetails, setShowSchoolFeesDetails] = useState(false)
-    const { adminRequestLoading, schoolFees_Details } = useSelector(state => state.admin)
-    const url = `${import.meta.env.VITE_APP_DEV_API_ROOT}`
-    // console.log(url);
-    
-    
 
-
-    const { modals, updateModals } = useGlobalContext()
-
-    const handleDownloadImage = (url, image_title) => {
-
-        saveAs(url, image_title);
-    }
+    const { updateModals } = useGlobalContext()
 
     return (
         <div className="flex justify-between items-center w-full mt-5 overflow-x-auto scrollbar-3">
             <div className="flex flex-col w-full">
                 <div className="space-y-1 w-full">
-                    {!showSchoolFeesDetails && <Fragment>
+                    <Fragment>
                         <table className="w-full cursor-default">
                             <thead className="border bg-white rounded-md">
                                 <tr>
@@ -55,53 +42,66 @@ const AdminVerificationTable = ({ data }) => {
                                         scope="col"
                                         className="text-sm font-medium text-gray-900 py-3 text-left"
                                     >
-                                        Date
+                                        Files Uploaded
                                     </th>
                                     <th
                                         scope="col"
                                         className="text-sm font-medium text-gray-900 py-3 text-left"
                                     >
-                                        Status
+                                        Occupation
                                     </th>
                                     <th
-                                        scope="col"
-                                        className="text-sm font-medium text-gray-900 py-3 text-left"
-                                    >
-                                        
-                                    </th>
-                                    {/* <th
                                         scope="col"
                                         className="text-sm font-medium text-gray-900 py-3 text-left"
                                     >
 
-                                    </th> */}
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody
-
-
                                 className='border-b border-l border-r bg-white w-full hover:cursor-pointer'>
-                                {data?.map((item, index) => (
+                                {data?.map((user, index) => (
                                     <tr key={index}>
-                                        <td className="text-[10px] text-gray-900 font-semibold pl-4 py-2 whitespace-nowrap">
+                                        {console.log(user)}
+                                        <td className="text-[12px] text-gray-900 font-semibold pl-4 py-2 whitespace-nowrap">
                                             {index + 1}
                                         </td>
-                                        <td className="text-[10px] text-gray-900 font-light py-2 whitespace-nowrap">
-                                            {item?.student_name}
+                                        <td className="text-[12px] text-gray-900 font-light py-2 whitespace-nowrap">
+                                            {user?.user_details?.lastname} {user?.user_details?.firstname}
                                         </td>
-                                        <td className="text-[10px] text-gray-900 font-light py-2 whitespace-nowrap">
-                                            {item?.amount}
+                                        <td className="text-[12px] text-gray-900 font-light py-2 whitespace-nowrap">
+                                            {user?.user_details?.email}
                                         </td>
-                                        <td className="text-[10px] text-gray-900 font-light py-2 whitespace-nowrap">
-                                            {item?.status}
+                                        <td className="text-[12px] text-gray-900 font-light py-2 whitespace-nowrap">
+                                            {user?.is_files_uploaded ? 'True' : 'False'}
                                         </td>
-                                        <td className="text-[10px] text-gray-900 font-light py-2 whitespace-nowrap">
-                                            {item?.created_at}
+                                        <td className="text-[12px] text-gray-900 font-light py-2 whitespace-nowrap">
+                                            {user?.occupation}
                                         </td>
                                         <td className="flex items-center space-x-5 text-sm py-2 text-gray-900 font-light whitespace-nowrap">
-
                                             <button
                                                 type="submit"
+                                                onClick={() => {
+                                                    dispatch(adminResetStateProperty({ key: 'CurrentData', value: user }))
+
+                                                    updateModals({ showAdminManageUserModal: true })
+                                                }}
+                                                className="mt-1 border border-primary rounded text-primary text-[12px] py-1 px-4 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
+                                            >
+                                                Manage
+                                            </button>
+                                            <button
+                                                type="submit"
+                                                onClick={() => {
+                                                    const formData = {
+                                                        status: "approved",
+                                                        profile_pkid: user.pkid,
+                                                        email: user?.user_details?.email,
+                                                    }
+
+                                                    dispatch(adminVerifyUserAccountAction({ formData, toast }))
+                                                }}
+                                                disabled={!user?.is_files_uploaded ? true : false}
                                                 className="mt-1 bg-primary rounded text-white text-[12px] py-1 px-4 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
                                             >
                                                 Verify
@@ -111,61 +111,7 @@ const AdminVerificationTable = ({ data }) => {
                                 ))}
                             </tbody>
                         </table>
-                    </Fragment>}
-                    {showSchoolFeesDetails &&
-
-                        <Fragment>
-                            <button
-                                onClick={() => {
-                                    setShowSchoolFeesDetails(false)
-                                }}
-                                className="mt-1 w-[100px] bg-slate-400 rounded text-white text-[12px] py-2 px-1 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
-                            >
-                                Back
-                            </button>
-                            <div className='w-full bg-white'>
-                                <div className='flex justify-between px-4 py-3 '>
-                                    <p className='text-[14px] text-black' >Student name : {schoolFees_Details?.student_name}</p>
-                                    <p>School : {schoolFees_Details?.name_of_school}</p>
-                                </div>
-                                <div className='flex justify-between px-4 py-3'>
-                                    <p className='text-[14px] text-black' >Amount : {schoolFees_Details?.amount}</p>
-                                    <p>Currency : {schoolFees_Details?.currency}</p>
-                                </div>
-                                <div className='flex justify-between px-4 py-3 '>
-                                    <p className='text-[14px] text-black' >Phonenumber : {schoolFees_Details?.phone_number}</p>
-                                    <p>Sponsor id number : {schoolFees_Details?.sponsor_id_number}</p>
-                                </div>
-                                <div className='flex justify-between px-4 py-3'>
-                                    <p className='text-[14px] text-black' >School Account : {schoolFees_Details?.school_account_number}</p>
-                                    <p>School Iban : {schoolFees_Details?.school_iban}</p>
-                                </div>
-                                <div className='flex justify-between px-4 py-3'>
-                                    <p className='text-[14px] text-black' >Sponsor id type : {schoolFees_Details?.sponsor_id_type}</p>
-                                    <p>Country : {schoolFees_Details?.country}</p>
-                                </div>
-                                <div className='flex justify-between px-4 py-4'>
-                                    <button
-                                        onClick={() => {
-
-                                            handleDownloadImage()
-                                        }}
-                                        className="mt-1 w-1/4 bg-primary rounded text-white text-[12px] py-2 px-1 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
-                                    >
-                                        Download admission letter
-                                    </button>
-                                    <button
-                                        type="submit"
-                                        className="mt-1 w-1/4 bg-primary rounded text-white text-[12px] py-2 px-1 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
-                                    >
-                                        Download sponsor id
-                                    </button>
-                                </div>
-                            </div>
-
-
-                        </Fragment>}
-
+                    </Fragment>
                 </div>
             </div>
         </div >

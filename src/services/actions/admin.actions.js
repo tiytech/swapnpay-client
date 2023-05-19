@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { getReferralFeeRoute, getSchoolFeesPaymentRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, patchReferralFeeRoute, patchTransacationsFeeRoute } from "../routes/admin.routes"
+import { fetchUnverifiedUsersRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, patchReferralFeeRoute, patchTransacationsFeeRoute, verifyUserAccountRoute } from "../routes/admin.routes"
 
 
 let USERFROMLS = localStorage.getItem('swapnpay-user') ? JSON.parse(localStorage.getItem('swapnpay-user')) : null
@@ -104,6 +104,7 @@ export const patchReferralFeeAction = createAsyncThunk(
     }
 )
 
+
 export const getSchoolFeesPaymentAction = createAsyncThunk(
     'admin/getSchoolFeesPaymentAction',
     async (_, { rejectWithValue }) => {
@@ -112,6 +113,42 @@ export const getSchoolFeesPaymentAction = createAsyncThunk(
             return data['data']
         } catch (error) {
             console.log(error)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const adminFetchUnverifiedUsersAction = createAsyncThunk(
+    'admin/adminFetchUnverifiedUsersAction',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await fetchUnverifiedUsersRoute()
+
+            console.log(data)
+
+            return data.data
+        } catch (error) {
+            console.log(error)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const adminVerifyUserAccountAction = createAsyncThunk(
+    'admin/adminVerifyUserAccountAction',
+    async ({ formData, toast }, { rejectWithValue }) => {
+        try {
+            const { data } = await verifyUserAccountRoute(formData)
+
+            console.log(data)
+            toast.success('Account verification successful.')
+            
+            return formData.profile_pkid
+        } catch (error) {
+            console.log(error)
+            toast.warning('An error occured while verifying account.')
             return rejectWithValue(null)
         }
     }

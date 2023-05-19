@@ -33,6 +33,12 @@ const Modals = () => {
                     type="admin__update__referral__fee__modal"
                 />
             )}
+
+            {modals.showAdminManageUserModal && (
+                <FormModal
+                    type="admin__manage__user__modal"
+                />
+            )}
         </Fragment>
     )
 }
