@@ -8,7 +8,7 @@ import { useGlobalContext } from '../../context'
 import { adminResetStateProperty, schoolFeesDetails } from '../../services/actions/admin.actions'
 
 
-const AdminSchoolPaymentsTable = ({ data }) => {
+const AdminVerificationTable = ({ data }) => {
     const dispatch = useDispatch()
     const [showSchoolFeesDetails, setShowSchoolFeesDetails] = useState(false)
     const { adminRequestLoading, schoolFees_Details } = useSelector(state => state.admin)
@@ -49,19 +49,19 @@ const AdminSchoolPaymentsTable = ({ data }) => {
                                         scope="col"
                                         className="text-sm font-medium text-gray-900 py-3 text-left"
                                     >
-                                        Amount
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="text-sm font-medium text-gray-900 py-3 text-left"
-                                    >
-                                        Status
+                                        Email
                                     </th>
                                     <th
                                         scope="col"
                                         className="text-sm font-medium text-gray-900 py-3 text-left"
                                     >
                                         Date
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        className="text-sm font-medium text-gray-900 py-3 text-left"
+                                    >
+                                        Status
                                     </th>
                                     <th
                                         scope="col"
@@ -90,7 +90,7 @@ const AdminSchoolPaymentsTable = ({ data }) => {
                                             {item?.student_name}
                                         </td>
                                         <td className="text-[10px] text-gray-900 font-light py-2 whitespace-nowrap">
-                                            {item?.amount} ({item?.currency})
+                                            {item?.amount}
                                         </td>
                                         <td className="text-[10px] text-gray-900 font-light py-2 whitespace-nowrap">
                                             {item?.status}
@@ -102,26 +102,9 @@ const AdminSchoolPaymentsTable = ({ data }) => {
 
                                             <button
                                                 type="submit"
-                                                className="mt-1 w-1/4 bg-primary rounded text-white text-[12px] py-2 px-1 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
+                                                className="mt-1 bg-primary rounded text-white text-[12px] py-1 px-4 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
                                             >
-                                                Accept
-                                            </button>
-                                            <button
-                                                type="submit"
-                                                className="mt-1 w-1/4 bg-red-400 rounded text-white text-[12px] py-2 px-1 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
-                                            >
-                                                Reject
-                                            </button>
-                                            <button
-                                                onClick={() => {
-                                                    setShowSchoolFeesDetails(true)
-                                                    dispatch(schoolFeesDetails({ data: item }))
-
-                                                }}
-                                                // type="submit"
-                                                className="mt-1 w-1/4 bg-slate-400 rounded text-white text-[12px] py-2 px-1 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
-                                            >
-                                                Details
+                                                Verify
                                             </button>
                                         </td>
                                     </tr>
@@ -189,5 +172,5 @@ const AdminSchoolPaymentsTable = ({ data }) => {
     )
 }
 
-export default AdminSchoolPaymentsTable
+export default AdminVerificationTable
 
