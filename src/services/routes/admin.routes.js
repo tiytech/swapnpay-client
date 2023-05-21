@@ -34,6 +34,7 @@ export const getFailedTransactionRoute = () => API.get('/administrator/failed-tr
 export const patchFailedTransactionRoute = (formData) => API.patch('/administrator/failed-transactions', formData)
 
 
+export const fetchDashboardInfoRoute = () => API.get('/administrator/dashboard/fetch-info')
 
 
 

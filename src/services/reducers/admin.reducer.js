@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, schoolFeesDetails, updateSchoolFeesStatusAction } from '../actions/admin.actions'
+import { adminFetchDashboardInfo,  adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, schoolFeesDetails, updateSchoolFeesStatusAction } from '../actions/admin.actions'
 
 
 const adminSlice = createSlice({
     name: 'admin',
     initialState: {
+        dashboardInfo: null,
         currentData: null,
         adminRequestStatus: null,
         adminRequestLoading: false,
@@ -21,6 +22,16 @@ const adminSlice = createSlice({
         failed_transactions: null
     },
     extraReducers: (builder) => {
+        builder.addCase(adminFetchDashboardInfo.pending, (state, action) => {
+            state.users_count = null
+        })
+        builder.addCase(adminFetchDashboardInfo.fulfilled, (state, action) => {
+            state.dashboardInfo = action.payload
+        })
+        builder.addCase(adminFetchDashboardInfo.rejected, (state, action) => {
+            state.users_count = null
+        })
+        
         builder.addCase(getUserCountAction.pending, (state, action) => {
             state.users_count = null
         })

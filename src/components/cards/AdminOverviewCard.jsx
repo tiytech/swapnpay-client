@@ -1,10 +1,15 @@
 import React, { Fragment } from 'react'
+import { useSelector } from 'react-redux'
 
 import HeaderText from '../text/HeaderText'
 
 
 const AdminOverviewCard = ({ item }) => {
+    const { dashboardInfo } = useSelector(state => state.admin)
+
     const title = item === 1 ? "Today's Transactions" : item === 2 ? 'All Transactions' : item === 3 ? 'Total Customers' : 'Total Cards'
+
+    // console.log(dashboardInfo)
 
     return (
         <div className='w-full md:w-[250px] lg:w-[250px] bg-white shadow-md flex flex-col px-4 py-4 rounded mt-5 lg:mt-0'>
@@ -18,7 +23,7 @@ const AdminOverviewCard = ({ item }) => {
                 <Fragment>
                     {item === 1 && (
                         <HeaderText
-                            text={'240'}
+                            text={dashboardInfo?.transactions_today}
                             // family={'font-poppins'}
                             classes={'text-[14px]'}
                             color={'text-black font-bold'}
@@ -36,7 +41,7 @@ const AdminOverviewCard = ({ item }) => {
                 <Fragment>
                     {item === 2 && (
                         <HeaderText
-                            text={'12,240'}
+                            text={dashboardInfo?.transactions_all}
                             // family={'font-poppins'}
                             classes={'text-[14px]'}
                             color={'text-black font-bold'}
@@ -54,7 +59,7 @@ const AdminOverviewCard = ({ item }) => {
                 <Fragment>
                     {item === 3 && (
                         <HeaderText
-                            text={'833'}
+                            text={dashboardInfo?.customers}
                             // family={'font-poppins'}
                             classes={'text-[14px]'}
                             color={'text-black font-bold'}

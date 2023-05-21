@@ -4,7 +4,7 @@ import React, { Fragment } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { useGlobalContext } from '../../context'
-import { adminResetStateProperty, adminVerifyUserAccountAction } from '../../services/actions/admin.actions'
+import { adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction } from '../../services/actions/admin.actions'
 
 
 const AdminVerificationTable = ({ data }) => {
@@ -109,14 +109,17 @@ const AdminVerificationTable = ({ data }) => {
 
                                             <button
                                                 type="submit"
-                                                onClick={() => {
+                                                onClick={async () => {
                                                     const formData = {
                                                         status: "unapproved",
                                                         profile_pkid: user.pkid,
                                                         email: user?.user_details?.email,
                                                     }
 
-                                                    dispatch(adminVerifyUserAccountAction({ formData, toast }))
+                                                    const res = await dispatch(adminVerifyUserAccountAction({ formData, toast }))
+                                                    if (res.error == undefined) {
+                                                        dispatch(adminFetchUnverifiedUsersAction())
+                                                    }
                                                 }}
                                                 disabled={!user?.is_files_uploaded ? true : false}
                                                 className="mt-1 bg-red-400 rounded text-white text-[12px] py-1 px-4 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
