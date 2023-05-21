@@ -19,6 +19,22 @@ export const fetchUnverifiedUsersRoute = () => API.get('/administrator/unverifie
 
 export const verifyUserAccountRoute = (formData) => API.patch('/administrator/verify-user', formData)
 
+export const updateSchoolFeesStatusRoute = (formData) => API.patch('/administrator/school-fees-status', formData)
+
+export const getFincraBalanceRoute = () => API.get('/administrator/fincra-balance')
+
+export const getSudoBalanceRoute = () => API.get('/administrator/sudo-balance')
+
+export const getCardDepositsRoute = () => API.get('/administrator/card-deposits')
+
+export const patchCardDepositsRoute = (formData) => API.patch('/administrator/card-deposits', formData)
+
+export const getFailedTransactionRoute = () => API.get('/administrator/failed-transactions')
+
+export const patchFailedTransactionRoute = (formData) => API.patch('/administrator/failed-transactions', formData)
+
+
+
 
 
 

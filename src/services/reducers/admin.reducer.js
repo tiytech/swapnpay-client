@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, getReferralFeeAction, getSchoolFeesPaymentAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchReferralFeeAction, patchTransactionsFeeAction, schoolFeesDetails } from '../actions/admin.actions'
+import { adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, schoolFeesDetails, updateSchoolFeesStatusAction } from '../actions/admin.actions'
 
 
 const adminSlice = createSlice({
@@ -15,6 +15,10 @@ const adminSlice = createSlice({
         school_fees: null,
         schoolFees_Details: null,
         unverifiedUsers: null,
+        fincra_balance: null,
+        sudo_balance: null,
+        card_deposits: null,
+        failed_transactions: null
     },
     extraReducers: (builder) => {
         builder.addCase(getUserCountAction.pending, (state, action) => {
@@ -145,6 +149,100 @@ const adminSlice = createSlice({
         builder.addCase(adminVerifyUserAccountAction.rejected, (state, action) => {
             state.adminRequestLoading = false
         })
+
+
+        builder.addCase(updateSchoolFeesStatusAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(updateSchoolFeesStatusAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            // state.unverifiedUsers = state.unverifiedUsers.filter(user => user.pkid !== action.payload)
+
+        })
+        builder.addCase(updateSchoolFeesStatusAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+
+        //
+        builder.addCase(getFincraBalanceAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(getFincraBalanceAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.fincra_balance = action.payload
+
+        })
+        builder.addCase(getFincraBalanceAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+
+        //
+        builder.addCase(getSudoBalanceAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(getSudoBalanceAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.sudo_balance = action.payload
+
+        })
+        builder.addCase(getSudoBalanceAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+
+        //
+        builder.addCase(getCardDepositsActions.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(getCardDepositsActions.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.card_deposits = action.payload
+
+        })
+        builder.addCase(getCardDepositsActions.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+        builder.addCase(patchCardDepositAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(patchCardDepositAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            // state.card_deposits = action.payload
+
+        })
+        builder.addCase(patchCardDepositAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+        //
+        builder.addCase(getFailedTransactionAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(getFailedTransactionAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.failed_transactions = action.payload
+
+        })
+        builder.addCase(getFailedTransactionAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+
+        //
+        builder.addCase(patchFailedTransactionAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(patchFailedTransactionAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            // state.failed_transactions = action.payload
+
+        })
+        builder.addCase(patchFailedTransactionAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
 
 
 

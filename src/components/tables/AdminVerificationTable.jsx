@@ -106,6 +106,25 @@ const AdminVerificationTable = ({ data }) => {
                                             >
                                                 Verify
                                             </button>
+
+                                            <button
+                                                type="submit"
+                                                onClick={() => {
+                                                    const formData = {
+                                                        status: "unapproved",
+                                                        profile_pkid: user.pkid,
+                                                        email: user?.user_details?.email,
+                                                    }
+
+                                                    dispatch(adminVerifyUserAccountAction({ formData, toast }))
+                                                }}
+                                                disabled={!user?.is_files_uploaded ? true : false}
+                                                className="mt-1 bg-red-400 rounded text-white text-[12px] py-1 px-4 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
+                                            >
+                                                Reject
+                                            </button>
+
+
                                         </td>
                                     </tr>
                                 ))}

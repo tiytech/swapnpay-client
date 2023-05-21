@@ -39,6 +39,18 @@ const Modals = () => {
                     type="admin__manage__user__modal"
                 />
             )}
+
+            {modals.showAdminViewAdmissionLetterModal && (
+                <FormModal
+                    type="admin__manage_admission_letter"
+                />
+            )}
+            {modals.showAdminViewSponsorIdModal && (
+                <FormModal
+                    type="admin__manage_sponsor_id"
+                />
+            )}
+
         </Fragment>
     )
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import HeaderText from '../text/HeaderText'
 
 
-const BalanceCard = ({ title }) => {
+const BalanceCard = ({ title, data }) => {
     return (
         <div className={`
             ${title === 'Fincra' && 'border-purple-300'}

@@ -384,6 +384,8 @@ export const root__modals = {
     showAdminUpdateTransactionFeeModal: false,
     showAdminManageUserModal: false,
     showAdminUpdateReferralFeeModal: false,
+    showAdminViewAdmissionLetterModal:false,
+    showAdminViewSponsorIdModal:false
 }
 
 export const modal__pages = {

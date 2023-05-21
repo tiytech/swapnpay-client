@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap');
 
 /*
-! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.2 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -37,6 +37,7 @@
 3. Use a more readable tab size.
 4. Use the user's configured `sans` font-family by default.
 5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
 */
 
 html {
@@ -53,6 +54,8 @@ html {
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
 }
 
 /*
@@ -439,6 +442,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -486,6 +492,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -607,6 +616,10 @@ video {
   grid-column: span 6 / span 6;
 }
 
+.m-2{
+  margin: 0.5rem;
+}
+
 .mx-1{
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -640,11 +653,6 @@ video {
 .my-20{
   margin-top: 5rem;
   margin-bottom: 5rem;
-}
-
-.my-4{
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .-mt-\[100px\]{
@@ -713,10 +721,6 @@ video {
 
 .mt-5{
   margin-top: 1.25rem;
-}
-
-.ml-auto{
-  margin-left: auto;
 }
 
 .flex{
@@ -811,10 +815,6 @@ video {
   height: 100vh;
 }
 
-.h-\[160px\]{
-  height: 160px;
-}
-
 .max-h-\[300px\]{
   max-height: 300px;
 }
@@ -831,12 +831,20 @@ video {
   width: 0.25rem;
 }
 
+.w-1\/4{
+  width: 25%;
+}
+
 .w-10{
   width: 2.5rem;
 }
 
 .w-2{
   width: 0.5rem;
+}
+
+.w-3\/4{
+  width: 75%;
 }
 
 .w-4{
@@ -861,6 +869,14 @@ video {
 
 .w-\[120px\]{
   width: 120px;
+}
+
+.w-\[150px\]{
+  width: 150px;
+}
+
+.w-\[180px\]{
+  width: 180px;
 }
 
 .w-\[20\%\]{
@@ -903,6 +919,10 @@ video {
   width: 400px;
 }
 
+.w-\[49\%\]{
+  width: 49%;
+}
+
 .w-\[50\%\]{
   width: 50%;
 }
@@ -913,6 +933,10 @@ video {
 
 .w-\[50px\]{
   width: 50px;
+}
+
+.w-\[600px\]{
+  width: 600px;
 }
 
 .w-\[60px\]{
@@ -927,21 +951,6 @@ video {
   width: 100%;
 }
 
-<<<<<<< HEAD
-=======
-.w-1\/4{
-  width: 25%;
-}
-
-.w-\[49\%\]{
-  width: 49%;
-}
-
-.w-\[180px\]{
-  width: 180px;
-}
-
->>>>>>> 8d5e06ff913ff2e0cd7976e1d227a06b5a05a13e
 .max-w-\[300px\]{
   max-width: 300px;
 }
@@ -988,10 +997,6 @@ video {
 
 .items-start{
   align-items: flex-start;
-}
-
-.items-end{
-  align-items: flex-end;
 }
 
 .items-center{
@@ -1265,6 +1270,16 @@ video {
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
+.bg-indigo-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(165 180 252 / var(--tw-bg-opacity));
+}
+
+.bg-indigo-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(129 140 248 / var(--tw-bg-opacity));
+}
+
 .bg-indigo-600{
   --tw-bg-opacity: 1;
   background-color: rgb(79 70 229 / var(--tw-bg-opacity));
@@ -1288,6 +1303,11 @@ video {
 .bg-red-300{
   --tw-bg-opacity: 1;
   background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
+.bg-red-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
 .bg-sky-600{
@@ -1325,16 +1345,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-red-400{
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-
-.bg-sky-800{
-  --tw-bg-opacity: 1;
-  background-color: rgb(7 89 133 / var(--tw-bg-opacity));
-}
-
 .bg-\[url\(\"\/src\/assets\/images\/home__bg__1\.svg\"\)\]{
   background-image: url("/src/assets/images/home__bg__1.svg");
 }
@@ -1364,23 +1374,23 @@ video {
 }
 
 .from-primary{
-  --tw-gradient-from: #002F46;
-  --tw-gradient-to: rgb(0 47 70 / 0);
+  --tw-gradient-from: #002F46 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 47 70 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .from-primary-light{
-  --tw-gradient-from: #0085C6;
-  --tw-gradient-to: rgb(0 133 198 / 0);
+  --tw-gradient-from: #0085C6 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 133 198 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .to-primary{
-  --tw-gradient-to: #002F46;
+  --tw-gradient-to: #002F46 var(--tw-gradient-to-position);
 }
 
 .to-primary-light{
-  --tw-gradient-to: #0085C6;
+  --tw-gradient-to: #0085C6 var(--tw-gradient-to-position);
 }
 
 .bg-cover{
@@ -1507,6 +1517,11 @@ video {
   padding-bottom: 2rem;
 }
 
+.py-\[10px\]{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .py-\[20px\]{
   padding-top: 20px;
   padding-bottom: 20px;
@@ -1529,6 +1544,10 @@ video {
 
 .pb-10{
   padding-bottom: 2.5rem;
+}
+
+.pb-6{
+  padding-bottom: 1.5rem;
 }
 
 .pl-4{
@@ -1575,18 +1594,6 @@ video {
   padding-top: 1.5rem;
 }
 
-.pb-2{
-  padding-bottom: 0.5rem;
-}
-
-.pb-4{
-  padding-bottom: 1rem;
-}
-
-.pb-6{
-  padding-bottom: 1.5rem;
-}
-
 .text-left{
   text-align: left;
 }
@@ -1617,6 +1624,10 @@ video {
 
 .text-\[12px\]{
   font-size: 12px;
+}
+
+.text-\[13px\]{
+  font-size: 13px;
 }
 
 .text-\[14px\]{
@@ -1699,6 +1710,11 @@ video {
 .text-black{
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-blue-400{
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
 }
 
 .text-gray-300{
@@ -1789,6 +1805,11 @@ video {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-yellow-400{
+  --tw-text-opacity: 1;
+  color: rgb(250 204 21 / var(--tw-text-opacity));
 }
 
 .opacity-60{
@@ -2079,6 +2100,14 @@ video {
     width: 500px;
   }
 
+  .md\:w-\[700px\]{
+    width: 700px;
+  }
+
+  .md\:w-\[800px\]{
+    width: 800px;
+  }
+
   .md\:w-auto{
     width: auto;
   }
@@ -2087,17 +2116,6 @@ video {
     width: 100%;
   }
 
-<<<<<<< HEAD
-=======
-  .md\:w-\[250px\]{
-    width: 250px;
-  }
-
-  .md\:w-\[700px\]{
-    width: 700px;
-  }
-
->>>>>>> 8d5e06ff913ff2e0cd7976e1d227a06b5a05a13e
   .md\:flex-row{
     flex-direction: row;
   }
@@ -2167,6 +2185,11 @@ video {
   .md\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .md\:px-\[10px\]{
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .md\:px-\[30px\]{
