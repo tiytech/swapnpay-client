@@ -19,6 +19,8 @@ export const fetchUnverifiedUsersRoute = () => API.get('/administrator/unverifie
 
 export const verifyUserAccountRoute = (formData) => API.patch('/administrator/verify-user', formData)
 
+export const fetchDashboardInfoRoute = () => API.get('/administrator/dashboard/fetch-info')
+
 
 
 

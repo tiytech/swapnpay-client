@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { fetchUnverifiedUsersRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, patchReferralFeeRoute, patchTransacationsFeeRoute, verifyUserAccountRoute } from "../routes/admin.routes"
+import { fetchDashboardInfoRoute, fetchUnverifiedUsersRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, patchReferralFeeRoute, patchTransacationsFeeRoute, verifyUserAccountRoute } from "../routes/admin.routes"
 
 
 let USERFROMLS = localStorage.getItem('swapnpay-user') ? JSON.parse(localStorage.getItem('swapnpay-user')) : null
@@ -24,6 +24,22 @@ export const getUserCountAction = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const { data } = await getUserCountRoutes()
+            return data['data']
+        } catch (error) {
+            console.log(error)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const adminFetchDashboardInfo = createAsyncThunk(
+    'admin/adminFetchDashboardInfo',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await fetchDashboardInfoRoute()
+
+            console.log(data)
+
             return data['data']
         } catch (error) {
             console.log(error)
