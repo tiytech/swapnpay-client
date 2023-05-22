@@ -31,7 +31,7 @@ const AdminOverviewCard = ({ item }) => {
                     )}
                     {item === 1 && (
                         <HeaderText
-                            text={'+24%'}
+                            text={''}
                             classes={'text-[12px]'}
                             color={'text-green-500'}
                         />
@@ -49,7 +49,7 @@ const AdminOverviewCard = ({ item }) => {
                     )}
                     {item === 2 && (
                         <HeaderText
-                            text={'+4%'}
+                            text={''}
                             classes={'text-[12px]'}
                             color={'text-red-500'}
                         />
@@ -67,7 +67,7 @@ const AdminOverviewCard = ({ item }) => {
                     )}
                     {item === 3 && (
                         <HeaderText
-                            text={'+13%'}
+                            text={''}
                             classes={'text-[12px]'}
                             color={'text-green-500'}
                         />
@@ -77,7 +77,7 @@ const AdminOverviewCard = ({ item }) => {
                 <Fragment>
                     {item === 4 && (
                         <HeaderText
-                            text={'520'}
+                            text={dashboardInfo?.cards}
                             // family={'font-poppins'}
                             classes={'text-[14px]'}
                             color={'text-black font-bold'}
@@ -85,7 +85,7 @@ const AdminOverviewCard = ({ item }) => {
                     )}
                     {item === 4 && (
                         <HeaderText
-                            text={'+24%'}
+                            text={''}
                             classes={'text-[12px]'}
                             color={'text-green-400'}
                         />

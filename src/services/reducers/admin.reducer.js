@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { adminFetchDashboardInfo,  adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, schoolFeesDetails, updateSchoolFeesStatusAction } from '../actions/admin.actions'
+import { adminFetchDashboardInfo, adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, flutterWaveBalanceAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, schoolFeesDetails, updateSchoolFeesStatusAction } from '../actions/admin.actions'
 
 
 const adminSlice = createSlice({
@@ -18,6 +18,7 @@ const adminSlice = createSlice({
         unverifiedUsers: null,
         fincra_balance: null,
         sudo_balance: null,
+        flutterwave_balance: null,
         card_deposits: null,
         failed_transactions: null
     },
@@ -31,7 +32,7 @@ const adminSlice = createSlice({
         builder.addCase(adminFetchDashboardInfo.rejected, (state, action) => {
             state.users_count = null
         })
-        
+
         builder.addCase(getUserCountAction.pending, (state, action) => {
             state.users_count = null
         })
@@ -198,6 +199,20 @@ const adminSlice = createSlice({
 
         })
         builder.addCase(getSudoBalanceAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+
+        //
+        builder.addCase(flutterWaveBalanceAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(flutterWaveBalanceAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.flutterwave_balance = action.payload
+
+        })
+        builder.addCase(flutterWaveBalanceAction.rejected, (state, action) => {
             state.adminRequestLoading = false
         })
         //

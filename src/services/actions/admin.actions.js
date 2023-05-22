@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { fetchDashboardInfoRoute, fetchUnverifiedUsersRoute, getCardDepositsRoute, getFailedTransactionRoute, getFincraBalanceRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getSudoBalanceRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, patchCardDepositsRoute, patchFailedTransactionRoute, patchReferralFeeRoute, patchTransacationsFeeRoute, updateSchoolFeesStatusRoute, verifyUserAccountRoute } from "../routes/admin.routes"
+import { fetchDashboardInfoRoute, fetchUnverifiedUsersRoute, flutterwaveBalanceRoute, getCardDepositsRoute, getFailedTransactionRoute, getFincraBalanceRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getSudoBalanceRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, patchCardDepositsRoute, patchFailedTransactionRoute, patchReferralFeeRoute, patchTransacationsFeeRoute, updateSchoolFeesStatusRoute, verifyUserAccountRoute } from "../routes/admin.routes"
 
 
 
@@ -223,6 +223,23 @@ export const getFincraBalanceAction = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const { data } = await getFincraBalanceRoute()
+
+
+
+            return data['data']
+        } catch (error) {
+            // console.log(error)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const flutterWaveBalanceAction = createAsyncThunk(
+    'admin/flutterWaveBalanceAction',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await flutterwaveBalanceRoute()
 
 
 

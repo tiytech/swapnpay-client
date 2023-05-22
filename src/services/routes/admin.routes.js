@@ -25,6 +25,8 @@ export const getFincraBalanceRoute = () => API.get('/administrator/fincra-balanc
 
 export const getSudoBalanceRoute = () => API.get('/administrator/sudo-balance')
 
+export const flutterwaveBalanceRoute = () => API.get('/administrator/flutterwave-balance')
+
 export const getCardDepositsRoute = () => API.get('/administrator/card-deposits')
 
 export const patchCardDepositsRoute = (formData) => API.patch('/administrator/card-deposits', formData)
