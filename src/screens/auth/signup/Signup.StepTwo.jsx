@@ -11,9 +11,11 @@ const SignupStepTwo = ({ formData, handleChange, updateConfig }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (!formData.first_name || !formData.last_name || !formData.occupation) {
-            return toast.error('All fields are required!')
-        }
+        if (!formData.first_name) return toast.error('First name required!')
+        if (!formData.last_name) return toast.error('Last name required!')
+        if (!formData.occupation) return toast.error('Occupation name required!')
+        
+
         updateConfig({ showFormTwo: false, showFormThree: true })
     }
 
@@ -43,12 +45,6 @@ const SignupStepTwo = ({ formData, handleChange, updateConfig }) => {
                     placeHolder={'Last name'}
                     classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
                 />
-                {/* <FormTextInput
-                    name={'middle_name'}
-                    handleChange={handleChange}
-                    placeHolder={'Middle name (optional)'}
-                    classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
-                /> */}
                 <FormSelectInput
                     showLabel={false}
                     items={occupations}
@@ -56,6 +52,12 @@ const SignupStepTwo = ({ formData, handleChange, updateConfig }) => {
                     label={'Occupation'}
                     handleChange={handleChange}
                     classes={'py-4 rounded-xl mb-5'}
+                />
+                <FormTextInput
+                    name={'referral_code'}
+                    handleChange={handleChange}
+                    placeHolder={'Referral code (optional)'}
+                    classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
                 />
 
 

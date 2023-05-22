@@ -5,7 +5,7 @@ import {
     userFetchDataBundles, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userGenerateSchoolPayment,
     userGenerateCableSubscription, userResetStateProperty, userTransferToSwapnPayUser, userFetchElectricityDiscos,
     userGenerateElectricitySubscription,
-    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction, generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction
+    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction, generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction, userFetchReferrals, userClaimRefferals
 } from '../actions/user.actions'
 
 
@@ -33,7 +33,8 @@ const userSlice = createSlice({
         customLoadingState: false,
         transactionsFee: null,
         generatedQuote: null,
-        userCards: null
+        userCards: null,
+        referrals: null,
 
     },
     extraReducers: (builder) => {
@@ -222,6 +223,19 @@ const userSlice = createSlice({
 
 
 
+        builder.addCase(userFetchReferrals.pending, (state, action) => {
+            state.userRequestLoading = true
+        })
+        builder.addCase(userFetchReferrals.fulfilled, (state, action) => {
+            state.userRequestLoading = false
+            state.referrals = action.payload
+        })
+        builder.addCase(userFetchReferrals.rejected, (state, action) => {
+            state.userRequestLoading = false
+        })
+
+
+
         builder.addCase(userResetStateProperty.rejected, (state, action) => {
             state.userRequestLoading = false
             state.authLoading = false
@@ -356,6 +370,20 @@ const userSlice = createSlice({
         })
         builder.addCase(getUserCardsAction.rejected, (state, action) => {
             state.userCards = null
+
+        })
+
+        builder.addCase(userClaimRefferals.pending, (state, action) => {
+            state.customLoadingState = true
+
+        })
+        builder.addCase(userClaimRefferals.fulfilled, (state, action) => {
+            state.customLoadingState = false
+         
+
+        })
+        builder.addCase(userClaimRefferals.rejected, (state, action) => {
+            state.customLoadingState = false
 
         })
 

@@ -1,4 +1,4 @@
-import { Blog1, Blog2, Blog3, FlagNGN, FlagUSA, IconAccessBank, IconBank, IconBUSD, IconCard, IconCardBlack, IconCardDark, IconCredit, IconCrypto, IconDebit, IconEcoBank, IconElectricity, IconFcmbBank, IconFirstBank, IconGTBank, IconHome, IconHomeDark, IconKeyStoneBank, IconLearning, IconMenu, IconMenuDark, IconPhone, IconProfile1, IconSchool, IconSchoolDark, IconSwap, IconSwapDark, IconSwapSuccess, IconTV, IconUbaBank, IconUSDC, IconUSDT } from "../assets"
+import { Blog1, Blog2, Blog3, FlagNGN, FlagUSA, IconAccessBank, IconBank, IconBUSD, IconCard, IconCardBlack, IconCardDark, IconCredit, IconCrypto, IconDebit, IconEcoBank, IconElectricity, IconFcmbBank, IconFirstBank, IconGTBank, IconHome, IconHomeDark, IconKeyStoneBank, IconLearning, IconMenu, IconMenuDark, IconPhone, IconProfile1, IconScan, IconScanDark, IconSchool, IconSchoolDark, IconSwap, IconSwapDark, IconSwapSuccess, IconTV, IconUbaBank, IconUSDC, IconUSDT } from "../assets"
 
 
 export const blogItems = [
@@ -323,11 +323,11 @@ export const user__menu__items = [
         icon: IconHome,
         iconDark: IconHomeDark
     },
-    {
-        title: 'Pay School Tuition',
-        icon: IconSchool,
-        iconDark: IconSchoolDark,
-    },
+    // {
+    //     title: 'Pay School Tuition',
+    //     icon: IconSchool,
+    //     iconDark: IconSchoolDark,
+    // },
     {
         title: 'Cards',
         icon: IconCard,
@@ -345,9 +345,47 @@ export const user__menu__items = [
     },
 ]
 
+export const admin__menu__items = [
+    {
+        title: 'Admin Home',
+        icon: IconHome,
+        iconDark: IconHomeDark
+    },
+    {
+        title: 'School Payments',
+        icon: IconSchool,
+        iconDark: IconSchoolDark,
+    },
+    {
+        title: 'Balances',
+        icon: IconCard,
+        iconDark: IconCardDark,
+    },
+    {
+        title: 'Transactions',
+        icon: IconSwap,
+        iconDark: IconSwapDark,
+    },
+    {
+        title: 'Verification',
+        icon: IconScan,
+        iconDark: IconScanDark,
+    },
+    {
+        title: 'Admin Settings',
+        icon: IconMenu,
+        iconDark: IconMenuDark,
+    },
+]
+
 export const root__modals = {
     showSignupSuccessModal: false,
     showPasswordResetSuccessModal: false,
+    showAdminUpdateTransactionFeeModal: false,
+    showAdminManageUserModal: false,
+    showAdminUpdateReferralFeeModal: false,
+    showAdminViewAdmissionLetterModal:false,
+    showAdminViewSponsorIdModal:false
 }
 
 export const modal__pages = {

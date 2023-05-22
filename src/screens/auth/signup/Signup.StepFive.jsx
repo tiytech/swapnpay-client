@@ -15,18 +15,20 @@ const SignupStepFive = ({ formData, updateFormData, handleChange, updateConfig }
     useEffect(() => {
         if (generatedUsername) {
             updateFormData({ username: generatedUsername })
+
         }
     }, [generatedUsername])
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log(formData);
 
         if (!formData.username) {
             return toast.error('All fields are required!')
         }
         console.log(formData)
 
-        // updateConfig({ showFormFive: false, showFormSix: true })
+        updateConfig({ showFormFive: false, showFormSix: true })
         dispatch(authUserSignup({ formData, toast, updateConfig }))
     }
 

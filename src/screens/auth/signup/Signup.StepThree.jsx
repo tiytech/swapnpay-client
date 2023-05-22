@@ -8,6 +8,7 @@ import { FormPasswordInput, FormPhoneInput, FormTextInput, HeaderText, IconButto
 const SignupStepThree = ({ handleChange, formData, updateConfig }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
+       
 
         if (!formData.email || !formData.phone_number || !formData.password) {
             return toast.error('All fields are required!')

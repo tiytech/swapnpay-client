@@ -37,6 +37,11 @@ export const cableAndElectricitySubscriptionRoute = (formData) => API.post(`/uti
 export const electricityDiscosRoute = () => API.get(`/utilities/electricity-plans/aedc`)
 
 
+export const fetchReferralsRoute = () => API.get(`/user/referral`)
+
+export const userClaimReferralRoute = (formData) => API.post(`/user/referral`, formData)
+
+
 
 
 

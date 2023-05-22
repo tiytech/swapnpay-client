@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { createVirtualCardRoute, fetchTransactionsRoute, generateQuoteRoute, getConverstionRateRoute, getNairaWalletDetails, getTransactionFeeRoute, getUserCardsRoute, iDverificationRoute, receiveWithCard, resetPasswordOtpRoute, resetPinOtpRoute, resetPinOtpVerification, resetTransactionPin, swapCurrencyRoute, verifyPasswordOtpAndResetRoute } from '../routes/user.routes'
+import { createVirtualCardRoute, fetchReferralsRoute, fetchTransactionsRoute, generateQuoteRoute, getConverstionRateRoute, getNairaWalletDetails, getTransactionFeeRoute, getUserCardsRoute, iDverificationRoute, receiveWithCard, resetPasswordOtpRoute, resetPinOtpRoute, resetPinOtpVerification, resetTransactionPin, swapCurrencyRoute, userClaimReferralRoute, verifyPasswordOtpAndResetRoute } from '../routes/user.routes'
 import { airtimeDataPurchaseRoute, bankTransferRoute, cableAndElectricitySubscriptionRoute, electricityDiscosRoute, fetchBanksListRoute, fetchCablePlansRoute, fetchDataBundlesRoute, fetchDollarWalletBalanceRoute, fetchNairaWalletBalanceRoute, schoolPaymentRoute, transferToSwapnPayUserRoute } from "../routes/user.routes"
 
 
@@ -256,6 +256,41 @@ export const userGenerateElectricitySubscription = createAsyncThunk(
         } catch (error) {
             console.log(error)
             toast.warning('An error occured during electricity subscription')
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+
+export const userFetchReferrals = createAsyncThunk(
+    'user/userFetchReferrals',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await fetchReferralsRoute()
+
+            console.log(data)
+
+            return data
+        } catch (error) {
+            console.log(error)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const userClaimRefferals = createAsyncThunk(
+    'user/userClaimRefferals',
+    async ({ formData, toast }, { rejectWithValue }) => {
+        try {
+            const { data } = await userClaimReferralRoute(formData)
+
+            toast.success('Reward claimed successfully')
+            window.location = '/dashboard'
+
+            return data
+        } catch (error) {
+            console.log(error)
             return rejectWithValue(null)
         }
     }

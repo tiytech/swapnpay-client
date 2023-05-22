@@ -10,6 +10,7 @@ const SignupStepFour = ({ formData, handleChange, updateConfig }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+     
 
         if (!formData.date_of_birth || !formData.house_address || !formData.postalCode) {
             return toast.error('All fields are required!')

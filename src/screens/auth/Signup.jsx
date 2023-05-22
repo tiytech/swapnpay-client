@@ -23,7 +23,7 @@ const Signup = () => {
     const [formData, updateFormData] = useReducer((prev, next) => {
         return { ...prev, ...next }
     }, {
-        otp_1: '', otp_2: '', otp_3: '', otp_4: '', confirmPassword: '',
+        otp_1: '', otp_2: '', otp_3: '', otp_4: '', confirmPassword: '', referral_code:'',
         phoneCountryCode: 'NG', country: '', state: '', city: '', residence: '',
         date_of_birth: '', house_address: '', postalCode: '', password:'', bvn: '',
         first_name: '', last_name: '', occupation: '', email: '', phone_number: '',
