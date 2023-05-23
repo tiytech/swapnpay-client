@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect } from 'react'
+import React, { useReducer, useState, useEffect, Fragment } from 'react'
 import { IconLogoWhite } from '../../assets'
 import { useSelector, useDispatch } from 'react-redux'
 import IconImage from '../../components/images/IconImage'
@@ -19,6 +19,7 @@ const Cards = () => {
 	const navigate = useNavigate()
 	const { transactionsFee, userCards, nairaWallet, dollarWallet, conversionRate, customLoadingState } = useSelector(state => state.user)
 	const { user, userRequestStatus } = useSelector(state => state.auth)
+
 	const handleChange = (e) => {
 
 		setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -74,19 +75,19 @@ const Cards = () => {
 							<p className='text-[12px] text-white'>John Doe</p>
 						</div>
 					</div> */}
+					{userCards?.data?.data.length < 3 && user?.credentials?.is_user_verified &&
+						<IconButton
+							type={'submit'}
+							width={'w-full'}
+							iconType={'icon-right'}
+							textColor={'text-primary'}
+							title={'Create new virtual card'}
+							handleClick={() => {
 
-					<IconButton
-						type={'submit'}
-						width={'w-full'}
-						iconType={'icon-right'}
-						textColor={'text-primary'}
-						title={'Create new virtual card'}
-						handleClick={() => {
-
-							updateConfig({ showCreateCard: !config.showCreateCard })
-						}}
-						classes={'py-4 text-[14px] rounded-xl bg-white border border-primary'}
-					/>
+								updateConfig({ showCreateCard: !config.showCreateCard })
+							}}
+							classes={'py-4 text-[14px] rounded-xl bg-white border border-primary'}
+						/>}
 				</div>
 			</div>
 
@@ -144,6 +145,9 @@ const Cards = () => {
 
 						<TransactionConfirmationText type='debit' />
 
+
+
+
 						{customLoadingState == true ? (
 
 							<LoadingButtonOne
@@ -176,6 +180,10 @@ const Cards = () => {
 								classes={'py-4 mt-10 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
 							/>
 						)}
+
+
+
+
 
 					</form>
 				</div>

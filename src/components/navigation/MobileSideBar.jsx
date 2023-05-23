@@ -1,16 +1,19 @@
 import React, { Fragment } from 'react'
-import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import IconButton from '../buttons/IconButton'
 import { useGlobalContext } from '../../context'
 import { IconLogoWhite, IconMenuDark } from '../../assets'
 import { admin__menu__items, user__menu__items } from '../../data'
+import { authUserLogout } from '../../services/actions/auth.actions'
 
 
 const MobileSideBar = () => {
     const navigate = useNavigate()
     const { dashboardConfig, updateDashboardConfig } = useGlobalContext()
+    const dispatch = useDispatch()
     const { user } = useSelector(state => state.auth)
 
     return (
@@ -92,7 +95,10 @@ const MobileSideBar = () => {
                             title={'Logout'}
                             width={'w-full'}
                             handleClick={() => {
-                                navigate('/login', { replace: true })
+                                const formData = { refresh: user?.refresh }
+
+                                dispatch(authUserLogout({ formData, toast, navigate }))
+                                // navigate('/login', { replace: true })
                             }}
                             iconType={'icon-right'}
                             textColor={'text-white'}
