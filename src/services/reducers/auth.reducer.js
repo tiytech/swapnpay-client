@@ -53,7 +53,7 @@ const authSlice = createSlice({
             state.authLoading = false
             state.authRequestStatus = 'FAILED'
         })
-        
+
         builder.addCase(authActivateAccount.pending, (state, action) => {
             state.authLoading = true
             state.authRequestStatus = 'PENDING'
@@ -67,7 +67,7 @@ const authSlice = createSlice({
             state.authLoading = false
             state.authRequestStatus = 'FAILED'
         })
-        
+
 
 
         builder.addCase(authUserLogin.pending, (state, action) => {

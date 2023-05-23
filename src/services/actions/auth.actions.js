@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { authActivateAccountRoute, authEmailVerificationRoute, authGenerateEmailVerificationOTPRoute, authGenerateUsernameRoute, authUserLoginRoute, authUserSignupRoute } from "../routes/auth.routes"
+import { authActivateAccountRoute, authEmailVerificationRoute, authGenerateEmailVerificationOTPRoute, authGenerateUsernameRoute, authUserLogOutRoute, authUserLoginRoute, authUserSignupRoute } from "../routes/auth.routes"
 
 
 export const authGenerateUsername = createAsyncThunk(
@@ -96,7 +96,6 @@ export const authUserLogin = createAsyncThunk(
                 credentials: data.data
             }
 
-            console.log(data)
             toast.success('Login successful.')
 
             localStorage.setItem('swapnpay-user', JSON.stringify(payload))
@@ -116,8 +115,9 @@ export const authUserLogin = createAsyncThunk(
 
 export const authUserLogout = createAsyncThunk(
     'auth/authUserLogout',
-    async ({ toast, navigate }, { rejectWithValue }) => {
+    async ({ formData, toast, navigate }, { rejectWithValue }) => {
         try {
+            const { data } = await authUserLogOutRoute(formData)
             toast.success('Logout successful.')
 
             localStorage.removeItem('swapnpay-user')

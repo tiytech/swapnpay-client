@@ -17,6 +17,7 @@ const SideBar = () => {
     const { dashboardConfig, updateDashboardConfig } = useGlobalContext()
     const { user } = useSelector(state => state.auth)
 
+
     return (
         <div className='w-0 mn:min-w-72 mn:w-72 h-screen bg-primary duration-500 mn:p-5 mn:pt-4 sticky top-0 left-0'>
             {/* <div className='min-w-72 w-72 h-screen bg-gradient-to-r from-primary to-primary-light duration-500 p-5 pt-4 sticky top-0 left-0'> */}
@@ -74,7 +75,9 @@ const SideBar = () => {
                     title={'Logout'}
                     width={'w-full'}
                     handleClick={() => {
-                        dispatch(authUserLogout({ toast, navigate }))
+                        const formData = { refresh: user?.refresh }
+                       
+                        dispatch(authUserLogout({formData, toast, navigate }))
                     }}
                     iconType={'icon-right'}
                     textColor={'text-white'}
