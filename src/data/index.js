@@ -299,10 +299,10 @@ export const appVerificationTypes = [
         'title': 'NIN',
         'status': 'VERIFIED'
     },
-    {
-        'title': 'BVN',
-        'status': 'UNVERIFIED'
-    },
+    // {
+    //     'title': 'BVN',
+    //     'status': 'UNVERIFIED'
+    // },
     {
         'title': 'Voters Card',
         'status': 'UNVERIFIED'

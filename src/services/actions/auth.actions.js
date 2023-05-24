@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { authActivateAccountRoute, authEmailVerificationRoute, authGenerateEmailVerificationOTPRoute, authGenerateUsernameRoute, authUserLogOutRoute, authUserLoginRoute, authUserSignupRoute } from "../routes/auth.routes"
+import { authActivateAccountRoute, authEmailVerificationRoute, authGenerateEmailVerificationOTPRoute, authGenerateUsernameRoute, authUserLogOutRoute, authUserLoginRoute, authUserSignupRoute, authForgotPasswordRoute, authResetPasswordRoute } from "../routes/auth.routes"
 
 
 export const authGenerateUsername = createAsyncThunk(
@@ -113,11 +113,53 @@ export const authUserLogin = createAsyncThunk(
 )
 
 
+export const authForgotPassword = createAsyncThunk(
+    'auth/authForgotPassword',
+    async ({ formData, toast, navigate }, { rejectWithValue }) => {
+        try {
+            const { data } = await authForgotPasswordRoute(formData)
+
+            toast.success('OTP generated successfully.')
+
+            navigate('/reset-password', { replace: true })
+
+            return formData
+        } catch (error) {
+            console.log(error.response)
+            toast.warning('Invalid credentials')
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const authResetPassword = createAsyncThunk(
+    'auth/authResetPassword',
+    async ({ formData, toast, navigate }, { rejectWithValue }) => {
+        try {
+            const { data } = await authResetPasswordRoute(formData)
+
+            toast.success('Password reset successful.')
+
+            navigate('/login', { replace: true })
+
+            return null
+        } catch (error) {
+            console.log(error.response)
+            toast.warning('Invalid credentials')
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
 export const authUserLogout = createAsyncThunk(
     'auth/authUserLogout',
     async ({ formData, toast, navigate }, { rejectWithValue }) => {
         try {
-            const { data } = await authUserLogOutRoute(formData)
+
+            await authUserLogOutRoute(formData)
+
             toast.success('Logout successful.')
 
             localStorage.removeItem('swapnpay-user')
