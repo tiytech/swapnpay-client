@@ -8,6 +8,7 @@ const USERFROMLS = localStorage.getItem('swapnpay-user') ? JSON.parse(localStora
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
+        accountActivation: null,
         user: USERFROMLS ? USERFROMLS : null,
         userSignup: null,
         generatedUsername: null,
@@ -78,7 +79,11 @@ const authSlice = createSlice({
         builder.addCase(authUserLogin.fulfilled, (state, action) => {
             state.authLoading = false
             state.authRequestStatus = ''
-            state.user = action.payload
+            if (action.payload.success) {
+                state.user = action.payload
+            } else {
+                state.accountActivation = action.payload
+            }
         })
         builder.addCase(authUserLogin.rejected, (state, action) => {
             state.authLoading = false

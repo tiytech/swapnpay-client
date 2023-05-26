@@ -91,19 +91,28 @@ export const authUserLogin = createAsyncThunk(
             const { data } = await authUserLoginRoute(formData)
 
             const payload = {
+                success: true,
                 access: data.access,
                 refresh: data.refresh,
                 credentials: data.data
             }
 
-            toast.success('Login successful.')
+            console.log(data)
+            if (data.is_signup_completed) {
+                toast.success('Login successful.')
 
-            localStorage.setItem('swapnpay-user', JSON.stringify(payload))
+                localStorage.setItem('swapnpay-user', JSON.stringify(payload))
 
-            navigate('/dashboard', { replace: true })
-            delete payload.data
+                navigate('/dashboard', { replace: true })
+                delete payload.data
 
-            return payload
+                return payload
+            }
+
+            toast.success('Error, please activate your account!')
+            navigate('/signup', { replace: true })
+
+            return { ...payload, success: false }
         } catch (error) {
             console.log(error.response)
             toast.warning('Invalid credentialss')
