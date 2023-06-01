@@ -64,7 +64,7 @@ const SideBar = () => {
                             <span
                                 className={`uppercase font-medium origin-left duration-200 text-[12px] ${dashboardConfig.activeLink === menu.title ? 'text-primary font-medium' : 'text-white'}`}
                             >
-                                {menu.title === 'Admin Home' ? 'Home' : menu.title === 'Admin Settings' ? 'Settings' : menu.title}
+                                {menu.title === 'Admin Home' ? 'Home' : menu.title === 'Admin Settings' ? 'Settings' : menu.title === 'Admin Manage Users' ? 'Manage Users' : menu.title}
                             </span>
                         </li>
                     ))}

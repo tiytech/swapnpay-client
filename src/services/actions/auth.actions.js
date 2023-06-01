@@ -97,8 +97,7 @@ export const authUserLogin = createAsyncThunk(
                 credentials: data.data
             }
 
-            console.log(data)
-            if (data.is_signup_completed) {
+            if (data.data.is_signup_completed) {
                 toast.success('Login successful.')
 
                 localStorage.setItem('swapnpay-user', JSON.stringify(payload))
@@ -108,9 +107,12 @@ export const authUserLogin = createAsyncThunk(
 
                 return payload
             }
+            else {
 
-            toast.success('Error, please activate your account!')
-            navigate('/signup', { replace: true })
+                toast.success('Error, please activate your account!')
+                navigate('/signup', { replace: true })
+            }
+
 
             return { ...payload, success: false }
         } catch (error) {

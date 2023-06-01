@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useGlobalContext } from '../../context'
 import {
 	Home, Cards, Settings, Swap,
-	AdminDashboard, AdminSchoolPayments, AdminBalances, AdminTransactions, AdminVerification, AdminSettings
+	AdminDashboard, AdminSchoolPayments, AdminBalances, AdminTransactions, AdminVerification, AdminSettings, AdminManageUsers
 } from '../'
 import { MobileSideBar, ModalPages, Modals, SideBar, TopBar } from '../../components'
 import { useSelector } from 'react-redux'
@@ -49,6 +49,9 @@ const Dashboard = () => {
 				{/* ADMIN DASHBOARD */}
 				{dashboardConfig.activeLink === 'Admin Home' && (
 					<AdminDashboard />
+				)}
+				{dashboardConfig.activeLink === 'Admin Manage Users' && (
+					<AdminManageUsers />
 				)}
 				{dashboardConfig.activeLink === 'School Payments' && (
 					<AdminSchoolPayments />

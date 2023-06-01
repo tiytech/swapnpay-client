@@ -352,6 +352,11 @@ export const admin__menu__items = [
         iconDark: IconHomeDark
     },
     {
+        title: 'Admin Manage Users',
+        icon: IconHome,
+        iconDark: IconHomeDark
+    },
+    {
         title: 'School Payments',
         icon: IconSchool,
         iconDark: IconSchoolDark,
@@ -384,8 +389,8 @@ export const root__modals = {
     showAdminUpdateTransactionFeeModal: false,
     showAdminManageUserModal: false,
     showAdminUpdateReferralFeeModal: false,
-    showAdminViewAdmissionLetterModal:false,
-    showAdminViewSponsorIdModal:false
+    showAdminViewAdmissionLetterModal: false,
+    showAdminViewSponsorIdModal: false
 }
 
 export const modal__pages = {
