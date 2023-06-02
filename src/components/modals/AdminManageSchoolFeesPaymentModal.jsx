@@ -5,11 +5,11 @@ import HeaderOne from '../text/HeaderOne'
 import { useDispatch, useSelector } from 'react-redux'
 
 
-const AdminManageSchoolFeesPayment = () => {
+const AdminManageSchoolFeesPaymentModal = () => {
 
     const dispatch = useDispatch()
 
-    const {modals, updateModals } = useGlobalContext()
+    const { modals, updateModals } = useGlobalContext()
     const { adminRequestLoading, schoolFees_Details } = useSelector(state => state.admin)
     return (
         <div className="fixed grid h-screen z-20 bg-[#11111190] place-items-center w-full backdrop-blur-sm">
@@ -67,4 +67,4 @@ const AdminManageSchoolFeesPayment = () => {
     )
 }
 
-export default AdminManageSchoolFeesPayment
+export default AdminManageSchoolFeesPaymentModal

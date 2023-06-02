@@ -951,6 +951,14 @@ video {
   width: 100%;
 }
 
+.w-\[\]{
+  width: ;
+}
+
+.w-2\/4{
+  width: 50%;
+}
+
 .max-w-\[300px\]{
   max-width: 300px;
 }
@@ -1365,6 +1373,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-green-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+}
+
 .bg-\[url\(\"\/src\/assets\/images\/home__bg__1\.svg\"\)\]{
   background-image: url("/src/assets/images/home__bg__1.svg");
 }
@@ -1689,6 +1702,11 @@ video {
 .text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold{

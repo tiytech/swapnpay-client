@@ -44,6 +44,10 @@ export const patchUsersRoute = (formData) => API.patch('/administrator/admin-man
 
 export const getUserTransactionsRoute = (formData) => API.post('/administrator/admin-manage-users', formData)
 
+export const fetchInternationalTransfersRoute = () => API.get('/transactions/international-transfer')
+
+export const updateInternationalTransfersRoute = (formData) => API.patch('/transactions/international-transfer', formData)
+
 
 
 

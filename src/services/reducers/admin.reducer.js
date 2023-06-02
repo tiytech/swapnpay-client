@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { adminFetchDashboardInfo, adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, fetchUsersActions, flutterWaveBalanceAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, getUsersTransactionsAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, patchUserAction, schoolFeesDetails, updateSchoolFeesStatusAction } from '../actions/admin.actions'
+import { adminFetchDashboardInfo, adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, fetchInternationalTransactionAction, fetchUsersActions, flutterWaveBalanceAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, getUsersTransactionsAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, patchUserAction, schoolFeesDetails, updateInternatonalTransferAction, updateSchoolFeesStatusAction } from '../actions/admin.actions'
 
 
 const adminSlice = createSlice({
@@ -23,6 +23,7 @@ const adminSlice = createSlice({
         failed_transactions: null,
         manage_users: null,
         user_transactions: null,
+        international_transactions: null
     },
     extraReducers: (builder) => {
         builder.addCase(adminFetchDashboardInfo.pending, (state, action) => {
@@ -298,8 +299,8 @@ const adminSlice = createSlice({
         })
         //
 
-         //
-         builder.addCase(getUsersTransactionsAction.pending, (state, action) => {
+        //
+        builder.addCase(getUsersTransactionsAction.pending, (state, action) => {
             state.adminRequestLoading = true
         })
         builder.addCase(getUsersTransactionsAction.fulfilled, (state, action) => {
@@ -308,6 +309,34 @@ const adminSlice = createSlice({
 
         })
         builder.addCase(getUsersTransactionsAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+
+        //
+        builder.addCase(updateInternatonalTransferAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(updateInternatonalTransferAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+
+
+        })
+        builder.addCase(updateInternatonalTransferAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+
+        //
+        builder.addCase(fetchInternationalTransactionAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(fetchInternationalTransactionAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.international_transactions = action.payload
+
+        })
+        builder.addCase(fetchInternationalTransactionAction.rejected, (state, action) => {
             state.adminRequestLoading = false
         })
         //

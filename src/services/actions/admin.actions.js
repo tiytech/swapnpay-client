@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { fetchDashboardInfoRoute, fetchUnverifiedUsersRoute, fetchUsersRoute, flutterwaveBalanceRoute, getCardDepositsRoute, getFailedTransactionRoute, getFincraBalanceRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getSudoBalanceRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, getUserTransactionsRoute, patchCardDepositsRoute, patchFailedTransactionRoute, patchReferralFeeRoute, patchTransacationsFeeRoute, patchUsersRoute, updateSchoolFeesStatusRoute, verifyUserAccountRoute } from "../routes/admin.routes"
+import { fetchDashboardInfoRoute, fetchInternationalTransfersRoute, fetchUnverifiedUsersRoute, fetchUsersRoute, flutterwaveBalanceRoute, getCardDepositsRoute, getFailedTransactionRoute, getFincraBalanceRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getSudoBalanceRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, getUserTransactionsRoute, patchCardDepositsRoute, patchFailedTransactionRoute, patchReferralFeeRoute, patchTransacationsFeeRoute, patchUsersRoute, updateInternationalTransfersRoute, updateSchoolFeesStatusRoute, verifyUserAccountRoute } from "../routes/admin.routes"
 
 
 
@@ -386,6 +386,42 @@ export const getUsersTransactionsAction = createAsyncThunk(
 
         try {
             const { data } = await getUserTransactionsRoute({ formData })
+
+            return data.data
+        } catch (error) {
+            console.log(error);
+            toast.warning("Process failed")
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const fetchInternationalTransactionAction = createAsyncThunk(
+    'admin/fetchInternationalTransactionAction',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await fetchInternationalTransfersRoute()   
+            return data.data
+        } catch (error) {
+
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const updateInternatonalTransferAction = createAsyncThunk(
+    'admin/updateInternatonalTransferAction',
+    async ({ formData, toast}, { rejectWithValue }) => {
+
+        try {
+            const { data } = await updateInternationalTransfersRoute({ formData })
+            if(formData['status'] == "approved"){
+                toast.success("Payment was successful")
+            }
+            if(formData['status'] != "approved"){
+                toast.success("Payment was rejected succesfully")
+            }
 
             return data.data
         } catch (error) {
