@@ -117,7 +117,7 @@ export const authUserLogin = createAsyncThunk(
             return { ...payload, success: false }
         } catch (error) {
             console.log(error.response)
-            toast.warning('Invalid credentialss')
+            toast.warning('Invalid credentials')
             return rejectWithValue(null)
         }
     }
