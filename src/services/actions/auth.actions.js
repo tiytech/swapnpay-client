@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { authActivateAccountRoute, authEmailVerificationRoute, authGenerateEmailVerificationOTPRoute, authGenerateUsernameRoute, authUserLogOutRoute, authUserLoginRoute, authUserSignupRoute } from "../routes/auth.routes"
+import { authActivateAccountRoute, authEmailVerificationRoute, authGenerateEmailVerificationOTPRoute, authGenerateUsernameRoute, authUserLogOutRoute, authUserLoginRoute, authUserSignupRoute, authForgotPasswordRoute, authResetPasswordRoute } from "../routes/auth.routes"
 
 
 export const authGenerateUsername = createAsyncThunk(
@@ -91,22 +91,73 @@ export const authUserLogin = createAsyncThunk(
             const { data } = await authUserLoginRoute(formData)
 
             const payload = {
+                success: true,
                 access: data.access,
                 refresh: data.refresh,
                 credentials: data.data
             }
 
-            toast.success('Login successful.')
+            if (data.data.is_signup_completed) {
+                toast.success('Login successful.')
 
-            localStorage.setItem('swapnpay-user', JSON.stringify(payload))
+                localStorage.setItem('swapnpay-user', JSON.stringify(payload))
 
-            navigate('/dashboard', { replace: true })
-            delete payload.data
+                navigate('/dashboard', { replace: true })
+                delete payload.data
 
-            return payload
+                return payload
+            }
+            else {
+
+                toast.success('Error, please activate your account!')
+                navigate('/signup', { replace: true })
+            }
+
+
+            return { ...payload, success: false }
         } catch (error) {
             console.log(error.response)
-            toast.warning('Invalid credentialss')
+            toast.warning('Invalid credentials')
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const authForgotPassword = createAsyncThunk(
+    'auth/authForgotPassword',
+    async ({ formData, toast, navigate }, { rejectWithValue }) => {
+        try {
+            const { data } = await authForgotPasswordRoute(formData)
+
+            toast.success('OTP generated successfully.')
+
+            navigate('/reset-password', { replace: true })
+
+            return formData
+        } catch (error) {
+            console.log(error.response)
+            toast.warning('Invalid credentials')
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const authResetPassword = createAsyncThunk(
+    'auth/authResetPassword',
+    async ({ formData, toast, navigate }, { rejectWithValue }) => {
+        try {
+            const { data } = await authResetPasswordRoute(formData)
+
+            toast.success('Password reset successful.')
+
+            navigate('/login', { replace: true })
+
+            return null
+        } catch (error) {
+            console.log(error.response)
+            toast.warning('Invalid credentials')
             return rejectWithValue(null)
         }
     }
@@ -117,7 +168,9 @@ export const authUserLogout = createAsyncThunk(
     'auth/authUserLogout',
     async ({ formData, toast, navigate }, { rejectWithValue }) => {
         try {
-            const { data } = await authUserLogOutRoute(formData)
+
+            await authUserLogOutRoute(formData)
+
             toast.success('Logout successful.')
 
             localStorage.removeItem('swapnpay-user')

@@ -1,4 +1,5 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
+import { useSelector } from 'react-redux'
 
 import { AuthArt1 } from '../../assets'
 import { Modals } from '../../components'
@@ -12,6 +13,15 @@ import SignupVerifyEmail from './signup/Signup.VerifyEmail'
 
 
 const Signup = () => {
+    const { accountActivation } = useSelector(state => state.auth)
+
+    useEffect(() => {
+        if (accountActivation) {
+            updateConfig({ showFormOne: false, showFormSeven: true })
+            updateFormData({ email: accountActivation?.credentials?.email })
+        }
+    }, [accountActivation])
+
     const [config, updateConfig] = useReducer((prev, next) => {
         return { ...prev, ...next }
     }, {
@@ -23,9 +33,9 @@ const Signup = () => {
     const [formData, updateFormData] = useReducer((prev, next) => {
         return { ...prev, ...next }
     }, {
-        otp_1: '', otp_2: '', otp_3: '', otp_4: '', confirmPassword: '', referral_code:'',
+        otp_1: '', otp_2: '', otp_3: '', otp_4: '', confirmPassword: '', referral_code: '',
         phoneCountryCode: 'NG', country: '', state: '', city: '', residence: '',
-        date_of_birth: '', house_address: '', postalCode: '', password:'', bvn: '',
+        date_of_birth: '', house_address: '', postalCode: '', password: '', bvn: '',
         first_name: '', last_name: '', occupation: '', email: '', phone_number: '',
     })
 

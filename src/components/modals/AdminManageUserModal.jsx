@@ -267,18 +267,30 @@ const AdminManageUserModal = () => {
                                 />
                             </div>
                             <div className='w-[49%] flex flex-col'>
-                                <Label text={'Drivers License'} />
+                                <Label text={'Document'} />
                                 <input
                                     type="button"
                                     placeholder=""
-                                    value={'View License'}
+                                    value={'View Document'}
                                     onClick={() => {
                                         try {
-                                            const fileURL = `${import.meta.env.VITE_APP_DEV_API_ROOT}${currentData?.drivers_license}`
+                                            let fileURL;
+                                            if (currentData.kyc_type == "NIN") {
+                                                fileURL = `${import.meta.env.VITE_APP_DEV_API_ROOT}${currentData?.nin}`
+                                            }
+                                            if (currentData.kyc_type == "Voters_Card") {
+                                                fileURL = `${import.meta.env.VITE_APP_DEV_API_ROOT}${currentData?.voters_card}`
+                                            }
+                                            if (currentData.kyc_type == "Drivers_license") {
+                                                fileURL = `${import.meta.env.VITE_APP_DEV_API_ROOT}${currentData?.drivers_license}`
+                                            }
+                                            if (currentData.kyc_type == "International_Passport") {
+                                                fileURL = `${import.meta.env.VITE_APP_DEV_API_ROOT}${currentData?.interntional_passport}`
+                                            }
 
                                             window.open(fileURL, '_blank')
                                         } catch (error) {
-                                            console.log(error)
+
                                         }
                                     }}
                                     className="bg-sky-600 placeholder:text-[12px] text-white text-[12px] rounded w-full px-5 py-2 hover:outline-none focus:outline-none focus:border-gray-600 focus:ring-blue cursor-pointer"

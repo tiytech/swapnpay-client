@@ -43,6 +43,7 @@ import AdminBalances from "./dashboard/admin/AdminBalances"
 import AdminVerification from "./dashboard/admin/AdminVerification"
 import AdminTransactions from "./dashboard/admin/AdminTransactions"
 import AdminSettings from "./dashboard/admin/AdminSettings"
+import AdminManageUsers from "./dashboard/admin/AdminManageUsers"
 
 
 export {
@@ -92,4 +93,5 @@ export {
     AdminVerification,
     AdminTransactions,
     AdminSettings,
+    AdminManageUsers
 }

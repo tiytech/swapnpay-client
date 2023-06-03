@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { authActivateAccount, authGenerateUsername, authUserLogin, authUserLogout, authUserSignup, authVerifyUserEmail } from '../actions/auth.actions';
+import { authActivateAccount, authForgotPassword, authGenerateUsername, authResetPassword, authUserLogin, authUserLogout, authUserSignup, authVerifyUserEmail } from '../actions/auth.actions';
 
 const USERFROMLS = localStorage.getItem('swapnpay-user') ? JSON.parse(localStorage.getItem('swapnpay-user')) : null
 
@@ -8,9 +8,11 @@ const USERFROMLS = localStorage.getItem('swapnpay-user') ? JSON.parse(localStora
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
+        accountActivation: null,
         user: USERFROMLS ? USERFROMLS : null,
         userSignup: null,
         generatedUsername: null,
+        forgotPassword: null,
         authLoading: false,
         authRequestStatus: null,
     },
@@ -77,9 +79,40 @@ const authSlice = createSlice({
         builder.addCase(authUserLogin.fulfilled, (state, action) => {
             state.authLoading = false
             state.authRequestStatus = ''
-            state.user = action.payload
+            if (action.payload.success) {
+                state.user = action.payload
+            } else {
+                state.accountActivation = action.payload
+            }
         })
         builder.addCase(authUserLogin.rejected, (state, action) => {
+            state.authLoading = false
+            state.authRequestStatus = 'FAILED'
+        })
+
+        builder.addCase(authForgotPassword.pending, (state, action) => {
+            state.authLoading = true
+            state.authRequestStatus = 'PENDING'
+        })
+        builder.addCase(authForgotPassword.fulfilled, (state, action) => {
+            state.authLoading = false
+            state.authRequestStatus = ''
+            state.forgotPassword = action.payload
+        })
+        builder.addCase(authForgotPassword.rejected, (state, action) => {
+            state.authLoading = false
+            state.authRequestStatus = 'FAILED'
+        })
+
+        builder.addCase(authResetPassword.pending, (state, action) => {
+            state.authLoading = true
+            state.authRequestStatus = 'PENDING'
+        })
+        builder.addCase(authResetPassword.fulfilled, (state, action) => {
+            state.authLoading = false
+            state.authRequestStatus = ''
+        })
+        builder.addCase(authResetPassword.rejected, (state, action) => {
             state.authLoading = false
             state.authRequestStatus = 'FAILED'
         })

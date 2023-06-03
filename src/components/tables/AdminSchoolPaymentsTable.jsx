@@ -11,7 +11,7 @@ import { adminResetStateProperty, getSchoolFeesPaymentAction, schoolFeesDetails,
 
 const AdminSchoolPaymentsTable = ({ data }) => {
     const dispatch = useDispatch()
-    const [showSchoolFeesDetails, setShowSchoolFeesDetails] = useState(false)
+    const [showSchoolFeesDetails, setShowSchoolFeesDetails] = useState(0)
     const { adminRequestLoading, schoolFees_Details } = useSelector(state => state.admin)
     const url = `${import.meta.env.VITE_APP_DEV_API_ROOT}`
 
@@ -33,7 +33,7 @@ const AdminSchoolPaymentsTable = ({ data }) => {
         <div className="flex justify-between items-center w-full mt-5 overflow-x-auto scrollbar-3">
             <div className="flex flex-col w-full">
                 <div className="space-y-1 w-full">
-                    {!showSchoolFeesDetails && <Fragment>
+                    {showSchoolFeesDetails == 0 && <Fragment>
                         <table className="w-full cursor-default">
                             <thead className="border bg-white rounded-md">
                                 <tr>
@@ -157,7 +157,7 @@ const AdminSchoolPaymentsTable = ({ data }) => {
                                             </button>}
                                             <button
                                                 onClick={() => {
-                                                    setShowSchoolFeesDetails(true)
+                                                    setShowSchoolFeesDetails(1)
                                                     dispatch(schoolFeesDetails({ data: item }))
 
                                                 }}
@@ -172,12 +172,12 @@ const AdminSchoolPaymentsTable = ({ data }) => {
                             </tbody>
                         </table>
                     </Fragment>}
-                    {showSchoolFeesDetails &&
+                    {showSchoolFeesDetails == 1 &&
 
                         <Fragment>
                             <button
                                 onClick={() => {
-                                    setShowSchoolFeesDetails(false)
+                                    setShowSchoolFeesDetails(0)
                                 }}
                                 className="mt-1 w-[100px] bg-slate-400 rounded text-white text-[12px] py-2 px-1 hover:translate-x-1 ease-in-out duration-700 transition-all focus:outline-none"
                             >

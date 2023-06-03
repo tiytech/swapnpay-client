@@ -1,15 +1,23 @@
+import { toast } from 'react-toastify'
 import React, { useReducer } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { AuthArt1 } from '../../../assets'
-import { FormTextInput, HeaderText, LinkIconButton, LogoText } from '../../../components'
+import { authForgotPassword } from '../../../services/actions/auth.actions'
+import { FormTextInput, HeaderText, IconButton, LinkIconButton, LoadingButtonOne, LogoText } from '../../../components'
 
 
 const ForgotPassword = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const { authRequestStatus } = useSelector(state => state.auth)
+
     const [formData, updateFormData] = useReducer((prev, next) => {
         return { ...prev, ...next }
     }, {
-        hidePassword: true,
-        email: '', password: '',
+        email: '', hidePassword: true,
     })
 
     const handleChange = (e) => {
@@ -18,6 +26,10 @@ const ForgotPassword = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        if (!formData.email) return toast.error('Email is required')
+
+        dispatch(authForgotPassword({ formData, toast, navigate }))
     }
 
     return (
@@ -30,7 +42,7 @@ const ForgotPassword = () => {
                 />
             </div>
 
-            <div className="w-full lg-w-[50%] h-full flex flex-col px-5 lg:px-28 py-5 lg:py-20 space-y-5">
+            <div className="w-full lg:w-[50%] h-full flex flex-col px-5 lg:px-28 py-5 lg:py-20 space-y-5">
                 <LogoText
                     size={'lg'}
                     color={'black'}
@@ -52,14 +64,31 @@ const ForgotPassword = () => {
 
 
                     <div className="mt-5 ">
-                        <LinkIconButton
+                        {/* <LinkIconButton
                             type={'submit'}
                             title={'Submit'}
                             to={'/reset-password'}
                             textColor={'text-white'}
                             width={'w-full md:w-full'}
                             classes={'py-4 text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
-                        />
+                        /> */}
+                        {authRequestStatus !== 'PENDING' ? (
+                            <IconButton
+                                to={'#'}
+                                type={'submit'}
+                                title={'Submit'}
+                                textColor={'text-white'}
+                                width={'w-full md:w-full'}
+                                classes={'py-4 text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+                            />
+                        ) : (
+                            <LoadingButtonOne
+                                loadingType={'one'}
+                                textColor={'text-white'}
+                                width={'w-full md:w-full'}
+                                classes={'text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+                            />
+                        )}
                     </div>
                 </form>
             </div>

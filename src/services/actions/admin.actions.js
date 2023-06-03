@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { fetchDashboardInfoRoute, fetchUnverifiedUsersRoute, flutterwaveBalanceRoute, getCardDepositsRoute, getFailedTransactionRoute, getFincraBalanceRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getSudoBalanceRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, patchCardDepositsRoute, patchFailedTransactionRoute, patchReferralFeeRoute, patchTransacationsFeeRoute, updateSchoolFeesStatusRoute, verifyUserAccountRoute } from "../routes/admin.routes"
+import { fetchDashboardInfoRoute, fetchInternationalTransfersRoute, fetchUnverifiedUsersRoute, fetchUsersRoute, flutterwaveBalanceRoute, getCardDepositsRoute, getFailedTransactionRoute, getFincraBalanceRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getSudoBalanceRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, getUserTransactionsRoute, patchCardDepositsRoute, patchFailedTransactionRoute, patchReferralFeeRoute, patchTransacationsFeeRoute, patchUsersRoute, updateInternationalTransfersRoute, updateSchoolFeesStatusRoute, verifyUserAccountRoute } from "../routes/admin.routes"
 
 
 
@@ -306,7 +306,6 @@ export const patchFailedTransactionAction = createAsyncThunk(
     async ({ formData, toast }, { rejectWithValue }) => {
 
         try {
-            console.log(formData, '=======================>');
             const { data } = await patchFailedTransactionRoute({ formData })
 
             toast.success("User debited successfully")
@@ -330,6 +329,104 @@ export const schoolFeesDetails = createAsyncThunk(
             return data
         } catch (error) {
 
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const fetchUsersActions = createAsyncThunk(
+    'admin/fetchUsersActions',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await fetchUsersRoute()
+            return data.data
+        } catch (error) {
+
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const patchUserAction = createAsyncThunk(
+    'admin/patchUserAction',
+    async ({ formData, toast }, { rejectWithValue }) => {
+
+        try {
+            const { data } = await patchUsersRoute({ formData })
+            if (formData['status'] == "deactivate") {
+
+                toast.success("User deactivated successfully")
+            }
+            if (formData['status'] == "activate") {
+                toast.success("User successfully activated")
+            }
+
+            if (formData['status'] == "admin") {
+                toast.success("User successfully made an admin")
+            }
+            if (formData['status'] == "unadmin") {
+                toast.success("User successfully removed from admin")
+            }
+
+
+
+            return data
+        } catch (error) {
+            console.log(error);
+            toast.warning("Process failed")
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const getUsersTransactionsAction = createAsyncThunk(
+    'admin/getUsersTransactionsAction',
+    async ({ formData }, { rejectWithValue }) => {
+
+        try {
+            const { data } = await getUserTransactionsRoute({ formData })
+
+            return data.data
+        } catch (error) {
+            console.log(error);
+            toast.warning("Process failed")
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const fetchInternationalTransactionAction = createAsyncThunk(
+    'admin/fetchInternationalTransactionAction',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await fetchInternationalTransfersRoute()   
+            return data.data
+        } catch (error) {
+
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const updateInternatonalTransferAction = createAsyncThunk(
+    'admin/updateInternatonalTransferAction',
+    async ({ formData, toast}, { rejectWithValue }) => {
+
+        try {
+            const { data } = await updateInternationalTransfersRoute({ formData })
+            if(formData['status'] == "approved"){
+                toast.success("Payment was successful")
+            }
+            if(formData['status'] != "approved"){
+                toast.success("Payment was rejected succesfully")
+            }
+
+            return data.data
+        } catch (error) {
+            console.log(error);
+            toast.warning("Process failed")
             return rejectWithValue(null)
         }
     }

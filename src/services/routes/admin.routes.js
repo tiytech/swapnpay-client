@@ -38,6 +38,16 @@ export const patchFailedTransactionRoute = (formData) => API.patch('/administrat
 
 export const fetchDashboardInfoRoute = () => API.get('/administrator/dashboard/fetch-info')
 
+export const fetchUsersRoute = () => API.get('/administrator/admin-manage-users')
+
+export const patchUsersRoute = (formData) => API.patch('/administrator/admin-manage-users', formData)
+
+export const getUserTransactionsRoute = (formData) => API.post('/administrator/admin-manage-users', formData)
+
+export const fetchInternationalTransfersRoute = () => API.get('/transactions/international-transfer')
+
+export const updateInternationalTransfersRoute = (formData) => API.patch('/transactions/international-transfer', formData)
+
 
 
 

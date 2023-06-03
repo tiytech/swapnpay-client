@@ -4,7 +4,7 @@ import EventSuccessModal from '../modals/EventSuccessModal'
 import AdminUpdateTransactionFeeModal from '../modals/AdminUpdateTransactionFeeModal'
 import AdminUpdateReferralFeeModal from '../modals/AdminUpdateReferralFeeModal'
 import AdminManageUserModal from '../modals/AdminManageUserModal'
-import AdminManageSchoolFeesPayment from '../modals/AdminManageSchoolFeesPayment'
+import AdminManageSchoolFeesPaymentModal from '../modals/AdminManageSchoolFeesPaymentModal'
 
 
 const FormModal = ({ type }) => {
@@ -38,10 +38,10 @@ const FormModal = ({ type }) => {
             )}
 
             {type === 'admin__manage_admission_letter' && (
-                <AdminManageSchoolFeesPayment />
+                <AdminManageSchoolFeesPaymentModal />
             )}
             {type === 'admin__manage_sponsor_id' && (
-                <AdminManageSchoolFeesPayment />
+                <AdminManageSchoolFeesPaymentModal />
             )}
         </Fragment>
     )

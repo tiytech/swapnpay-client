@@ -18,4 +18,12 @@ export const authActivateAccountRoute = (formData) => API.post('/user/create-sud
 
 export const authUserLoginRoute = (formData) => API.post('/user/login', formData)
 
+
+
 export const authUserLogOutRoute = (formData) => API.post('/user/logout', formData)
+
+
+export const authForgotPasswordRoute = (formData) => API.post('/user/forgot-password-otp', formData)
+
+
+export const authResetPasswordRoute = (formData) => API.post('/user/', formData)

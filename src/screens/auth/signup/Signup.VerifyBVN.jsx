@@ -22,6 +22,7 @@ const SignupVerifyBVN = ({ formData, handleChange, updateConfig }) => {
             email: formData.email,
             bvn: formData.bvn
         }
+
         dispatch(authActivateAccount({ formData: data, toast, updateModals }))
         // updateConfig({ showFormFive: false, showFormSix: true })
         // updateModals({ showSignupSuccessModal: !modals.showSignupSuccessModal })

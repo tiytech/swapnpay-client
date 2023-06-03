@@ -90,7 +90,7 @@ const AdminCardDepositTable = ({ data, showCardDeposit, setShowCardDeposit }) =>
                                                 : <button
                                                     onClick={async () => {
                                                         const formData = { user_pkid: item?.user, pkid: item?.pkid }
-                                                        console.log(formData);
+
                                                         var response = await dispatch(patchCardDepositAction({ formData, toast }))
                                                         if (response.error == undefined) {
                                                             dispatch(getCardDepositsActions())

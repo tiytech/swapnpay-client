@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { adminFetchDashboardInfo, adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, flutterWaveBalanceAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, schoolFeesDetails, updateSchoolFeesStatusAction } from '../actions/admin.actions'
+import { adminFetchDashboardInfo, adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, fetchInternationalTransactionAction, fetchUsersActions, flutterWaveBalanceAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, getUsersTransactionsAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, patchUserAction, schoolFeesDetails, updateInternatonalTransferAction, updateSchoolFeesStatusAction } from '../actions/admin.actions'
 
 
 const adminSlice = createSlice({
@@ -20,7 +20,10 @@ const adminSlice = createSlice({
         sudo_balance: null,
         flutterwave_balance: null,
         card_deposits: null,
-        failed_transactions: null
+        failed_transactions: null,
+        manage_users: null,
+        user_transactions: null,
+        international_transactions: null
     },
     extraReducers: (builder) => {
         builder.addCase(adminFetchDashboardInfo.pending, (state, action) => {
@@ -266,6 +269,74 @@ const adminSlice = createSlice({
 
         })
         builder.addCase(patchFailedTransactionAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+        //
+        builder.addCase(fetchUsersActions.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(fetchUsersActions.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.manage_users = action.payload
+
+        })
+        builder.addCase(fetchUsersActions.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+
+        //
+        builder.addCase(patchUserAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(patchUserAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+
+        })
+        builder.addCase(patchUserAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+
+        //
+        builder.addCase(getUsersTransactionsAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(getUsersTransactionsAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.user_transactions = action.payload
+
+        })
+        builder.addCase(getUsersTransactionsAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+
+        //
+        builder.addCase(updateInternatonalTransferAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(updateInternatonalTransferAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+
+
+        })
+        builder.addCase(updateInternatonalTransferAction.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+        //
+
+        //
+        builder.addCase(fetchInternationalTransactionAction.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(fetchInternationalTransactionAction.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.international_transactions = action.payload
+
+        })
+        builder.addCase(fetchInternationalTransactionAction.rejected, (state, action) => {
             state.adminRequestLoading = false
         })
         //
