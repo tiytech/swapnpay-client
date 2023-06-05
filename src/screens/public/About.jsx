@@ -47,9 +47,18 @@ const About = () => {
                     <HeaderText
                         color={'text-primary'}
                         text={'About SwapnPay'}
-                        classes={'font-bold text-[30px] lg:text-[40px]'}
+                        classes={'font-bold text-[8px] lg:text-[25px]'}
                     />
-                    <p >Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p className='pb-4'> Welcome to SwapnPay: Your Passport to Easy Foreign Payments! </p>
+                    <div className='text-[15px]' >
+
+                        Say goodbye to the hassles of foreign fees and hello to seamless transactions. At SwapnPay, we specialize in helping you navigate the hurdles of international payments, making the process a breeze.<br />
+
+                        No more hidden charges or complex processes. With SwapnPay, you can make payments with ease, saving time and money. Our user-friendly platform ensures a smooth experience from start to finish. <br />
+
+                        Unlock a world of convenience and financial freedom with SwapnPay.<br/>
+
+                        Join SwapnPay today and experience a new level of simplicity in your cross-border transactions.</div>
                 </div>
 
                 <img
@@ -65,7 +74,7 @@ const About = () => {
             <section className="my-10 space-y-10 flex flex-col justify-start px-6 md:mx-[60px md:px-14 md:my-20 md:space-y-20">
                 <div className="mx-auto">
                     <HeaderText
-                        classes={'text-[20px]'}
+                        classes={'text-[35px]'}
                         text={'Do more with SwapnPay'}
                         color={'text-primary font-bold'}
                     />

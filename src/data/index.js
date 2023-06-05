@@ -21,7 +21,7 @@ export const blogItems = [
         'author': 'Fintech Insider',
         'date': '12 Nov 2021',
         'title': 'Recieve crypto with ease',
-        'intro': 'Easily Pay your School tuition or secure your admission abroad by making payment on our platform.',
+        'intro': 'Pay your tuition or secure your admission abroad by making payment on our platform.',
     },
 ]
 
@@ -30,17 +30,17 @@ export const appUseItems = [
     {
         'icon': IconLearning,
         'title': 'Pay School Tuition',
-        'description': 'Easily Pay your School tuition or secure your admission abroad by making payment on our platform.',
+        'description': 'Pay your School tuition or secure your admission abroad by making payments using our platform.',
     },
     {
         'icon': IconLearning,
         'title': 'Buy stuffs online',
-        'description': 'Easily buy stuffs on any online store with our virtual debit card.',
+        'description': 'Easily buy stuff from your favourite online stores with our SwapnPay virtual debit card.',
     },
     {
         'icon': IconLearning,
-        'title': 'Receive international currencies',
-        'description': 'Receive pounds, euros and dollars on swapnpay.',
+        'title': 'Bills payment',
+        'description': 'Make electricity. airtime and data bundle payment in a twinkle of an eye. We support all your favourite utility providers.',
     },
 ]
 
