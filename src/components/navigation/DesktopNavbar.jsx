@@ -21,19 +21,19 @@ const DesktopNavbar = () => {
                         src={IconLogo}
                         alt="logo"
                     />
-                    <p className='font-bold text-primary text-[16px]'>SwapnPay</p>
+                    <p className='font-bold text-primary text-[20px]'>SwapnPay</p>
                 </div>
             </Link>
 
             <div className="flex space-x-5 items-center">
                 <Link to={'/'}>
-                    <p className=' text-primary text-[14px]'>Home</p>
+                    <p className=' text-primary text-[16px]'>Home</p>
                 </Link>
                 <Link to={'/swap'}>
-                    <p className=' text-primary text-[14px]'>Swap</p>
+                    <p className=' text-primary text-[16px]'>Swap</p>
                 </Link>
                 <Link to={'/about'}>
-                    <p className=' text-primary text-[14px]'>The Company</p>
+                    <p className=' text-primary text-[16px]'>The Company</p>
                 </Link>
             </div>
 

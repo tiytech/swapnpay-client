@@ -1575,6 +1575,10 @@ video {
   padding-bottom: 2.5rem;
 }
 
+.pb-4{
+  padding-bottom: 1rem;
+}
+
 .pb-6{
   padding-bottom: 1.5rem;
 }
@@ -1685,6 +1689,10 @@ video {
 
 .text-\[30px\]{
   font-size: 30px;
+}
+
+.text-\[35px\]{
+  font-size: 35px;
 }
 
 .text-\[60px\]{
@@ -2389,11 +2397,11 @@ video {
     text-align: start;
   }
 
-  .lg\:text-\[30px\]{
-    font-size: 30px;
+  .lg\:text-\[25px\]{
+    font-size: 25px;
   }
 
-  .lg\:text-\[40px\]{
-    font-size: 40px;
+  .lg\:text-\[30px\]{
+    font-size: 30px;
   }
 }

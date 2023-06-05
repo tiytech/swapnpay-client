@@ -47,10 +47,10 @@ const SwapScreen = () => {
                 <div className='w-full flex flex-col text-center mx-auto mt-10 px-6 lg:text-start'>
                     <HeaderText
                         color={'text-primary'}
-                        text={'Swap Dollar, Pounds Naira or euro'}
-                        classes={'font-bold text-[30px] lg:text-[40px]'}
+                        text={'Swap between Dollar and Naira conveniently'}
+                        classes={'font-bold text-[20px] lg:text-[30px]'}
                     />
-                    <p >Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p >Swap your Naira for Dollar and your Dollar back to Naira in seconds at very low transaction fees.</p>
                 </div>
 
                 <div className="rounded-xl shadow-lg p-4 flex flex-col space-y-10 bg-white mx-5 mt-10 lg:w-[800px]">
@@ -128,7 +128,7 @@ const SwapScreen = () => {
                         classes={'py-4 text-[14px] rounded-lg bg-gradient-to-r from-primary to-primary-light'}
                     />
 
-                    <p className='text-[14px]'>Current price of dollar to Naira : 740 Naira</p>
+                    {/* <p className='text-[14px]'>Current price of dollar to Naira : 740 Naira</p> */}
                 </div>
             </header>
 
