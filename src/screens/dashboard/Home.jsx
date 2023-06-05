@@ -77,7 +77,7 @@ const Home = () => {
 					))}
 				</div>
 
-				<div className="flex flex-col items-start w-full">
+				<div className="hidden lg:flex flex-col items-start w-full">
 					<HeaderText
 						text={'Announcements'}
 						classes={'font-bold text-[20px]'}
