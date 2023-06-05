@@ -15,7 +15,6 @@ const SignupStepFive = ({ formData, updateFormData, handleChange, updateConfig }
     useEffect(() => {
         if (generatedUsername) {
             updateFormData({ username: generatedUsername })
-
         }
     }, [generatedUsername])
 
@@ -49,7 +48,7 @@ const SignupStepFive = ({ formData, updateFormData, handleChange, updateConfig }
 
             <form onSubmit={handleSubmit}>
                 <FormTextInput
-                    disabled={true}
+                    // disabled={true}
                     name={'username'}
                     value={formData.username}
                     handleChange={handleChange}
