@@ -53,8 +53,10 @@ const ReceiveViaCrypto = ({ updateConfig }) => {
 						</div>
 
 						<FiChevronRight />
+						<span className='bg-red-400 px-2 py-1 text-white'>Coming soon</span>
 					</div>
 				))}
+
 			</div>
 		</div>
 	)
