@@ -1687,6 +1687,10 @@ video {
   font-size: 30px;
 }
 
+.text-\[35px\]{
+  font-size: 35px;
+}
+
 .text-\[60px\]{
   font-size: 60px;
 }
@@ -1735,6 +1739,18 @@ video {
 
 .italic{
   font-style: italic;
+}
+
+.leading-4{
+  line-height: 1rem;
+}
+
+.leading-10{
+  line-height: 2.5rem;
+}
+
+.leading-7{
+  line-height: 1.75rem;
 }
 
 .text-\[20\/px\]{
@@ -2389,11 +2405,11 @@ video {
     text-align: start;
   }
 
-  .lg\:text-\[30px\]{
-    font-size: 30px;
+  .lg\:text-\[25px\]{
+    font-size: 25px;
   }
 
-  .lg\:text-\[40px\]{
-    font-size: 40px;
+  .lg\:text-\[30px\]{
+    font-size: 30px;
   }
 }

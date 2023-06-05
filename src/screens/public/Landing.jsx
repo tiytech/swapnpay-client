@@ -46,9 +46,9 @@ const Landing = () => {
             <header className='py-4 flex flex-col justify-center bg-[url("/src/assets/images/home__bg__1.svg")] bg-cover bg-no-repeat md:min-h-screen h-screen'>
                 <div className='max-w-[300px] text-center mx-auto px-6 lg:max-w-full -mt-[100px] md:-mt-0'>
                     <div className='text-[30px] font-spacegrotesk font-extrabold lg:text-[30px] flex justify-center'>
-                        <span className='lg:flex lg:items-center'>Perform <img src={Blob1} alt="blob" className='hidden lg:block' />
+                        <span className='lg:flex lg:items-center'>Complete <img src={Blob1} alt="blob" className='hidden lg:block' />
                             Foreign School
-                            <span className='px-2 py-1 mx-1 bg-primary-light text-white rounded-full'>payment</span>
+                            <span className='px-2 py-1 mx-1 bg-primary-light text-white rounded-full'>payments</span>
                             with ease.
                         </span>
                         {/* <img
@@ -59,7 +59,7 @@ const Landing = () => {
                     </div>
                 </div>
                 <section className="my-10 space-y-10 flex flex-col px-6 ">
-                    <p className='text-center mt-5'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                    <p className='text-center mt-5'>Foreign Fees payment has never been easier. We help you navigate the hurdles of Foreign payments. Make payment with ease on SwapnPay. </p>
 
                     <div className="mx-auto">
                         <LinkIconButton
@@ -90,7 +90,7 @@ const Landing = () => {
                         <li className='text-white'>
                             <div className="flex flex-col">
                                 <p className="font-semibold font-spacegrotesk">Pay for School</p>
-                                <p className="">Easily Pay your School tuition or secure your admission abroad by making payment on our platform.</p>
+                                <p className="">Pay your School tuition or secure your admission abroad by making payments using our platform.</p>
                             </div>
                         </li>
                         <li className='text-white'>
@@ -101,14 +101,14 @@ const Landing = () => {
                         </li>
                         <li className='text-white'>
                             <div className="flex flex-col">
-                                <p className='font-semibold font-spacegrotesk'>Receive Payment in Crypto</p>
+                                <p className='font-semibold font-spacegrotesk'>Receive Payment in Crypto <span className='px-2 py-1 bg-red-400 rounded-sm'>coming soon</span></p>
                                 <p className=''>You can receive payment with stable coins on our platform.</p>
                             </div>
                         </li>
                         <li className='text-white'>
                             <div className="flex flex-col">
                                 <p className='font-semibold font-spacegrotesk'>Swap various currencies</p>
-                                <p className=''>Easily swap your currencies on the swapnPay platform. be it Naira, Dollar ,Pound or Euro SwapnPay has you covered.</p>
+                                <p className=''>Swap your currencies on the swapnpay platform. Be it Naira or Dollar.</p>
                             </div>
                         </li>
                     </ul>
@@ -188,7 +188,7 @@ const Landing = () => {
                             )}
                             <div className="flex flex-col">
                                 <p className='font-semibold font-spacegrotesk'>Enjoy</p>
-                                <p className=''>Experience Limitless and free transaction now.</p>
+                                <p className=''>Experience limitless transaction.</p>
                             </div>
                         </li>
                     </ul>
