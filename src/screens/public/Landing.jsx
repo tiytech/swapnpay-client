@@ -47,7 +47,7 @@ const Landing = () => {
                 <div className='max-w-[300px] text-center mx-auto px-6 lg:max-w-full -mt-[100px] md:-mt-0'>
                     <div className='text-[30px] font-spacegrotesk font-extrabold lg:text-[30px] flex justify-center'>
                         <span className='lg:flex lg:items-center'>Complete <img src={Blob1} alt="blob" className='hidden lg:block' />
-                            Foreign School
+                            Foreign School Fees
                             <span className='px-2 py-1 mx-1 bg-primary-light text-white rounded-full'>payments</span>
                             with ease.
                         </span>
