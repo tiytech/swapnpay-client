@@ -45,7 +45,7 @@ const Footer = () => {
                         size={'lg'}
                         color={'white'}
                     />
-                    <p className='text-[12px] text-gray-300 ml-10'>Transactions made easy...</p>
+                    <p className='text-[12px] text-gray-300 ml-10'>Your Passport to Easy Foreign Payments!</p>
                 </div>
 
                 <div className="flex justify-between mt-5 md:my-5 md:space-x-5">
