@@ -24,7 +24,7 @@ const AdminBalances = () => {
                     />
                 ))} */}
                 <div className='w-[320px] h-[200px] rounded-lg bg-white px-3 py-4 shadow-lg shadow-slate-300'>
-                    <p className='text-blue-400 font-semibold text-[25px]'>Fincra Balance</p>
+                    <p className='text-blue-400 font-semibold text-[20px]'>Fincra Balance</p>
                     <p className='text-black font-semibold text-[13px] mt-2'>Available naira balance:  <span>&#8358;</span> {fincra_balance == null ? 0 : (fincra_balance[0]?.availableBalance).toLocaleString("en-US")}</p>
                     <p className='text-black font-semibold text-[13px]'>Ledger naira balance:  <span>&#8358;</span> {fincra_balance == null ? 0 : (fincra_balance[0]?.ledgerBalance).toLocaleString("en-US")}</p>
                     <hr className='m-2' />
@@ -33,14 +33,14 @@ const AdminBalances = () => {
 
                 </div>
                 <div className='w-[320px] h-[200px] rounded-lg bg-white px-3 py-availableBalance4 shadow-lg shadow-slate-300'>
-                    <p className='text-yellow-400 font-semibold text-[25px]'>Sudo Balance</p>
+                    <p className='text-yellow-400 font-semibold text-[20px]'>Sudo Balance</p>
                     <p className='text-black font-semibold text-[13px] mt-2'>Available naira balance:  <span>&#8358;</span> {sudo_balance == null ? 0 : Math.floor((sudo_balance?.availableBalance * 100) / 100).toLocaleString("en-US")}</p>
                     <p className='text-black font-semibold text-[13px]'>Ledger naira balance:  <span>&#8358;</span> {sudo_balance == null ? 0 : Math.floor((sudo_balance?.currentBalance * 100) / 100).toLocaleString("en-US")}</p>
 
 
                 </div>
                 <div className='w-[320px] h-[200px] rounded-lg bg-white px-3 py-4 shadow-lg shadow-slate-300'>
-                    <p className='text-red-400 font-semibold text-[20px]'>Flutterwave Balance</p>
+                    <p className='text-red-400 font-semibold text-[15px]'>Flutterwave Balance(Utility account)</p>
                     <p className='text-black font-semibold text-[13px] mt-2'>Available naira balance: <span>&#8358;</span> {flutterwave_balance == null ? 0 : (flutterwave_balance?.available_balance).toLocaleString("en-US")}</p>
                     <p className='text-black font-semibold text-[13px] mt-2'>Ledger naira balance: <span>&#8358;</span> {flutterwave_balance == null ? 0 : (flutterwave_balance?.ledger_balance).toLocaleString("en-US")}</p>
 
