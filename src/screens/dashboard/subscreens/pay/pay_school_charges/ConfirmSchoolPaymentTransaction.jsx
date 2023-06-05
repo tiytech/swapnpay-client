@@ -15,7 +15,7 @@ const ConfirmSchoolPaymentTransaction = ({ formData, handleChange, updateConfig 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (user?.credentialss?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
+        if (user?.credentials?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
 
         dispatch(userGenerateSchoolPayment({ formData, toast, updateConfig }))
     }
