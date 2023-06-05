@@ -37,8 +37,8 @@ const Referrals = () => {
 
 			<div className="mx-auto text-center">
 				<HeaderText
-					text={`NGN  ${referrals.length == 0 ? 0 : referrals[0]?.details?.amount}`}
-					classes={'font-bold text-[30px]'}
+					text={`NGN  ${referrals?.length == 0 || referrals == null ? "0.0" : referrals[0]?.details?.amount}`}
+					classes={'font-bold text-[15px]'}
 				/>
 				<p className="text-[12px]">Your total earning</p>
 				{customLoadingState == false ? (<button
