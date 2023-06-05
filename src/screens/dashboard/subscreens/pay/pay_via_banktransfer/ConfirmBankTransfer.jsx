@@ -15,7 +15,7 @@ const ConfirmBankTransfer = ({ formData, handleChange, updateConfig }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (user?.credentialss?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
+        if (user?.credentials?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
         console.log(formData)
 
         dispatch(userBankTransfer({ formData, toast, updateConfig }))
