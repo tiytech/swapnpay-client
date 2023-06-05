@@ -51,11 +51,7 @@ const Landing = () => {
                             <span className='px-2 py-1 mx-1 bg-primary-light text-white rounded-full'>payments</span>
                             with ease.
                         </span>
-                        {/* <img
-                            src={IconRightHome}
-                            className='absolute top-10 right-10'
-                            alt="icon__right__home"
-                        /> */}
+
                     </div>
                 </div>
                 <section className="my-10 space-y-10 flex flex-col px-6 ">
