@@ -14,8 +14,8 @@ const MobileNavbar = () => {
     })
 
     return (
-        <div className='relative'>
-            <div className='flex md:hidden justify-between items-center py-4 px-6'>
+        <div className='relative mb-20 md:mb-0 md:hidden'>
+            <div className='flex justify-between items-center py-4 px-6'>
                 <div className="flex space-x-2 items-center font-spacegrotesk cursor-pointer">
                     <img
                         src={IconLogo}

@@ -47,7 +47,7 @@ const About = () => {
                     <HeaderText
                         color={'text-primary'}
                         text={'About SwapnPay'}
-                        classes={'font-bold text-[8px] lg:text-[25px]'}
+                        classes={'font-bold text-[16px] lg:text-[25px]'}
                     />
                     <p className='pb-4'> Welcome to SwapnPay: Your Passport to Easy Foreign Payments! </p>
                     <div className='text-[15px]' >

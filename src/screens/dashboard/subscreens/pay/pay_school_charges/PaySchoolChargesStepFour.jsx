@@ -16,7 +16,7 @@ const PaySchoolChargesStepFour = ({ formData, updateFormData, handleChange, upda
 	}
 
 	return (
-		<div className="w-[40%] h-full bg-gray-100 px-20 py-20 flex flex-col space-y-5">
+        <div className="w-full md:w-[40%] h-full bg-gray-100 px-6 lg:px-20 py-20 flex flex-col space-y-5">
 			<BsArrowLeft
 				size={20}
 				className='cursor-pointer'
