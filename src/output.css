@@ -687,6 +687,10 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.ml-1{
+  margin-left: 0.25rem;
+}
+
 .ml-10{
   margin-left: 2.5rem;
 }
@@ -805,6 +809,10 @@ video {
 
 .h-\[50px\]{
   height: 50px;
+}
+
+.h-\[7px\]{
+  height: 7px;
 }
 
 .h-full{
@@ -945,6 +953,10 @@ video {
 
 .w-\[60px\]{
   width: 60px;
+}
+
+.w-\[7px\]{
+  width: 7px;
 }
 
 .w-\[80\%\]{
@@ -2086,6 +2098,10 @@ video {
 
   .md\:-mt-0{
     margin-top: -0px;
+  }
+
+  .md\:mb-0{
+    margin-bottom: 0px;
   }
 
   .md\:mr-0{

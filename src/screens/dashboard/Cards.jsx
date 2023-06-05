@@ -27,7 +27,7 @@ const Cards = () => {
 
 	return (
 		<div className='pl-8 pr-8 pb-10 mt-20 flex flex-wrap-reverse justify-between items-start w-full'>
-			<div className="w-full lg:w-[60%] flex flex-col items-start space-y-5">
+			{!config.showCreateCard && <div className="w-full lg:w-[60%] flex flex-col items-start space-y-5">
 				<div className="flex flex-col items-start w-full">
 					<HeaderText
 						text={'Cards'}
@@ -83,16 +83,21 @@ const Cards = () => {
 							textColor={'text-primary'}
 							title={'Create new virtual card'}
 							handleClick={() => {
-
 								updateConfig({ showCreateCard: !config.showCreateCard })
 							}}
 							classes={'py-4 text-[14px] rounded-xl bg-white border border-primary'}
 						/>}
 				</div>
-			</div>
+			</div>}
 
 			{config.showCreateCard && (
 				<div className="w-full lg:w-[40%] flex flex-col items-start space-y-5 mb-20">
+					<button className='px-4 py-1 bg-primary text-white'
+						onClick={() => {
+							updateConfig({ showCreateCard: !config.showCreateCard })
+						}}
+
+					> Back </button>
 					<HeaderText
 						text={'Want a card for online transactions?'}
 						classes={'font-bold text-[20px]'}

@@ -5,7 +5,8 @@ import {
     userFetchDataBundles, userFetchDollarWalletBalance, userFetchNairaWalletBalance, userGenerateSchoolPayment,
     userGenerateCableSubscription, userResetStateProperty, userTransferToSwapnPayUser, userFetchElectricityDiscos,
     userGenerateElectricitySubscription,
-    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction, generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction, userFetchReferrals, userClaimRefferals
+    getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction,
+    generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction, userFetchReferrals, userClaimRefferals, fundAccountWithCard
 } from '../actions/user.actions'
 
 
@@ -365,7 +366,7 @@ const userSlice = createSlice({
         })
         builder.addCase(getUserCardsAction.fulfilled, (state, action) => {
             state.userCards = action.payload
-         
+
 
         })
         builder.addCase(getUserCardsAction.rejected, (state, action) => {
@@ -379,10 +380,24 @@ const userSlice = createSlice({
         })
         builder.addCase(userClaimRefferals.fulfilled, (state, action) => {
             state.customLoadingState = false
-         
+
 
         })
         builder.addCase(userClaimRefferals.rejected, (state, action) => {
+            state.customLoadingState = false
+
+        })
+
+        builder.addCase(fundAccountWithCard.pending, (state, action) => {
+            state.customLoadingState = true
+
+        })
+        builder.addCase(fundAccountWithCard.fulfilled, (state, action) => {
+            state.customLoadingState = false
+
+
+        })
+        builder.addCase(fundAccountWithCard.rejected, (state, action) => {
             state.customLoadingState = false
 
         })

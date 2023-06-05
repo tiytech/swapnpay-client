@@ -57,12 +57,12 @@ const AdminManageUsersTable = ({ data, showUsersTransactions, setShowUsersTransa
                                     >
                                         Date joined
                                     </th>
-                                    <th
+                                    {/* <th
                                         scope="col"
                                         className="text-sm font-medium text-gray-900 py-3 text-left"
                                     >
                                         Last login
-                                    </th>
+                                    </th> */}
                                     <th
                                         scope="col"
                                         className="text-sm font-medium text-gray-900 py-3 text-left"
@@ -83,25 +83,25 @@ const AdminManageUsersTable = ({ data, showUsersTransactions, setShowUsersTransa
                                         <td className="text-[10px] text-gray-900 font-semibold pl-4 py-2 whitespace-nowrap">
                                             {index + 1}
                                         </td>
-                                        <td className="text-sm text-gray-900 font-light py-2 whitespace-nowrap">
+                                        <td className="text-[12px] text-gray-900 font-light py-2 whitespace-nowrap">
                                             {item?.first_name}   {item?.last_name}
                                         </td>
-                                        <td className="text-sm text-gray-900 font-light py-2 whitespace-nowrap">
-                                            {item?.email}
+                                        <td className="flex text-[12px] text-gray-900 font-light py-2 whitespace-nowrap">
+                                            {item?.email} {item?.is_administrator && <p className='ml-1 bg-green-400 w-[7px] h-[7px] rounded-lg'></p>}
                                         </td>
-                                        <td className="text-sm text-gray-900 font-light py-2 whitespace-nowrap">
+                                        <td className="text-[12px] text-gray-900 font-light py-2 whitespace-nowrap">
                                             {item?.username}
                                         </td>
-                                        <td className="text-sm text-gray-900 font-light py-2 whitespace-nowrap">
+                                        <td className="text-[12px] text-gray-900 font-light py-2 whitespace-nowrap">
                                             {item?.user_details?.date_joined}
                                         </td>
-                                        <td className="text-sm text-gray-900 font-light py-2 whitespace-nowrap">
+                                        {/* <td className="text-[12px] text-gray-900 font-light py-2 whitespace-nowrap">
                                             {item?.user_details?.last_login?.slice(0, 10)}
-                                        </td>
-                                        <td className="text-sm text-gray-900 font-light py-2 whitespace-nowrap">
+                                        </td> */}
+                                        <td className="text-[12px] text-gray-900 font-light py-2 whitespace-nowrap">
                                             {item?.is_active ? 'True' : 'False'}
                                         </td>
-                                        <td className="flex items-center space-x-5 text-sm py-2 text-gray-900 font-light whitespace-nowrap">
+                                        <td className="flex items-center space-x-5 text-[12px] py-2 text-gray-900 font-light whitespace-nowrap">
 
                                             {item?.is_active ? <button
                                                 onClick={async () => {
@@ -171,13 +171,13 @@ const AdminManageUsersTable = ({ data, showUsersTransactions, setShowUsersTransa
                                                     // if (response.error == undefined) {
                                                     //     dispatch(getFailedTransactionAction())
                                                     // }
-                                                    const data = {pkid: item?.pkid, fullname: `${item?.first_name}   ${item?.last_name}`}
+                                                    const data = { pkid: item?.pkid, fullname: `${item?.first_name}   ${item?.last_name}` }
                                                     setUserPkid(data)
-                                                    
+
                                                     setShowUsersTransaction(true)
                                                 }}
 
-                                                className='w-1/4 text-[10px] bg-primary text-white px-2 py-2 rounded-sm '>
+                                                className='w-1/4 text-[8px] bg-primary text-white px-2 py-2 rounded-sm '>
                                                 See Transactions
                                             </button>
                                         </td>

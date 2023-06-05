@@ -52,9 +52,9 @@ const Receive = () => {
 									if (item.type === 'USERNAME') {
 										updateConfig({ showDefault: false, showReceiveViaUsername: true })
 									}
-									if (item.type === 'CRYPTO') {
-										updateConfig({ showDefault: false, showReceiveViaCrypto: true })
-									}
+									// if (item.type === 'CRYPTO') {
+									// 	updateConfig({ showDefault: false, showReceiveViaCrypto: true })
+									// }
 									if (item.type === 'TRANSFER') {
 										updateConfig({ showDefault: false, showReceiveViaBankTransfer: true })
 									}

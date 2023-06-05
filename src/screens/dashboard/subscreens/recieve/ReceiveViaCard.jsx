@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { BsArrowLeft } from 'react-icons/bs'
 
-import { HeaderText, IconButton } from '../../../../components'
+import { HeaderText, IconButton, LoadingButtonOne } from '../../../../components'
 import { useSelector, useDispatch } from 'react-redux'
 import { FormTextInput } from '../../../../components'
 import { fundAccountWithCard } from '../../../../services/actions/user.actions'
 
 const ReceiveViaCard = ({ updateConfig }) => {
     const { user } = useSelector(state => state.auth)
+    const { customLoadingState } = useSelector(state => state.user)
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({})
 
@@ -16,7 +17,6 @@ const ReceiveViaCard = ({ updateConfig }) => {
     }
     const submitHandler = () => {
 
-        console.log(formData);
         dispatch(fundAccountWithCard({ formData }))
     }
 
@@ -25,7 +25,7 @@ const ReceiveViaCard = ({ updateConfig }) => {
         setFormData({
             ...formData, email: user?.credentials?.email,
             name: `${user?.credentials?.first_name} ${user?.credentials?.last_name}`,
-            phonenumber: user?.data?.profile?.phone_number
+            phonenumber: user?.credentials?.profile?.phone_number
         }
         )
     }, [formData.amount])
@@ -57,8 +57,14 @@ const ReceiveViaCard = ({ updateConfig }) => {
                 placeHolder={'Enter amount (NGN)'}
                 classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-5'}
             />
+            {customLoadingState == true ? (<LoadingButtonOne
 
-            <IconButton
+                loadingType={'one'}
+                textColor={'text-white'}
+                width={'w-full md:w-full'}
+                classes={'text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+
+            />) : (<IconButton
                 type={'submit'}
                 title={'Done'}
                 width={'w-full'}
@@ -66,7 +72,8 @@ const ReceiveViaCard = ({ updateConfig }) => {
                 textColor={'text-white'}
                 classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
                 handleClick={() => submitHandler()}
-            />
+            />)
+            }
         </div>
     )
 }
