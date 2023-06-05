@@ -49,8 +49,8 @@ const About = () => {
                         text={'About SwapnPay'}
                         classes={'font-bold text-[8px] lg:text-[25px]'}
                     />
-                    <p className='text-[14px] leading-7' >Welcome to SwapnPay: Your Passport to Easy Foreign Payments!
-                        <br />
+                    <p className='pb-4'> Welcome to SwapnPay: Your Passport to Easy Foreign Payments! </p>
+                    <div className='text-[15px]' >
 
                         Say goodbye to the hassles of foreign fees and hello to seamless transactions. At SwapnPay, we specialize in helping you navigate the hurdles of international payments, making the process a breeze.<br />
 
@@ -58,7 +58,7 @@ const About = () => {
 
                         Unlock a world of convenience and financial freedom with SwapnPay.<br/>
 
-                        Join SwapnPay today and experience a new level of simplicity in your cross-border transactions.</p>
+                        Join SwapnPay today and experience a new level of simplicity in your cross-border transactions.</div>
                 </div>
 
                 <img
