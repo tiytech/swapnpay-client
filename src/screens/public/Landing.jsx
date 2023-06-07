@@ -43,7 +43,7 @@ const Landing = () => {
             <MobileNavbar />
             <DesktopNavbar />
 
-            <header className='py-4 flex flex-col justify-center bg-[url("/src/assets/images/home__bg__1.svg")] bg-cover bg-no-repeat md:min-h-screen h-screen '>
+            <header className='py-4 flex flex-col justify-center bg-[url("/src/assets/images/home__bg__2.svg")] bg-cover bg-no-repeat md:min-h-screen h-screen '>
                 <div className='max-w-[300px] text-center mx-auto px-6 lg:max-w-full -mt-[100px] md:-mt-0  '>
                     <div className='text-[30px] font-Poppins font-extrabold lg:text-[30px] flex justify-center'>
                         <span className='lg:flex lg:items-center'>Complete <img src={Blob1} alt="blob" className='hidden lg:block' />
