@@ -92,25 +92,25 @@ const Landing = () => {
                         <li className='text-white'>
                             <div className="flex flex-col">
                                 <p className='font-semibold font-spacegrotesk'>Virtual Card</p>
-                                <p className=''>Create a virtual card and make payment online safely and securely</p>
+                                <p className=''>Create a virtual card and make payment online safely and securely.</p>
                             </div>
                         </li>
                         <li className='text-white'>
                             <div className="flex flex-col">
-                                <p className='font-semibold font-spacegrotesk'>Receive Payment in Crypto <span className='px-1 py-1 bg-red-400 rounded-sm text-[10px]'>coming soon</span></p>
+                                <p className='font-semibold font-spacegrotesk'>Receive Payments in Crypto <span className='px-1 py-1 bg-red-400 rounded-sm text-[10px]'>coming soon</span></p>
                                 <p className=''>You can receive payment with stable coins on our platform.</p>
                             </div>
                         </li>
                         <li className='text-white'>
                             <div className="flex flex-col">
-                                <p className='font-semibold font-spacegrotesk'>Swap various currencies</p>
-                                <p className=''>Swap your currencies on the swapnpay platform. Be it Naira or Dollar.</p>
+                                <p className='font-semibold font-spacegrotesk'>Swap Various Currencies</p>
+                                <p className=''>Swap between Naira and Dollar at lightening speed using the SwapnPay platform.</p>
                             </div>
                         </li>
                         <li className='text-white'>
                             <div className="flex flex-col">
-                                <p className='font-semibold font-spacegrotesk'>Bill payments</p>
-                                <p className=''>Airtime recharge, data and cable subscription, and utility payment.</p>
+                                <p className='font-semibold font-spacegrotesk'>Utility Bills Payments</p>
+                                <p className=''>Make electricity. airtime and data bundle payment in a twinkle of an eye. We support all your favourite utility providers.</p>
                             </div>
                         </li>
                     </ul>
