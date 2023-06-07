@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { About, Landing, SwapScreen, Login, Signup, ForgotPassword, ResetPassword, NotFound, PrivateRoute, Dashboard, } from './screens'
+import { About, Landing, SwapScreen, Login, Signup, ForgotPassword, ResetPassword, NotFound, PrivateRoute, Dashboard, Blog, } from './screens'
 
 
 const App = () => {
@@ -13,6 +13,7 @@ const App = () => {
 			<Routes>
 				{/* PUBLIC */}
 				<Route path="/" element={<Landing />} />
+				<Route path="/blog" element={<Blog />} />
 				<Route path="/about" element={<About />} />
 				<Route path="/swap" element={<SwapScreen />} />
 
