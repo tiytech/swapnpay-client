@@ -4,7 +4,7 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useGlobalContext } from '../../../../context'
-import { FormCablePlansInput, FormSelectInput, FormTextInput, HeaderText, IconButton } from '../../../../components'
+import { FormCablePlansInput, FormSelectInput, FormTextInput, HeaderText, IconButton, LoadingButtonOne } from '../../../../components'
 import { userFetchCablePlans, userFetchNairaWalletBalance, userGenerateCableSubscription } from '../../../../services/actions/user.actions'
 
 
@@ -14,7 +14,7 @@ const TVSubscription = () => {
 	const { updateModalPages } = useGlobalContext()
 
 	const { user } = useSelector(state => state.auth)
-	const { cablePlans, nairaWallet } = useSelector(state => state.user)
+	const { cablePlans, nairaWallet, userRequestStatus } = useSelector(state => state.user)
 
 	const [config, updateConfig] = useReducer((prev, next) => {
 		return { ...prev, ...next }
@@ -48,7 +48,7 @@ const TVSubscription = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 
-		if (user?.credentialss?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
+		if (user?.credentials?.user_transaction_pin !== formData.transaction_pin) return toast.error('Invalid transaction pin')
 		console.log(formData)
 
 		dispatch(userGenerateCableSubscription({ formData, toast, updateConfig }))
@@ -141,19 +141,26 @@ const TVSubscription = () => {
 							<FormTextInput
 								name={'transaction_pin'}
 								padding={'py-3 px-5'}
-								placeHolder={'Enter OTP here'}
+								placeHolder={'Enter pin'}
 								handleChange={handleChange}
 								classes={'text-[14px] placeholder:text-[14px] rounded-xl mb-2'}
 							/>
 
-							<IconButton
+							{userRequestStatus === 'PENDING' ? (<LoadingButtonOne
+
+								loadingType={'one'}
+								textColor={'text-white'}
+								width={'w-full md:w-full'}
+								classes={'text-[14px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
+
+							/>) : (<IconButton
 								type={'submit'}
 								title={'Confirm'}
 								width={'w-full'}
 								iconType={'icon-right'}
 								textColor={'text-white'}
 								classes={'py-4 text-[16px] rounded-xl bg-gradient-to-r from-primary to-primary-light'}
-							/>
+							/>)}
 						</form>
 					</div>
 				</div>
