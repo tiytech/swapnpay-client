@@ -13,6 +13,7 @@ import {
 const userSlice = createSlice({
     name: 'user',
     initialState: {
+        blog: null,
         banksList: null,
         cablePlans: null,
         dataBundles: null,
@@ -412,6 +413,9 @@ const userSlice = createSlice({
             state.userRequestLoading = false
             if (action.payload.key === 'STATE-VALUE') {
                 state.stateValue = action.payload.value
+            }
+            if (action.payload.key === 'BLOG') {
+                state.blog = action.payload.value
             }
         })
     }

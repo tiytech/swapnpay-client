@@ -1725,10 +1725,6 @@ video {
   line-height: 1.75rem;
 }
 
-.text-\[0px\]{
-  font-size: 0px;
-}
-
 .font-bold{
   font-weight: 700;
 }

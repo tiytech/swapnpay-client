@@ -1,4 +1,5 @@
 // PUBLIC
+import Blog from "./public/Blog"
 import About from "./public/About"
 import Landing from "./public/Landing"
 import SwapScreen from "./public/SwapScreen"
@@ -48,6 +49,7 @@ import AdminManageUsers from "./dashboard/admin/AdminManageUsers"
 
 export {
     // PUBLIC
+    Blog,
     About,
     Landing,
     SwapScreen,

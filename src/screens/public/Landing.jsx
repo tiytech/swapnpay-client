@@ -43,9 +43,9 @@ const Landing = () => {
             <MobileNavbar />
             <DesktopNavbar />
 
-            <header className='py-4 flex flex-col justify-center bg-[url("/src/assets/images/home__bg__1.svg")] bg-cover bg-no-repeat md:min-h-screen h-screen'>
-                <div className='max-w-[300px] text-center mx-auto px-6 lg:max-w-full -mt-[100px] md:-mt-0'>
-                    <div className='text-[30px] font-spacegrotesk font-extrabold lg:text-[30px] flex justify-center'>
+            <header className='py-4 flex flex-col justify-center bg-[url("/src/assets/images/home__bg__2.svg")] bg-cover bg-no-repeat md:min-h-screen h-screen '>
+                <div className='max-w-[300px] text-center mx-auto px-6 lg:max-w-full -mt-[100px] md:-mt-0  '>
+                    <div className='text-[30px] font-Poppins font-extrabold lg:text-[30px] flex justify-center'>
                         <span className='lg:flex lg:items-center'>Complete <img src={Blob1} alt="blob" className='hidden lg:block' />
                             Foreign School Fees
                             <span className='px-2 py-1 mx-1 bg-primary-light text-white rounded-full'>payments</span>
@@ -97,7 +97,7 @@ const Landing = () => {
                         </li>
                         <li className='text-white'>
                             <div className="flex flex-col">
-                                <p className='font-semibold font-spacegrotesk'>Receive Payment in Crypto <span className='px-2 py-1 bg-red-400 rounded-sm'>coming soon</span></p>
+                                <p className='font-semibold font-spacegrotesk'>Receive Payment in Crypto <span className='px-1 py-1 bg-red-400 rounded-sm text-[10px]'>coming soon</span></p>
                                 <p className=''>You can receive payment with stable coins on our platform.</p>
                             </div>
                         </li>
@@ -105,6 +105,12 @@ const Landing = () => {
                             <div className="flex flex-col">
                                 <p className='font-semibold font-spacegrotesk'>Swap various currencies</p>
                                 <p className=''>Swap your currencies on the swapnpay platform. Be it Naira or Dollar.</p>
+                            </div>
+                        </li>
+                        <li className='text-white'>
+                            <div className="flex flex-col">
+                                <p className='font-semibold font-spacegrotesk'>Bill payments</p>
+                                <p className=''>Airtime recharge, data and cable subscription, and utility payment.</p>
                             </div>
                         </li>
                     </ul>

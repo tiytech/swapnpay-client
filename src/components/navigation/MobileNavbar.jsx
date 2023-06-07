@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import { BsGrid } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 import { IconLogo, IconLogoWhite, IconTimes } from '../../assets'
 import LinkIconButton from '../buttons/LinkIconButton'
@@ -12,13 +13,19 @@ const MobileNavbar = () => {
     }, {
         showMenu: false,
     })
+    const navigate = useNavigate()
 
     return (
         <div className='relative mb-20 md:mb-0 md:hidden'>
             <div className='flex justify-between items-center py-4 px-6'>
                 <div className="flex space-x-2 items-center font-spacegrotesk cursor-pointer">
                     <img
+                        onClick={() => {
+                            
+                            navigate("/")
+                        }}
                         src={IconLogo}
+                        
                         alt="logo"
                     />
                     <p className='font-bold text-primary text-[16px]'>SwapnPay</p>

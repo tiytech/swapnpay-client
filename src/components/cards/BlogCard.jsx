@@ -1,9 +1,23 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import HeaderText from '../text/HeaderText'
+import { useDispatch } from 'react-redux'
+import { userResetStateProperty } from '../../services/actions/user.actions'
+
 
 const BlogCard = ({ blog, index, maxCount }) => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     return (
-        <div className={`flex flex-col w-[200px] space-y-3 cursor-pointer ${index === maxCount && 'pr-8'} mr-10 md:mr-0`}>
+        <div
+            onClick={() => {
+                navigate('/blog', { replace: true })
+                dispatch(userResetStateProperty({ key: 'BLOG', value: blog }))
+            }}
+            className={`flex flex-col w-[200px] space-y-3 cursor-pointer ${index === maxCount && 'pr-8'} mr-10 md:mr-0`}
+        >
             <div className="w-[200px]">
                 <img
                     src={blog.image}
