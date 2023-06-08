@@ -17,25 +17,28 @@ const MobileNavbar = () => {
 
     return (
         <div className='relative mb-20 md:mb-0 md:hidden'>
-            <div className='flex justify-between items-center py-4 px-6'>
-                <div className="flex space-x-2 items-center font-spacegrotesk cursor-pointer">
-                    <img
-                        onClick={() => {
-                            
-                            navigate("/")
-                        }}
-                        src={IconLogo}
-                        
-                        alt="logo"
+            <div className='flex justify-between items-center py-4 px-4'>
+                <div className='flex flex-[0.6] justify-between'>
+                    <BsGrid
+                        size={25}
+                        className='text-primary cursor-pointer'
+                        onClick={() => updateConfig({ showMenu: true })}
                     />
-                    <p className='font-bold text-primary text-[16px]'>SwapnPay</p>
-                </div>
+                    <div className="flex space-x-2 items-center font-spacegrotesk cursor-pointer">
+                        <img
+                            onClick={() => {
 
-                <BsGrid
-                    size={25}
-                    className='text-primary cursor-pointer'
-                    onClick={() => updateConfig({ showMenu: true })}
-                />
+                                navigate("/")
+                            }}
+                            src={IconLogo}
+
+                            alt="logo"
+                        />
+                        <p className='font-bold text-primary text-[16px]'>SwapnPay</p>
+                    </div>
+
+                </div>
+                <p className='flex flex-[0.4]'></p>
 
             </div>
             {config.showMenu && (
