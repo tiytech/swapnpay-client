@@ -966,6 +966,14 @@ video {
   max-width: 300px;
 }
 
+.flex-\[0\.4\]{
+  flex: 0.4;
+}
+
+.flex-\[0\.7\]{
+  flex: 0.7;
+}
+
 .origin-left{
   transform-origin: left;
 }
