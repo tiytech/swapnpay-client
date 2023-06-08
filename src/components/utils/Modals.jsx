@@ -45,12 +45,30 @@ const Modals = () => {
                     type="admin__manage_admission_letter"
                 />
             )}
+            
             {modals.showAdminViewSponsorIdModal && (
                 <FormModal
                     type="admin__manage_sponsor_id"
                 />
             )}
 
+            {modals.showAdminAddBlogModal && (
+                <FormModal
+                    type="admin__add__blog__modal"
+                />
+            )}
+
+            {modals.showAdminUpdateBlogItemModal && (
+                <FormModal
+                    type="admin__update__blog__modal"
+                />
+            )}
+
+            {modals.showAdminDeleteBlogItemModal && (
+                <FormModal
+                    type="admin__delete__blog__modal"
+                />
+            )}
         </Fragment>
     )
 }

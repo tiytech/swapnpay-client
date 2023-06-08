@@ -1,4 +1,4 @@
-import { Blog1, Blog2, Blog3, FlagNGN, FlagUSA, IconAccessBank, IconBank, IconBUSD, IconCard, IconCardBlack, IconCardDark, IconCredit, IconCrypto, IconDebit, IconEcoBank, IconElectricity, IconFcmbBank, IconFirstBank, IconGTBank, IconHome, IconHomeDark, IconKeyStoneBank, IconLearning, IconMenu, IconMenuDark, IconPhone, IconProfile1, IconScan, IconScanDark, IconSchool, IconSchoolDark, IconSwap, IconSwapDark, IconSwapSuccess, IconTV, IconUbaBank, IconUSDC, IconUSDT } from "../assets"
+import { Blog1, Blog2, Blog3, FlagNGN, FlagUSA, IconAccessBank, IconBank, IconBlog, IconBlogDark, IconBUSD, IconCard, IconCardBlack, IconCardDark, IconCredit, IconCrypto, IconDebit, IconEcoBank, IconElectricity, IconFcmbBank, IconFirstBank, IconGTBank, IconHome, IconHomeDark, IconKeyStoneBank, IconLearning, IconMenu, IconMenuDark, IconPhone, IconProfile1, IconScan, IconScanDark, IconSchool, IconSchoolDark, IconSwap, IconSwapDark, IconSwapSuccess, IconTV, IconUbaBank, IconUSDC, IconUSDT } from "../assets"
 
 
 export const blogItems = [
@@ -380,6 +380,11 @@ export const admin__menu__items = [
         iconDark: IconScanDark,
     },
     {
+        title: 'Blog',
+        icon: IconBlog,
+        iconDark: IconBlogDark,
+    },
+    {
         title: 'Admin Settings',
         icon: IconMenu,
         iconDark: IconMenuDark,
@@ -393,7 +398,10 @@ export const root__modals = {
     showAdminManageUserModal: false,
     showAdminUpdateReferralFeeModal: false,
     showAdminViewAdmissionLetterModal: false,
-    showAdminViewSponsorIdModal: false
+    showAdminViewSponsorIdModal: false,
+    showAdminAddBlogModal: false,
+    showAdminUpdateBlogItemModal: false,
+    showAdminDeleteBlogItemModal: false,
 }
 
 export const modal__pages = {

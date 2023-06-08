@@ -2,6 +2,8 @@
 import Animation1 from './animations/animation__1.json'
 
 // LOGO
+import IconBlog from './icons/icon__blog.svg'
+import IconBlogDark from './icons/icon__blog__dark.svg'
 import IconScan from './icons/icon__scan.svg'
 import IconScanDark from './icons/icon__scan__dark.svg'
 import IconCamera from './icons/icon__camera.svg'
@@ -82,6 +84,8 @@ export {
     Animation1,
     
     // LOGO
+    IconBlog,
+    IconBlogDark,
     IconScan,
     IconScanDark,
     IconCamera,

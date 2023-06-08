@@ -48,6 +48,14 @@ export const fetchInternationalTransfersRoute = () => API.get('/transactions/int
 
 export const updateInternationalTransfersRoute = (formData) => API.patch('/transactions/international-transfer', formData)
 
+export const fetchBlogItemsRoute = () => API.get('/administrator/admin-blog')
+
+export const addBlogItemRoute = (formData) => API.post('/administrator/admin-blog', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+
+export const updateBlogItemRoute = (formData) => API.patch('/administrator/admin-blog', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+
+export const deleteBlogItemRoute = (formData) => API.delete(`/administrator/admin-blog/${formData.pkid}`)
+
 
 
 

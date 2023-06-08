@@ -38,6 +38,7 @@ import PrivateRoute from "./utils/PrivateRoute"
 import LoadingToRedirect from "./utils/LoadingToRedirect"
 
 // ADMIN PAGES
+import AdminBlog from "./dashboard/admin/AdminBlog"
 import AdminDashboard from "./dashboard/admin/AdminDashboard"
 import AdminSchoolPayments from "./dashboard/admin/AdminSchoolPayments"
 import AdminBalances from "./dashboard/admin/AdminBalances"
@@ -89,6 +90,7 @@ export {
 
 
     // ADMIN
+    AdminBlog,
     AdminDashboard,
     AdminSchoolPayments,
     AdminBalances,

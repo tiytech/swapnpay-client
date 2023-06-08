@@ -73,7 +73,7 @@ const MobileSideBar = () => {
                             {user?.credentials?.is_administrator && admin__menu__items?.map((menu, index) => (
                                 <li
                                     key={`${index}`}
-                                    className={`text-gray-300 text-[12px] grid grid-cols-2 items-center space-x-[-4em] cursor-pointer px-4 py-3 mt-4 transition-all ease-in-out duration-500 hover:bg-[#ffffff60] hover:rounded-lg ${dashboardConfig.activeLink === menu.title && 'bg-white rounded-lg'}`}
+                                    className={`text-gray-300 text-[12px] grid grid-cols-2 items-center space-x-[-4em] cursor-pointer px-4 py-2.5 mt-2 transition-all ease-in-out duration-500 hover:bg-[#ffffff60] hover:rounded-lg ${dashboardConfig.activeLink === menu.title && 'bg-white rounded-lg'}`}
                                     onClick={() => updateDashboardConfig({ activeLink: menu.title })}
                                 >
                                     <img
@@ -83,7 +83,7 @@ const MobileSideBar = () => {
                                     <span
                                         className={`uppercase font-medium origin-left duration-200 text-[12px] ${dashboardConfig.activeLink === menu.title ? 'text-primary font-medium' : 'text-white'}`}
                                     >
-                                        {menu.title === 'Admin Settings' ? 'Settings' : menu.title}
+                                        {menu.title === 'Admin Home' ? 'Home' : menu.title === 'Admin Settings' ? 'Settings' : menu.title === 'Admin Manage Users' ? 'Manage Users' : menu.title}
                                     </span>
                                 </li>
                             ))}
