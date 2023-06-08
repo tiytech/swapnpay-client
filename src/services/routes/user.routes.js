@@ -68,17 +68,26 @@ export const verifyPasswordOtpAndResetRoute = (formData) => API.post('/user/', f
 
 export const iDverificationRoute = (formData) => API.put('/profiles/profile', formData, { headers: { "Content-Type": "multipart/form-data" } })
 
+
 export const getConverstionRateRoute = () => API.get('/transactions/conversion-rate')
+
 
 export const getTransactionFeeRoute = () => API.get('/administrator/transactions-fee')
 
+
 export const generateQuoteRoute = (formData) => API.post('/transactions/generate-quote', formData)
+
 
 export const swapCurrencyRoute = (formData) => API.post('/transactions/swap-currency', formData)
 
+
 export const createVirtualCardRoute = (formData) => API.post('/cards/create-virtual-card', formData)
 
+
 export const getUserCardsRoute = () => API.get('/cards/get-user-cards')
+
+
+export const fetchBlogsRoute = () => API.get('/administrator/blogs/fetch-all')
 
 
 

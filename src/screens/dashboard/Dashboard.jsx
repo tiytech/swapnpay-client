@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { useGlobalContext } from '../../context'
 import {
-	Home, Cards, Settings, Swap,
+	Home, Cards, Settings, Swap, AdminBlog,
 	AdminDashboard, AdminSchoolPayments, AdminBalances, AdminTransactions, AdminVerification, AdminSettings, AdminManageUsers
 } from '../'
 import { MobileSideBar, ModalPages, Modals, SideBar, TopBar } from '../../components'
@@ -64,6 +64,9 @@ const Dashboard = () => {
 				)}
 				{dashboardConfig.activeLink === 'Verification' && (
 					<AdminVerification />
+				)}
+				{dashboardConfig.activeLink === 'Blog' && (
+					<AdminBlog />
 				)}
 				{dashboardConfig.activeLink === 'Admin Settings' && (
 					<AdminSettings />

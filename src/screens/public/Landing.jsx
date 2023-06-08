@@ -1,12 +1,17 @@
+import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect, useReducer } from 'react'
-import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 
-import { blogItems } from '../../data'
+// import { blogItems } from '../../data'
 import { Blob1, Phone1, Phone2 } from '../../assets'
 import { BlogCard, DesktopNavbar, DownloadAppSection, Footer, HeaderText, LinkIconButton, ImageButton, LogoText, MobileNavbar } from '../../components'
+import { userFetchBlogItems } from '../../services/actions/user.actions'
 
 
 const Landing = () => {
+    const dispatch = useDispatch()
+
+    const { blogItems } = useSelector(state => state.user)
+
     const [config, updateConfig] = useReducer((prev, next) => {
         return { ...prev, ...next }
     }, {
@@ -14,6 +19,8 @@ const Landing = () => {
     })
 
     useEffect(() => {
+        dispatch(userFetchBlogItems())
+
         window.addEventListener('DOMContentLoaded', () => {
             if (window.innerWidth <= 768) {
                 updateConfig({ showMobileNav: true })
@@ -92,25 +99,25 @@ const Landing = () => {
                         <li className='text-white'>
                             <div className="flex flex-col">
                                 <p className='font-semibold font-spacegrotesk'>Virtual Card</p>
-                                <p className=''>Create a virtual card and make payment online safely and securely</p>
+                                <p className=''>Create a virtual card and make payment online safely and securely.</p>
                             </div>
                         </li>
                         <li className='text-white'>
                             <div className="flex flex-col">
-                                <p className='font-semibold font-spacegrotesk'>Receive Payment in Crypto <span className='px-1 py-1 bg-red-400 rounded-sm text-[10px]'>coming soon</span></p>
+                                <p className='font-semibold font-spacegrotesk'>Receive Payments in Crypto <span className='px-1 py-1 bg-red-400 rounded-sm text-[10px]'>coming soon</span></p>
                                 <p className=''>You can receive payment with stable coins on our platform.</p>
                             </div>
                         </li>
                         <li className='text-white'>
                             <div className="flex flex-col">
-                                <p className='font-semibold font-spacegrotesk'>Swap various currencies</p>
-                                <p className=''>Swap your currencies on the swapnpay platform. Be it Naira or Dollar.</p>
+                                <p className='font-semibold font-spacegrotesk'>Swap Various Currencies</p>
+                                <p className=''>Swap between Naira and Dollar at lightening speed using the SwapnPay platform.</p>
                             </div>
                         </li>
                         <li className='text-white'>
                             <div className="flex flex-col">
-                                <p className='font-semibold font-spacegrotesk'>Bill payments</p>
-                                <p className=''>Airtime recharge, data and cable subscription, and utility payment.</p>
+                                <p className='font-semibold font-spacegrotesk'>Utility Bills Payments</p>
+                                <p className=''>Make electricity. airtime and data bundle payment in a twinkle of an eye. We support all your favourite utility providers.</p>
                             </div>
                         </li>
                     </ul>
@@ -265,13 +272,13 @@ const Landing = () => {
                     />
                 </div>
 
-                <div className="flex space-x- w-full overflow-x-auto md:justify-between">
-                    {blogItems.map((blog, index) => (
+                <div className="flex w-full justify-between overflow-x-auto scrollbar-2">
+                    {blogItems?.map((blog, index) => (
                         <BlogCard
                             key={index}
                             blog={blog}
                             index={index}
-                            maxCount={blogItems.length - 1}
+                            maxCount={blogItems?.length - 1}
                         />
                     ))}
                 </div>

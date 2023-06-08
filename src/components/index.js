@@ -52,6 +52,7 @@ import ModalPages from "./utils/ModalPages"
 
 
 // TABLES
+import AdminBlogTable from "./tables/AdminBlogTable"
 import AdminTransactionsTable from "./tables/AdminTransactionsTable"
 import AdminVerificationTable from "./tables/AdminVerificationTable"
 import AdminSchoolPaymentsTable from "./tables/AdminSchoolPaymentsTable"
@@ -108,6 +109,7 @@ export {
     ModalPages,
 
     // TABLES
+    AdminBlogTable,
     AdminTransactionsTable,
     AdminVerificationTable,
     AdminSchoolPaymentsTable,

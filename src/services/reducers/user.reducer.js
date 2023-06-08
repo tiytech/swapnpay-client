@@ -6,7 +6,7 @@ import {
     userGenerateCableSubscription, userResetStateProperty, userTransferToSwapnPayUser, userFetchElectricityDiscos,
     userGenerateElectricitySubscription,
     getNairaWallet, resetPasswordOtpAction, resetPinOtpAction, resetTransactionPinAction, verifyPasswordOtpAndResetAction, iDverificationAction, userFetchTransactions, getConversionRateAction, getTransactionsFeeAction,
-    generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction, userFetchReferrals, userClaimRefferals, fundAccountWithCard
+    generateQuoteAction, swapCurrencyAction, createVirtualCardAction, getUserCardsAction, userFetchReferrals, userClaimRefferals, fundAccountWithCard, userFetchBlogItems
 } from '../actions/user.actions'
 
 
@@ -14,6 +14,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         blog: null,
+        blogItems: null,
         banksList: null,
         cablePlans: null,
         dataBundles: null,
@@ -40,6 +41,17 @@ const userSlice = createSlice({
 
     },
     extraReducers: (builder) => {
+        builder.addCase(userFetchBlogItems.pending, (state, action) => {
+            state.userRequestLoading = true
+        })
+        builder.addCase(userFetchBlogItems.fulfilled, (state, action) => {
+            state.userRequestLoading = false
+            state.blogItems = action.payload
+        })
+        builder.addCase(userFetchBlogItems.rejected, (state, action) => {
+            state.userRequestLoading = false
+        })
+
         builder.addCase(userFetchDollarWalletBalance.pending, (state, action) => {
             state.userRequestLoading = true
         })

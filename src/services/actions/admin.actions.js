@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { fetchDashboardInfoRoute, fetchInternationalTransfersRoute, fetchUnverifiedUsersRoute, fetchUsersRoute, flutterwaveBalanceRoute, getCardDepositsRoute, getFailedTransactionRoute, getFincraBalanceRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getSudoBalanceRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, getUserTransactionsRoute, patchCardDepositsRoute, patchFailedTransactionRoute, patchReferralFeeRoute, patchTransacationsFeeRoute, patchUsersRoute, updateInternationalTransfersRoute, updateSchoolFeesStatusRoute, verifyUserAccountRoute } from "../routes/admin.routes"
+import { addBlogItemRoute, deleteBlogItemRoute, fetchBlogItemsRoute, fetchDashboardInfoRoute, fetchInternationalTransfersRoute, fetchUnverifiedUsersRoute, fetchUsersRoute, flutterwaveBalanceRoute, getCardDepositsRoute, getFailedTransactionRoute, getFincraBalanceRoute, getReferralFeeRoute, getSchoolFeesPaymentRoute, getSudoBalanceRoute, getTranasactionsFeeRoute, getTransactionsRoutes, getUserCountRoutes, getUserTransactionsRoute, patchCardDepositsRoute, patchFailedTransactionRoute, patchReferralFeeRoute, patchTransacationsFeeRoute, patchUsersRoute, updateBlogItemRoute, updateInternationalTransfersRoute, updateSchoolFeesStatusRoute, verifyUserAccountRoute } from "../routes/admin.routes"
 
 
 
@@ -400,7 +400,7 @@ export const fetchInternationalTransactionAction = createAsyncThunk(
     'admin/fetchInternationalTransactionAction',
     async (_, { rejectWithValue }) => {
         try {
-            const { data } = await fetchInternationalTransfersRoute()   
+            const { data } = await fetchInternationalTransfersRoute()
             return data.data
         } catch (error) {
 
@@ -410,16 +410,94 @@ export const fetchInternationalTransactionAction = createAsyncThunk(
 )
 
 
+export const adminFetchBlogItems = createAsyncThunk(
+    'admin/adminFetchBlogItems',
+    async (_, { rejectWithValue }) => {
+
+        try {
+            const { data } = await fetchBlogItemsRoute()
+
+            return data.data
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const adminAddBlogItem = createAsyncThunk(
+    'admin/adminAddBlogItem',
+    async ({ formData, toast, updateModals }, { rejectWithValue }) => {
+
+        try {
+            const { data } = await addBlogItemRoute(formData)
+
+            toast.success('Blog item added successfully')
+
+            updateModals({ showAdminAddBlogModal: false })
+
+            return data.data
+        } catch (error) {
+            console.log(error);
+            toast.warning("An error occurred while adding blog item.")
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const adminUpdateBlogItem = createAsyncThunk(
+    'admin/adminUpdateBlogItem',
+    async ({ formData, toast, updateModals }, { rejectWithValue }) => {
+
+        try {
+            const { data } = await updateBlogItemRoute(formData)
+
+            toast.success('Blog item updated successfully')
+
+            updateModals({ showAdminUpdateBlogItemModal: false })
+
+            return data.data
+        } catch (error) {
+            console.log(error);
+            toast.warning("An error occurred while updating blog item.")
+            return rejectWithValue(null)
+        }
+    }
+)
+
+
+export const adminDeleteBlogItem = createAsyncThunk(
+    'admin/adminDeleteBlogItem',
+    async ({ formData, toast, updateModals }, { rejectWithValue }) => {
+
+        try {
+            await deleteBlogItemRoute(formData)
+
+            toast.success('Blog item deleted successfully')
+
+            updateModals({ showAdminDeleteBlogItemModal: false })
+
+            return formData.pkid
+        } catch (error) {
+            console.log(error);
+            toast.warning("An error occurred while deleting blog item.")
+            return rejectWithValue(null)
+        }
+    }
+)
+
 export const updateInternatonalTransferAction = createAsyncThunk(
     'admin/updateInternatonalTransferAction',
-    async ({ formData, toast}, { rejectWithValue }) => {
+    async ({ formData, toast }, { rejectWithValue }) => {
 
         try {
             const { data } = await updateInternationalTransfersRoute({ formData })
-            if(formData['status'] == "approved"){
+            if (formData['status'] == "approved") {
                 toast.success("Payment was successful")
             }
-            if(formData['status'] != "approved"){
+            if (formData['status'] != "approved") {
                 toast.success("Payment was rejected succesfully")
             }
 

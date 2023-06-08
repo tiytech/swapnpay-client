@@ -48,7 +48,7 @@ const Blog = () => {
 			<section className="h-[20%] px-6 -mt-[100px] md:-mt-0 pt-4 md:pt-0">
 				<img
 					alt="blog-img"
-					src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                    src={`${import.meta.env.VITE_APP_DEV_API_ROOT}${blog?.image}`}
 					className='w-full h-full'
 				/>
 			</section>
@@ -71,7 +71,7 @@ const Blog = () => {
 				</div>
 
 				<div className='mt-4'>
-					<p className='text-[16px]'>{blog?.description}</p>
+					<p className='text-[16px]'>{blog?.body}</p>
 				</div>
 			</section>
 

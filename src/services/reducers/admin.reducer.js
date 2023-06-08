@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { adminFetchDashboardInfo, adminFetchUnverifiedUsersAction, adminResetStateProperty, adminVerifyUserAccountAction, fetchInternationalTransactionAction, fetchUsersActions, flutterWaveBalanceAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, getUsersTransactionsAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, patchUserAction, schoolFeesDetails, updateInternatonalTransferAction, updateSchoolFeesStatusAction } from '../actions/admin.actions'
+import { adminAddBlogItem, adminDeleteBlogItem, adminFetchBlogItems, adminFetchDashboardInfo, adminFetchUnverifiedUsersAction, adminResetStateProperty, adminUpdateBlogItem, adminVerifyUserAccountAction, fetchInternationalTransactionAction, fetchUsersActions, flutterWaveBalanceAction, getCardDepositsActions, getFailedTransactionAction, getFincraBalanceAction, getReferralFeeAction, getSchoolFeesPaymentAction, getSudoBalanceAction, getTransactionsAction, getTransactionsFeeAction, getUserCountAction, getUsersTransactionsAction, patchCardDepositAction, patchFailedTransactionAction, patchReferralFeeAction, patchTransactionsFeeAction, patchUserAction, schoolFeesDetails, updateInternatonalTransferAction, updateSchoolFeesStatusAction } from '../actions/admin.actions'
 
 
 const adminSlice = createSlice({
     name: 'admin',
     initialState: {
+        blogItems: null,
         dashboardInfo: null,
         currentData: null,
         adminRequestStatus: null,
@@ -339,7 +340,55 @@ const adminSlice = createSlice({
         builder.addCase(fetchInternationalTransactionAction.rejected, (state, action) => {
             state.adminRequestLoading = false
         })
-        //
+
+
+
+        builder.addCase(adminFetchBlogItems.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(adminFetchBlogItems.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.blogItems = action.payload
+
+        })
+        builder.addCase(adminFetchBlogItems.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+
+        builder.addCase(adminAddBlogItem.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(adminAddBlogItem.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.blogItems = [action.payload, ...state.blogItems]
+
+        })
+        builder.addCase(adminAddBlogItem.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+
+        builder.addCase(adminUpdateBlogItem.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(adminUpdateBlogItem.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            const index = state.blogItems.findIndex(blog => blog.pkid === action.payload.pkid)
+            state.blogItems[index] = action.payload
+        })
+        builder.addCase(adminUpdateBlogItem.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
+
+        builder.addCase(adminDeleteBlogItem.pending, (state, action) => {
+            state.adminRequestLoading = true
+        })
+        builder.addCase(adminDeleteBlogItem.fulfilled, (state, action) => {
+            state.adminRequestLoading = false
+            state.blogItems = state.blogItems.filter(blog => blog.pkid !== action.payload)
+        })
+        builder.addCase(adminDeleteBlogItem.rejected, (state, action) => {
+            state.adminRequestLoading = false
+        })
 
 
 

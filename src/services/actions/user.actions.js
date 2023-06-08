@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { createVirtualCardRoute, fetchReferralsRoute, fetchTransactionsRoute, generateQuoteRoute, getConverstionRateRoute, getNairaWalletDetails, getTransactionFeeRoute, getUserCardsRoute, iDverificationRoute, receiveWithCard, resetPasswordOtpRoute, resetPinOtpRoute, resetPinOtpVerification, resetTransactionPin, swapCurrencyRoute, userClaimReferralRoute, verifyPasswordOtpAndResetRoute } from '../routes/user.routes'
+import { createVirtualCardRoute, fetchBlogsRoute, fetchReferralsRoute, fetchTransactionsRoute, generateQuoteRoute, getConverstionRateRoute, getNairaWalletDetails, getTransactionFeeRoute, getUserCardsRoute, iDverificationRoute, receiveWithCard, resetPasswordOtpRoute, resetPinOtpRoute, resetPinOtpVerification, resetTransactionPin, swapCurrencyRoute, userClaimReferralRoute, verifyPasswordOtpAndResetRoute } from '../routes/user.routes'
 import { airtimeDataPurchaseRoute, bankTransferRoute, cableAndElectricitySubscriptionRoute, electricityDiscosRoute, fetchBanksListRoute, fetchCablePlansRoute, fetchDataBundlesRoute, fetchDollarWalletBalanceRoute, fetchNairaWalletBalanceRoute, schoolPaymentRoute, transferToSwapnPayUserRoute } from "../routes/user.routes"
 
 
@@ -515,6 +515,20 @@ export const getUserCardsAction = createAsyncThunk(
             const { data } = await getUserCardsRoute()
 
             return data
+        } catch (error) {
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)
+
+export const userFetchBlogItems = createAsyncThunk(
+    'user/userFetchBlogItems',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await fetchBlogsRoute()
+
+            return data.data
         } catch (error) {
             console.log(error.response)
             return rejectWithValue(null)

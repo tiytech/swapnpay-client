@@ -5,6 +5,9 @@ import AdminUpdateTransactionFeeModal from '../modals/AdminUpdateTransactionFeeM
 import AdminUpdateReferralFeeModal from '../modals/AdminUpdateReferralFeeModal'
 import AdminManageUserModal from '../modals/AdminManageUserModal'
 import AdminManageSchoolFeesPaymentModal from '../modals/AdminManageSchoolFeesPaymentModal'
+import AdminAddBlogItemModal from '../modals/AdminAddBlogItemModal'
+import AdminUpdateBlogItemModal from '../modals/AdminUpdateBlogItem'
+import AdminDeleteBlogItemModal from '../modals/AdminDeleteBlogItemModal'
 
 
 const FormModal = ({ type }) => {
@@ -40,8 +43,21 @@ const FormModal = ({ type }) => {
             {type === 'admin__manage_admission_letter' && (
                 <AdminManageSchoolFeesPaymentModal />
             )}
+
             {type === 'admin__manage_sponsor_id' && (
                 <AdminManageSchoolFeesPaymentModal />
+            )}
+            
+            {type === 'admin__add__blog__modal' && (
+                <AdminAddBlogItemModal />
+            )}
+            
+            {type === 'admin__update__blog__modal' && (
+                <AdminUpdateBlogItemModal />
+            )}
+            
+            {type === 'admin__delete__blog__modal' && (
+                <AdminDeleteBlogItemModal />
             )}
         </Fragment>
     )
