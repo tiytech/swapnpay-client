@@ -18,7 +18,7 @@ const MobileNavbar = () => {
     return (
         <div className='relative mb-20 md:mb-0 md:hidden'>
             <div className='flex justify-between items-center py-4 px-4'>
-                <div className='flex flex-[0.6] justify-between'>
+                <div className='flex flex-[0.7] justify-between'>
                     <BsGrid
                         size={25}
                         className='text-primary cursor-pointer'
