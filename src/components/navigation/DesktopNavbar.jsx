@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 import { BsGrid } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import LinkIconButton from '../buttons/LinkIconButton'
 import { IconLogo, IconLogoWhite, IconTimes } from '../../assets'
@@ -12,11 +12,17 @@ const DesktopNavbar = () => {
     }, {
         showMenu: false,
     })
-
+    const navigate = useNavigate()
     return (
         <div className='justify-between items-center py-4 px-6 relative bg-white shadow-lg mt-5 mx-4 rounded hidden md:flex'>
             <Link to={'/'}>
-                <div className="flex space-x-2 items-center font-spacegrotesk cursor-pointer">
+                <div className="flex space-x-2 items-center font-spacegrotesk cursor-pointer"
+
+                    onClick={() => {
+
+                        navigate("/")
+                    }}
+                >
                     <img
                         src={IconLogo}
                         alt="logo"

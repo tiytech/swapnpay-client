@@ -72,7 +72,7 @@ const Swap = () => {
 
 
 	return (
-		<div className='pl-8 pr-8 pb-10 mt-20 flex justify-between items-start w-full'>
+		<div className='pl-8 pr-8 pb-10 mt-20'>
 			<div className="w-full lg:w-[40%] flex flex-col items-start space-y-5">
 				{!confirmTransactionState && <div>
 					<div className="flex flex-col items-start w-full">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useReducer } from 'react'
 import { toast } from 'react-toastify'
 import { BsArrowLeft } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,7 +7,7 @@ import { FormTextInput, HeaderText, IconButton, LoadingButtonOne } from '../../c
 import { swapCurrencyAction } from '../../services/actions/user.actions'
 
 
-const ConfirmTransactions = ({ formData, updateFormData }) => {
+const ConfirmTransactions = ({ formData, updateFormData, setConfirmTransactionState }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [Form, setForm] = useState({})
@@ -15,6 +15,11 @@ const ConfirmTransactions = ({ formData, updateFormData }) => {
     const { user, userRequestStatus } = useSelector(state => state.auth)
 
     const { transactionsFee, nairaWallet, dollarWallet, conversionRate, customLoadingState, generatedQuote } = useSelector(state => state.user)
+    const [config, updateConfig] = useReducer((prev, next) => {
+        return { ...prev, ...next }
+    }, {
+        showDefault: true, showConfirmTransaction: false
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -46,11 +51,12 @@ const ConfirmTransactions = ({ formData, updateFormData }) => {
 
 
     return (
-        <div className="w-full md:w-[40%] h-full bg-gray-100 px-6 lg:px-20 py-20 flex flex-col space-y-5">
+        <div className="lg:w-full h-full bg-gray-100 px-5 md:px-20 py-10 flex flex-col space-y-5">
             <BsArrowLeft
                 size={20}
                 className='cursor-pointer'
-                onClick={() => updateConfig({ showDefault: false, showSendViaUsername: true, showConfirmTransferToSwapnPayUser: false })}
+                // onClick={() => updateConfig({ showDefault: false, showSendViaUsername: true, showConfirmTransferToSwapnPayUser: false })}
+                onClick={() => setConfirmTransactionState(false)}
             />
 
             <div className="space-y-2">
@@ -61,7 +67,7 @@ const ConfirmTransactions = ({ formData, updateFormData }) => {
                 <p className='text-[14px]'>Enter your transaction pin to confirm this transaction.</p>
             </div>
 
-            <div className="flex flex-col w-full space-y-5">
+            <div className="flex flex-col w-full space-y-">
                 <form onSubmit={handleSubmit}>
                     <FormTextInput
                         padding={'py-3 px-5'}

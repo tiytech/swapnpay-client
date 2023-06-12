@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap');
 
 /*
-! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.2 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -37,6 +37,7 @@
 3. Use a more readable tab size.
 4. Use the user's configured `sans` font-family by default.
 5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
 */
 
 html {
@@ -53,6 +54,8 @@ html {
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
 }
 
 /*
@@ -439,6 +442,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -486,6 +492,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -986,6 +995,10 @@ video {
   cursor: pointer;
 }
 
+.resize-none{
+  resize: none;
+}
+
 .resize{
   resize: both;
 }
@@ -1246,6 +1259,11 @@ video {
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
+.border-slate-200{
+  --tw-border-opacity: 1;
+  border-color: rgb(226 232 240 / var(--tw-border-opacity));
+}
+
 .border-slate-400{
   --tw-border-opacity: 1;
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
@@ -1420,23 +1438,23 @@ video {
 }
 
 .from-primary{
-  --tw-gradient-from: #002F46;
-  --tw-gradient-to: rgb(0 47 70 / 0);
+  --tw-gradient-from: #002F46 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 47 70 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .from-primary-light{
-  --tw-gradient-from: #0085C6;
-  --tw-gradient-to: rgb(0 133 198 / 0);
+  --tw-gradient-from: #0085C6 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 133 198 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .to-primary{
-  --tw-gradient-to: #002F46;
+  --tw-gradient-to: #002F46 var(--tw-gradient-to-position);
 }
 
 .to-primary-light{
-  --tw-gradient-to: #0085C6;
+  --tw-gradient-to: #0085C6 var(--tw-gradient-to-position);
 }
 
 .bg-cover{
@@ -1516,6 +1534,11 @@ video {
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.py-10{
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .py-16{
@@ -2015,6 +2038,11 @@ video {
   border-radius: 0.5rem;
 }
 
+.hover\:border-slate-400:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
+}
+
 .hover\:bg-\[\#ffffff60\]:hover{
   background-color: #ffffff60;
 }
@@ -2167,6 +2195,10 @@ video {
 
   .md\:w-\[500px\]{
     width: 500px;
+  }
+
+  .md\:w-\[600px\]{
+    width: 600px;
   }
 
   .md\:w-\[700px\]{
@@ -2374,6 +2406,10 @@ video {
 
   .lg\:w-\[800px\]{
     width: 800px;
+  }
+
+  .lg\:w-full{
+    width: 100%;
   }
 
   .lg\:max-w-full{
