@@ -24,7 +24,14 @@ const MobileNavbar = () => {
                         className='text-primary cursor-pointer'
                         onClick={() => updateConfig({ showMenu: true })}
                     />
-                    <div className="flex space-x-2 items-center font-spacegrotesk cursor-pointer">
+                    <div className="flex space-x-2 items-center font-spacegrotesk cursor-pointer"
+
+                        onClick={() => {
+
+                            navigate("/")
+                        }}
+
+                    >
                         <img
                             onClick={() => {
 
@@ -44,7 +51,7 @@ const MobileNavbar = () => {
             {config.showMenu && (
                 <div
                     // onClick={() => updateConfig({ showMenu: false })}
-                    className="absolute right-0 top-0 h-screen w-full bg-primary flex flex-col"
+                    className="absolute right-0 top-0 h-screen w-full bg-primary flex flex-col z-10"
                 >
                     <div className='flex justify-between items-center py-4 pl-8 pr-4'>
                         <div className="flex space-x-2 items-center font-spacegrotesk cursor-pointer">

@@ -1536,6 +1536,11 @@ video {
   padding-bottom: 0.25rem;
 }
 
+.py-10{
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .py-16{
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -1604,11 +1609,6 @@ video {
 .py-\[60px\]{
   padding-top: 60px;
   padding-bottom: 60px;
-}
-
-.py-10{
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
 }
 
 .pb-10{
@@ -2456,10 +2456,6 @@ video {
   .lg\:py-20{
     padding-top: 5rem;
     padding-bottom: 5rem;
-  }
-
-  .lg\:pl-8{
-    padding-left: 2rem;
   }
 
   .lg\:text-start{
