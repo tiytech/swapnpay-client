@@ -1,12 +1,16 @@
 import React from 'react'
 import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa'
+import { Link, useNavigate } from 'react-router-dom'
 
 import LogoText from '../text/LogoText'
 import HeaderText from '../text/HeaderText'
 import ImageButton from '../buttons/ImageButon'
 
 
+
+
 const Footer = () => {
+    const navigate = useNavigate()
     return (
         <footer className='rounded-xl bg-primary px-6 mx-6 mb-5 py-[20px] flex flex-col md:flex-row-reverse md:justify-between md:mx-[60px] md:my-20 md:py-20'>
             <div className="flex justify-between md:w-1/2">
@@ -18,7 +22,16 @@ const Footer = () => {
                     />
 
                     <div className="space-y-1">
-                        <p className='text-[14px] text-white'>About</p>
+                        <p
+                            onClick={() => {
+                                navigate("/about")
+                                window.scrollTo({
+                                    top: 0,
+                                    behavior: "smooth",
+                                });
+                            }}
+
+                            className='text-[14px] text-white hover:cursor-pointer'>About</p>
                         <p className='text-[14px] text-white'>Privacy Policy</p>
                         <p className='text-[14px] text-white'>Terms of Service</p>
                     </div>
