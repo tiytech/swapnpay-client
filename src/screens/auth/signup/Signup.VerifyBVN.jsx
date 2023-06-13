@@ -1,6 +1,7 @@
 import React from 'react'
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { useGlobalContext } from '../../../context'
 import { authActivateAccount } from '../../../services/actions/auth.actions'
@@ -30,10 +31,15 @@ const SignupVerifyBVN = ({ formData, handleChange, updateConfig }) => {
 
     return (
         <div className="w-full md:w-[50%] h-full flex flex-col px-5 md:px-28 py-5 lg:py-20 space-y-5">
-            <LogoText
-                size={'lg'}
-                color={'black'}
-            />
+            <Link to={"/"}>
+
+                <LogoText
+
+                    size={'lg'}
+                    color={'black'}
+                />
+
+            </Link>
             <HeaderText
                 text={'Verify BVN'}
                 classes={'text-[30px]'}

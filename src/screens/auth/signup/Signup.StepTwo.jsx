@@ -14,17 +14,22 @@ const SignupStepTwo = ({ formData, handleChange, updateConfig }) => {
         if (!formData.first_name) return toast.error('First name required!')
         if (!formData.last_name) return toast.error('Last name required!')
         if (!formData.occupation) return toast.error('Occupation name required!')
-        
+
 
         updateConfig({ showFormTwo: false, showFormThree: true })
     }
 
     return (
         <div className="w-full md:w-[50%] h-full flex flex-col px-5 md:px-28 py-5 lg:py-20 space-y-5">
-            <LogoText
-                size={'lg'}
-                color={'black'}
-            />
+            <Link to={"/"}>
+
+                <LogoText
+
+                    size={'lg'}
+                    color={'black'}
+                />
+
+            </Link>
             <HeaderText
                 text={'Personal Data'}
                 classes={'text-[30px]'}

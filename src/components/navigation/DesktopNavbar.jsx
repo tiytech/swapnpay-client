@@ -17,9 +17,7 @@ const DesktopNavbar = () => {
         <div className='justify-between items-center py-4 px-6 relative bg-white shadow-lg mt-5 mx-4 rounded hidden md:flex'>
             <Link to={'/'}>
                 <div className="flex space-x-2 items-center font-spacegrotesk cursor-pointer"
-
                     onClick={() => {
-
                         navigate("/")
                     }}
                 >
